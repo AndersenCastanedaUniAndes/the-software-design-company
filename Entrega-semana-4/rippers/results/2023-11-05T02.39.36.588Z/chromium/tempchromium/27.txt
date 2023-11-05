@@ -1,0 +1,6 @@
+body
+  div.content
+    h1
+      #text
+    h2
+      #text
