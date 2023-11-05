@@ -1,0 +1,11 @@
+body.ember-application
+  div.ember-load-indicator
+    div.gh-loading-content
+      video
+        source
+        div.gh-loading-spinner
+  div#ember-basic-dropdown-wormhole
+  script
+  script
+  script
+  script

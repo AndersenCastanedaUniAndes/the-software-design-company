@@ -1,0 +1,1 @@
+{"nodes":[{"state":0,"url":"http://localhost:2368/ghost/","errors":["{\n  \"_type\": \"error\",\n  \"_text\": \"Viewport argument key \\\"minimal-ui\\\" not recognized and ignored.\",\n  \"_args\": [],\n  \"_location\": {\n    \"url\": \"http://localhost:2368/ghost/\",\n    \"lineNumber\": 14,\n    \"columnNumber\": 141\n  }\n}"]}],"links":[]}

@@ -1,0 +1,1 @@
+{"nodes":[{"state":0,"url":"http://localhost:2368/ghost/"},{"state":1,"url":"http://localhost:2368/ghost/"},{"state":2,"url":"http://localhost:2368/ghost/"}],"links":[{"source":0,"target":1,"interaction":"button-click"},{"source":0,"target":2,"interaction":"button-click"}]}

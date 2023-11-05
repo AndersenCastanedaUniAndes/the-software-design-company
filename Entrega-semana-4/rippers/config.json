@@ -1,0 +1,11 @@
+{
+  "url": "http://localhost:2368/ghost/#/dashboard/",
+  "headless": false,
+  "depthLevels": 1,
+  "inputValues": true,
+  "values": {
+    "password": "9eRt7!SPX85XJHg",
+    "identification": "cc.pinzonh1@uniandes.edu.co"
+  },
+  "browsers": ["chromium"]
+}
