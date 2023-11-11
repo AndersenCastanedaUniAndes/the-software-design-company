@@ -26,7 +26,7 @@ Execute in a terminal any of the following commands:
 1. **npm run open**
 2. **yarn open**
 
-### To run Cypress (headless mode) and generates reports
+### To run Cypress (headless mode) to generate reports
 Execute in a terminal any of the following commands: 
 1. **npm run run:reporter**
 2. **yarn run:reporter**
