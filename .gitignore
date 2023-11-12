@@ -3,3 +3,5 @@ cypress/screenshots
 cypress/videos
 **/node_modules/
 **/results/
+Entrega-semana-5/kraken/reports
+Entrega-semana-5/kraken/.kraken
