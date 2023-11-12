@@ -1,6 +1,8 @@
 cypress/integration/monkey/node_modules/
 cypress/screenshots
 cypress/videos
+**/1-getting-started
+**/2-advanced-examples
 **/node_modules/
 **/results/
 Entrega-semana-5/kraken/reports

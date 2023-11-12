@@ -1,7 +1,7 @@
 Feature: Agregar un tag a una página existente
 
 @user1 @web
-Scenario: Como usuario administrador quiero agregar un tag a una página nueva para mostrar que pueda filtrarse en la búsqueda por tags
+Scenario: Como usuario administrador quiero agregar un tag a una página para que pueda filtrarse en la búsqueda por tags
   Given I navigate to page "http://localhost:2368/ghost/#/signin"
   And I wait for 3 seconds
   And I enter email "<USERNAME>"
