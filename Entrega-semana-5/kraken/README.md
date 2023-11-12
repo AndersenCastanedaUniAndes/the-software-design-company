@@ -76,30 +76,31 @@ On Windows, you can set environment variables through the "Environment Variables
 Please note that the installation process may require administrative privileges.
 ```
 
-
-
 ### Kraken Installation
 
 For here make sure that your are located in the folder `...\Entrega-semana-5\kraken`.
 
 In order to install Kraken open a terminal an execute the following command:
+
 ```bash
 npm install
 npm install kraken-node -g
 npm install -g appium
 ```
 
+Make sure to update the `properties.json` file with your specific configurations. You can find this file at root level.
+
 ## Usage
 
-To run kraken with the tests just execute the following command: 
+To run kraken with the tests just execute the following command:
 
-```bash 
+```bash
 npx kraken-node run
 ```
 
-## Authors 
+## Authors
 
-* Cristian Camilo Pinzon Hernandez
-* Juan Carlos De Jesus
-* Alex Santiago Meneses Sanchez
-* Andersen Castañeda 
+- Cristian Camilo Pinzon Hernandez
+- Juan Carlos De Jesus
+- Alex Santiago Meneses Sanchez
+- Andersen Castañeda

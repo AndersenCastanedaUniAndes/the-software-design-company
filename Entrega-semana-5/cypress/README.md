@@ -13,7 +13,7 @@ This guide will help you install Cypress 13.5.0 on Mac, Linux, or Windows.
 
 ### Configuration
 1. These e2e tests run on http://localhost:2369/ghost/. If you wanna run it on a different url and port, please go to cypress.config.js and modify the baseURL property.
-2. **(IMPORTANT) To allow cypress to log in to your local version of Ghost, please add your credentials (email, password) in the user.json file localed in cypress/fixtures**
+2. **(IMPORTANT) Update the `profile.json` file located in the `fixtures` folder with your own data. This file is used for tests that require user profile data.**
 
 ## Usage
 ### To run Cypress without a UI (headless mode)
