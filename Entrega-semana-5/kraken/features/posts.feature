@@ -2,7 +2,7 @@ Feature: Posts
 
 @user1 @web
 Scenario: Como usuario administrador quiero agregar un draft post para después editar su contenido
-  Given I navigate to page "http://localhost:2368/ghost/#/signin"
+  Given I navigate to page "<BASEURL>"
   And I wait for 5 seconds
   And I enter email "<USERNAME>"
   And I wait for 2 seconds
