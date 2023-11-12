@@ -1,0 +1,408 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "posts;como-usuario-administrador-quiero-ver-las-analíticas-de-un-post-publicado-para-saber-cómo-se-ha-comportado",
+        "keyword": "Scenario",
+        "line": 41,
+        "name": "Como usuario administrador quiero ver las analíticas de un post publicado para saber cómo se ha comportado",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13738000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 42,
+            "name": "I wait for a signal containing \"Scenario1 complete\" for 15 seconds",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:109"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 15618000000,
+              "error_message": "Error: ERROR: Signal timeout, did not receive signal: Scenario1 complete\n    at WebClient.SignalingClient.waitForSignalOrTimeout (D:\\MISO\\Ciclo 2\\Pruebas automatizadas de software\\Semana 5\\the-software-design-company\\Entrega-semana-5\\kraken\\node_modules\\kraken-node\\lib\\clients\\SignalingClient.js:80:19)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"
+            },
+            "embeddings": [
+              {
+                "data": "iVBORw0KGgoAAAANSUhEUgAABvMAAAR5CAYAAADwJ/nRAAAAAXNSR0IArs4c6QAAIABJREFUeJzs2TEBACAMwDDAv+dhgJ8eiYL+3TMzCwAAAAAAAMg5vwMAAAAAAACANzMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAAACDKzAMAAAAAAIAoMw8AAAAAAACizDwAAAAAAACIMvMAAAAAAAAgyswDAAAAAACAKDMPAAAAAAAAosw8AAAAAAAAiDLzAAAAAAAAIMrMAwAAAAAAgCgzDwAAAAAAAKLMPAAAAAAAAIgy8wAAAAAA4LZnxwIAAAAAg/ytp7GjNAKYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwDepVtkAAAJRklEQVQAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmJJ5AAAAAAAAMCXzAAAAAAAAYErmAQAAAAAAwJTMAwAAAAAAgCmZBwAAAAAAAFMyDwAAAAAAAKZkHgAAAAAAAEzJPAAAAAAAAJiSeQAAAAAAADAl8wAAAAAAAGBK5gEAAAAAAMCUzAMAAAAAAIApmQcAAAAAAABTMg8AAAAAAACmZB4AAAAAAABMyTwAAAAAAACYknkAAAAAAAAwJfMAAAAAAABgSuYBAAAAAADAlMwDAAAAAACAKZkHAAAAAAAAUzIPAAAAAAAApmQeAAAAAAAATMk8AAAAAAAAmApKGwzuMcYUSgAAAABJRU5ErkJggg==",
+                "mime_type": "image/png"
+              }
+            ]
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "I navigate to page \"http://localhost:2368/ghost/#/signin\"",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\web.js:41"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 44,
+            "name": "I wait for 5 seconds",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:73"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 45,
+            "name": "I enter email \"<USERNAME>\"",
+            "match": {
+              "location": "features\\web\\step_definitions\\step_sign_in.js:3"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 46,
+            "name": "I wait for 1 seconds",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:73"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 47,
+            "name": "I enter password \"<PASSWORD>\"",
+            "match": {
+              "location": "features\\web\\step_definitions\\step_sign_in.js:8"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 48,
+            "name": "I wait for 1 seconds",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:73"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 49,
+            "name": "I click sign in button with selector \"button[data-test-button='sign-in']\"",
+            "match": {
+              "location": "features\\web\\step_definitions\\step_sign_in.js:13"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 50,
+            "name": "I wait for 7 seconds",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:73"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 51,
+            "name": "I go to the posts section with selector \"a[data-test-nav='posts']\"",
+            "match": {
+              "location": "features\\web\\step_definitions\\step_tags.js:6"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 52,
+            "name": "I wait for 1 seconds",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:73"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 53,
+            "name": "I click in the new post button with selector \"a[data-test-new-post-button]\"",
+            "match": {
+              "location": "features\\web\\step_definitions\\step_tags.js:14"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 54,
+            "name": "I wait for 1 seconds",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:73"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 55,
+            "name": "I enter title \"$name_postTitle\" into field with selector \"textarea[data-test-editor-title-input]\"",
+            "match": {
+              "location": "features\\web\\step_definitions\\step_tags.js:22"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 56,
+            "name": "I wait for 1 seconds",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:73"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 57,
+            "name": "I click in the Publish button",
+            "match": {
+              "location": "features\\web\\step_definitions\\step_tags.js:52"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I wait for 1 seconds",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:73"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 59,
+            "name": "I click in the Continue, final review button with selector \"button[data-test-button='continue']\"",
+            "match": {
+              "location": "features\\web\\step_definitions\\step_tags.js:70"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 60,
+            "name": "I wait for 1 seconds",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:73"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I click in the Publish post confirm button with selector \"button[data-test-button='confirm-publish']\"",
+            "match": {
+              "location": "features\\web\\step_definitions\\step_tags.js:78"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I wait for 1 seconds",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:73"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I go back to the editor section clicking the editor button with selector \"button.gh-publish-back-button\"",
+            "match": {
+              "location": "features\\web\\step_definitions\\step_tags.js:86"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I wait for 1 seconds",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:73"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I go back to the list of posts clicking the posts button with selector \"a[data-test-link='posts']\"",
+            "match": {
+              "location": "features\\web\\step_definitions\\step_tags.js:31"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I wait for 1 seconds",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:73"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "I click the analytics button associated to the post",
+            "match": {
+              "location": "features\\web\\step_definitions\\step_tags.js:130"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I check the analytics panel opens with selector \"div.gh-canvas-header.gh-post-analytics-header\"",
+            "match": {
+              "location": "features\\web\\step_definitions\\step_tags.js:135"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "failed",
+              "duration": 30017000000,
+              "error_message": "Error: function timed out, ensure the promise resolves within 30000 milliseconds\n    at Timeout._onTimeout (D:\\MISO\\Ciclo 2\\Pruebas automatizadas de software\\Semana 5\\the-software-design-company\\Entrega-semana-5\\kraken\\node_modules\\@cucumber\\cucumber\\lib\\user_code_runner.js:63:28)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@user2",
+            "line": 40
+          },
+          {
+            "name": "@web",
+            "line": 40
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "posts",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Posts",
+    "tags": [],
+    "uri": "features\\tags.feature"
+  }
+]
