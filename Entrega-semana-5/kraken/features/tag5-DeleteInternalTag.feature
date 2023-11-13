@@ -1,7 +1,7 @@
-Feature: Tag1 crear y editar tag
+Feature: Tag5 crear y eliminar internal tag
 
-@user1 @web
-Scenario: Como usuario administrador quiero modificar un post ya publicado para después editar su contenido
+@user5 @web
+Scenario: Como usuario administrador quiero crear un post de tipo internal para después eliminar su contenido
   Given I navigate to page "http://localhost:2368/ghost/#/signin"
   And I wait for 5 seconds
   And I enter email "<USERNAME2>"
@@ -25,4 +25,5 @@ Scenario: Como usuario administrador quiero modificar un post ya publicado para 
   And I enter title "tag-modified" into field with selector "input[id='tag-name']"
   And I wait for 1 seconds
   Then I click in the save button
-  And I must see an success name advise "button.save span.success"
+  And I wait for 1 seconds
+  And I go back to the tags section clicking the tags button with selector "a[data-test-nav='tags']"
