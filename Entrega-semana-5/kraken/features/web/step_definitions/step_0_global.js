@@ -14,3 +14,12 @@ When('I click sign in button with selector {string}', async function(string) {
   let singInButton = await this.driver.$(string);
   return await singInButton.click();
 })
+
+When(
+  'I enter title {kraken-string} into field with selector {string}',
+  async function (string, string2) {
+    let title = await this.driver.$(string2);
+    await title.setValue(string);
+    return await this.driver.keys('Enter');
+  }
+);

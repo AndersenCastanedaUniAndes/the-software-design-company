@@ -5,6 +5,10 @@ class DashboardPage {
     this.navigationBar = new NavigationSection();
   }
 
+  goToPages() {
+    return this.navigationBar.clickPages();
+  }
+
   goToPosts() {
     return this.navigationBar.clickPosts();
   }

@@ -2,7 +2,7 @@ Feature: member1-registro-exito
 
 @user1 @web
 Scenario: Como usuario administrador quiero poder registrar un nuevo miembro para poder enviarles novedades
-  Given I navigate to page "http://localhost:2369/ghost/#/signin"
+  Given I navigate to page "<BASEURL>"
   And I wait for 5 seconds
   And I enter email "<USERNAME>"
   And I wait for 2 seconds
