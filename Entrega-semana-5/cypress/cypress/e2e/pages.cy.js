@@ -1,4 +1,4 @@
-const { faker } = require('@faker-js/faker');
+import { should } from 'chai';
 import LoginPage from '../pages/loginPage';
 
 describe('Feature Pages', () => {
@@ -16,42 +16,40 @@ describe('Feature Pages', () => {
   describe('Como usuario administrador quiero crear una página nueva para después editar su contenido', () => {
     context('Given an authenticated user in the app', () => {
       context('And navigate to pages section', () => {
-        context('When I click in the new page button', () => {
+        context('And I click in the new page button', () => {
           context('And I enter title "Mi nueva página" into field', () => {
-            context('And el post es publicado', () => {
-              context('Then cuando edito el titulo nuevamente', () => {
-                it('And debe guardarse el post editado', () => {
-                  // LOG IN
-                  const loginObj = new LoginPage();
-                  loginObj
+            context('When I publish the page and confirm the publish', () => {
+              context('Then I navigate to the page in the list of pages', () => {
+                it('should list the new page in the list of pages', () => {
+
+                  // Login
+                  const loginPage = new LoginPage();
+
+                  loginPage
                     .enterEmail(profile.email)
                     .enterPassword(profile.password);
-                  const dashboardObj = loginObj.clickSignIn();
 
-                  // POSTS
-                  let postsObj = dashboardObj.goToPosts();
+                  const dashboardPage = loginPage.clickSignIn();
 
-                  // Create a post and publish it
-                  let editorPostObj = postsObj.clickNewPost();
-                  const postTitle = faker.string.alpha(10);
-                  postsObj = editorPostObj
-                    .enterTitle(postTitle)
-                    .publishPostRightNow()
-                    .clickgoBackToPosts();
+                  // Navigates to Pages
+                  let pagesPage = dashboardPage.goToPages();
 
-                  postsObj.findPostByName(postTitle).should('not.be.empty');
+                  // Create and publish a new page
+                  pagesPage.clickNewPage();
+                  pagesPage.addPageTitle('Mi nueva página');
+                  pagesPage
+                    .publishPage()
+                    .continuePublish()
+                    .confirmPublish();
 
-                  // Update a post and publish it
-                  editorPostObj = postsObj.editPostedPostByName(postTitle);
-                  const postTitleModified = faker.string.alpha(10);
-                  postsObj = editorPostObj
-                    .enterTitle(postTitleModified)
-                    .ClickUpdatePost()
-                    .clickgoBackToPosts();
+                  // Navigates to Pages
+                  pagesPage
+                    .closePublishEditor()
+                    .goBackToPagesList();
 
-                  postsObj
-                    .findPostByName(postTitleModified)
-                    .should('not.be.empty');
+                  // Validates that the created page exist
+                  var newPageInList = pagesPage.visualizeNewPageInList();
+                  should().equal(newPageInList, true);
                 });
               });
             });
@@ -60,4 +58,51 @@ describe('Feature Pages', () => {
       });
     });
   });
+
+  // describe('Como usuario administrador quiero agregar un tag a una página para que pueda filtrarse en la búsqueda por tags', () => {
+  //   context('Given an authenticated user in the app', () => {
+  //     context('And navigate to pages section', () => {
+  //       context('And I click in the edit page button', () => {
+  //         context('And I click in the settings button', () => {
+  //           context('And I click in the tag dropdown', () => {
+  //             context('And I click in the first tag dropdown option', () => {
+  //               context('And I go back to the list of pages clicking the pages button', () => {
+  //                 context('When I click in the leave button', () => {
+  //                   context('Then I visualize the page with the tag', () => {
+  //                     it('should list the new page in the list of pages', () => {
+
+  //                       // Login
+  //                       const loginPage = new LoginPage();
+
+  //                       loginPage
+  //                       .enterEmail(profile.email)
+  //                       .enterPassword(profile.password);
+
+  //                       const dashboardPage = loginPage.clickSignIn();
+
+  //                       // Navigates to Pages
+  //                       let pagesPage = dashboardPage.goToPages();
+
+  //                       pagesPage.clickEditPage();
+  //                       pagesPage.clickSettings();
+
+  //                       pagesPage.clickTagDropdown();
+  //                       pagesPage.selectTagOption();
+
+  //                       pagesPage
+  //                       .goBackToPagesList()
+  //                       .leavePage();
+
+  //                       should(true);
+  //                     });
+  //                   });
+  //                 });
+  //               });
+  //             });
+  //           });
+  //         });
+  //       });
+  //     });
+  //   });
+  // });
 });
