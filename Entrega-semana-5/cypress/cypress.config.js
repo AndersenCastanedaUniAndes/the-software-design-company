@@ -7,6 +7,7 @@ module.exports = defineConfig({
     baseUrl: 'http://localhost:2368/ghost/#/signin',
     pageLoadTimeout:120000,
     defaultCommandTimeout:120000,
+    testIsolation: true,
     videosFolder:"./videos",
     video: true,
     env:{},

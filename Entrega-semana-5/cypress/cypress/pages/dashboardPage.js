@@ -8,6 +8,10 @@ class DashboardPage {
   goToPages() {
     return this.navigationBar.clickPages();
   }
+
+  goToPosts() {
+    return this.navigationBar.clickPosts();
+  }
 }
 
 export default DashboardPage;
