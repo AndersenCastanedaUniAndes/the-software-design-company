@@ -2,7 +2,7 @@ Feature: member4-registro-validacion-nota-con-mas-de-500-caracteres
 
 @user1 @web
 Scenario: Como usuario administrador quiero poder ser prevenido de crear miembros con datos inválidos (nota con mas de 500 carácteres) para poder tener datos confiables.
-    Given I navigate to page "http://localhost:2369/ghost/#/signin"
+    Given I navigate to page "<BASEURL>"
     And I wait for 5 seconds
     And I enter email "<USERNAME>"
     And I wait for 2 seconds

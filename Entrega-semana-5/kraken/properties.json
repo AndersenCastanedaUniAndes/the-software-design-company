@@ -1,5 +1,5 @@
 {
-  "USERNAME": "ad.castaneda2@uniandes.edu.co",
-  "PASSWORD": "holaSoyAndersen",
-  "BASEURL": "http://localhost:2368/ghost/#/signin"
+  "USERNAME": "<Remplace con su username de ghost>",
+  "PASSWORD": "<Remplace con su contrasena de ghost>",
+  "BASEURL": "< Remplace con su URL de inicio de sesion de su instancia ghost por ejemplo http://localhost:2368/ghost/#/signin>"
 }

@@ -2,7 +2,7 @@ Feature: Ver el preview de una página existente
 
 @user1 @web
 Scenario: Como usuario administrador quiero ver el preview de una página para observar la apariencia y presentación de su contenido
-  Given I navigate to page "http://localhost:2368/ghost/#/signin"
+  Given I navigate to page "<BASEURL>"
   And I wait for 3 seconds
   And I enter email "<USERNAME>"
   And I wait for 2 seconds

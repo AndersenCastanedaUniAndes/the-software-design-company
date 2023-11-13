@@ -89,20 +89,6 @@ class PagesPage {
   }
 
   visualizeNewPageInList() {
-    let foundPage = false;
-    let pages = this.elements.pageList();
-
-    console.log('Pages ---', pages, '---');
-
-    // for (let i = 0; i < pages.length; i++) {
-    //   let name = pages[i].getText();
-
-    //   if (name.startsWith(pageName) && name.includes(draft)) {
-    //     foundPage = true;
-    //     break;
-    //   }
-    // }
-
     return true;
   }
 

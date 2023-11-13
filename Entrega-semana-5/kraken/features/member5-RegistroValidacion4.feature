@@ -2,7 +2,7 @@ Feature: member5-registro-validacion-correo-ya-existente
 
 @user1 @web
 Scenario: Como usuario administrador quiero poder ser prevenido de crear miembros con datos inválidos (correo ya existente) para poder tener datos confiables.
-    Given I navigate to page "http://localhost:2369/ghost/#/signin"
+    Given I navigate to page "<BASEURL>"
     And I wait for 5 seconds
     And I enter email "<USERNAME>"
     And I wait for 2 seconds

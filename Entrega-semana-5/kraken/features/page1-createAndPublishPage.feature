@@ -2,7 +2,7 @@ Feature: Crear una página y publicarla
 
 @user1 @web
 Scenario: Como usuario administrador quiero crear una página nueva para después editar su contenido
-  Given I navigate to page "http://localhost:2368/ghost/#/signin"
+  Given I navigate to page "<BASEURL>"
   And I wait for 3 seconds
   And I enter email "<USERNAME>"
   And I wait for 2 seconds
