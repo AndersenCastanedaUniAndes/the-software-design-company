@@ -12,13 +12,13 @@ const generateRamdomMember = () => {
 };
 
 describe("Como usuario administrador quiero poder registrar un nuevo miembro para poder enviarles novedades", () => {
-  let users = [];
+  let users = {};
   let authorization;
   let navigation;
   let logger;
   let membersPage;
   before(async () => {
-    users = await cy.fixture("users");
+    users = await cy.fixture("profile");
     authorization = new UserAuthorization();
     navigation = new Navigation();
     logger = new Logger();
@@ -35,7 +35,7 @@ describe("Como usuario administrador quiero poder registrar un nuevo miembro par
           context("And el miembro es creado sastifactoriamene", () => {
             it("Then debe verse en la lista de miembros", async () => {
               // LOGIN
-              authorization.fillOutUsername(users[0].email).fillOutPassword(users[0].password).submit();
+              authorization.fillOutUsername(users.email).fillOutPassword(users.password).submit();
 
               // GENERATES A RAMDOM PERSON
               const member = generateRamdomMember();

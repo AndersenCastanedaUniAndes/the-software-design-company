@@ -3,9 +3,12 @@ import LoginPage from '../pages/loginPage';
 
 describe('Feature Posts', () => {
   let profile = {};
+  let loginObj;
+  before(async () => {
+    profile = await cy.fixture("profile");
+    loginObj = new LoginPage();
+  });
   beforeEach(async function () {
-    profile = await cy.fixture('profile');
-
     cy.on('uncaught:exception', (err) => {
       console.log(`ERROR: ${err}`);
       return false;
@@ -22,7 +25,6 @@ describe('Feature Posts', () => {
               context('Then cuando edito el titulo nuevamente', () => {
                 it('And debe guardarse el post editado', () => {
                   // LOG IN
-                  const loginObj = new LoginPage();
                   loginObj
                     .enterEmail(profile.email)
                     .enterPassword(profile.password);
@@ -69,7 +71,6 @@ describe('Feature Posts', () => {
             context('And el post es publicado', () => {
               it('Then puedo ver las analiticas del mismo', () => {
                 // LOG IN
-                const loginObj = new LoginPage();
                 loginObj
                   .enterEmail(profile.email)
                   .enterPassword(profile.password);
@@ -108,7 +109,6 @@ describe('Feature Posts', () => {
           context('And agrego un titulo al post', () => {
             it('Then puedo previsualizar el post que estoy creando', () => {
               // LOG IN
-              const loginObj = new LoginPage();
               loginObj
                 .enterEmail(profile.email)
                 .enterPassword(profile.password);
@@ -141,7 +141,6 @@ describe('Feature Posts', () => {
               context('Then cuando edito el titulo nuevamente', () => {
                 it('And debe guardarse el post editado', () => {
                   // LOG IN
-                  const loginObj = new LoginPage();
                   loginObj
                     .enterEmail(profile.email)
                     .enterPassword(profile.password);
@@ -188,7 +187,6 @@ describe('Feature Posts', () => {
               () => {
                 it('Then debe quedar el post programado satisfactoriamente', () => {
                   // LOG IN
-                  const loginObj = new LoginPage();
                   loginObj
                     .enterEmail(profile.email)
                     .enterPassword(profile.password);
