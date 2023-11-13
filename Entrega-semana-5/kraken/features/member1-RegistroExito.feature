@@ -4,9 +4,9 @@ Feature: member1-registro-exito
 Scenario: Como usuario administrador quiero poder registrar un nuevo miembro para poder enviarles novedades
   Given I navigate to page "http://localhost:2369/ghost/#/signin"
   And I wait for 5 seconds
-  And I enter email "<USERNAME2>"
+  And I enter email "<USERNAME>"
   And I wait for 2 seconds
-  And I enter password "<PASSWORD2>"
+  And I enter password "<PASSWORD>"
   And I wait for 2 seconds
   And I click sign in button with selector "button[data-test-button='sign-in']"
   And I wait for 4 seconds

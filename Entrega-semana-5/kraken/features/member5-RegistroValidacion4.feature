@@ -4,9 +4,9 @@ Feature: member5-registro-validacion-correo-ya-existente
 Scenario: Como usuario administrador quiero poder ser prevenido de crear miembros con datos inválidos (correo ya existente) para poder tener datos confiables.
     Given I navigate to page "http://localhost:2369/ghost/#/signin"
     And I wait for 5 seconds
-    And I enter email "<USERNAME2>"
+    And I enter email "<USERNAME>"
     And I wait for 2 seconds
-    And I enter password "<PASSWORD2>"
+    And I enter password "<PASSWORD>"
     And I wait for 2 seconds
     And I click sign in button with selector "button[data-test-button='sign-in']"
     And I wait for 4 seconds
