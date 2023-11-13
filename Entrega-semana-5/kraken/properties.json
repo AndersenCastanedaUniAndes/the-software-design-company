@@ -1,6 +1,5 @@
 {
-  "USERNAME": "cc.pinzonh1@uniandes.edu.co",
-  "PASSWORD": "9eRt7!SPX85XJHg",
-   "USERNAME2": "juan.de.jesus.mirelles@gmail.com",
-   "PASSWORD2": "0123456789"
+  "USERNAME": "<Remplace con su username de ghost>",
+  "PASSWORD": "<Remplace con su contrasena de ghost>",
+  "BASEURL": "< Remplace con su URL de inicio de sesion de su instancia ghost por ejemplo http://localhost:2368/ghost/#/signin>"
 }
