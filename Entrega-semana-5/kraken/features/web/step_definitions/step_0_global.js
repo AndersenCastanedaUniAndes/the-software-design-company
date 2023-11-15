@@ -23,3 +23,27 @@ When(
     return await this.driver.keys('Enter');
   }
 );
+
+When(
+  'I click in the Continue, final review button with selector {string}',
+  async function (selector) {
+    let continueToFinalReviewButton = await this.driver.$(selector);
+    return await continueToFinalReviewButton.click();
+  }
+);
+
+When(
+  'I go back to the editor section clicking the editor button with selector {string}',
+  async function (selector) {
+    let goBackToEditorButton = await this.driver.$(selector);
+    return await goBackToEditorButton.click();
+  }
+);
+
+When(
+  'I click in the preview button with selector {string}',
+  async function (selector) {
+    let previewButton = await this.driver.$(selector);
+    return await previewButton.click();
+  }
+);

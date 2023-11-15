@@ -28,26 +28,10 @@ When(
 );
 
 When(
-  'I click in the Continue, final review button with selector {string}',
-  async function (selector) {
-    let continueToFinalReviewButton = await this.driver.$(selector);
-    return await continueToFinalReviewButton.click();
-  }
-);
-
-When(
   'I click in the Publish page confirm button with selector {string}',
   async function (selector) {
     let publishConfirmationButton = await this.driver.$(selector);
     return await publishConfirmationButton.click();
-  }
-);
-
-When(
-  'I go back to the editor section clicking the editor button with selector {string}',
-  async function (selector) {
-    let goBackToEditorButton = await this.driver.$(selector);
-    return await goBackToEditorButton.click();
   }
 );
 
@@ -114,14 +98,6 @@ When(
   async function (selector) {
     let options = await this.driver.$$(selector);
     return await options[0].click();
-  }
-);
-
-When(
-  'I click in the preview button with selector {string}',
-  async function (selector) {
-    let previewButton = await this.driver.$(selector);
-    return await previewButton.click();
   }
 );
 
