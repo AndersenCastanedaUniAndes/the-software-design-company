@@ -24,7 +24,7 @@ Scenario: Como usuario administrador quiero poder ser prevenido de crear miembro
     And I wait for 2 seconds
     And I click in the new member button with selector "a[href='#/members/new/']"
     And I wait for 5 seconds
-    And I enter an existing valid email into a field with selector "member-email"
+    And I enter an existing valid email "$$email_member" into a field with selector "member-email"
     And I try to save the member by pressing the save button ".view-actions button"
     And I wait for 2 seconds
     Then I must see an already exists member error with selector "div.gh-cp-member-email-name .form-group.max-width.error p"
