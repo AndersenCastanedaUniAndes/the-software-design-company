@@ -1,15 +1,15 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 
-function TemporaryRepository(){
+function TemporaryRepository() {
   let data;
 
   return {
-    setData: (dataToBeSaved) => data = dataToBeSaved,
-    getData: () => data
-  }
+    setData: (dataToBeSaved) => (data = dataToBeSaved),
+    getData: () => data,
+  };
 }
 
-const persistance = TemporaryRepository()
+const persistance = TemporaryRepository();
 
 When("I go to the members section with selector {string}", async function (string) {
   let element = await this.driver.$(string);
@@ -32,16 +32,13 @@ When("I enter a valid email {kraken-string} into a field with selector {string}"
 });
 
 When("I enter a ramdom email {kraken-string} into a field with selector {string}", async function (string, string2) {
-  const email = `${string}`;
-  persistance.setData(email)
   let emailField = await this.driver.$(`#${string2}`);
-  return await emailField.setValue(email);
+  return await emailField.setValue(string);
 });
 
-When("I enter an existing valid email into a field with selector {string}", async function (string) {
-  const existingEmail = persistance.getData()
-  let emailField = await this.driver.$(`#${string}`);
-  return await emailField.setValue(existingEmail);
+When("I enter an existing valid email {kraken-string} into a field with selector {string}", async function (string, string2) {
+  let emailField = await this.driver.$(`#${string2}`);
+  return await emailField.setValue(string);
 });
 
 When("I enter a invalid email {kraken-string} into a field with selector {string}", async function (string, string2) {

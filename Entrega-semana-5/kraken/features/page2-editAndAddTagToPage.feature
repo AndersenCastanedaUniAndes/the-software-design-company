@@ -12,7 +12,13 @@ Scenario: Como usuario administrador quiero agregar un tag a una página para qu
   And I wait for 5 seconds
   When I go to the pages section with selector "a[data-test-nav='pages']"
   And I wait for 2 seconds
-  And I click in the edit page button with selector "span.gh-post-list-cta.edit"
+  And I click in the new page button with selector "a[data-test-new-page-button]"
+  And I wait for 2 seconds
+  And I enter title "$name_title" into field with selector "textarea[data-test-editor-title-input]"
+  And I wait for 2 seconds
+  And I go back to the list of pages clicking the pages button with selector "a[data-test-link='pages']"
+  And I wait for 2 seconds
+  And I click the page in order to edit it "$$name_title"
   And I wait for 2 seconds
   And I click in the settings button with selector "button[title='Settings']"
   And I wait for 2 seconds
@@ -24,5 +30,5 @@ Scenario: Como usuario administrador quiero agregar un tag a una página para qu
   And I wait for 2 seconds
   And I click in the leave button with selector "button.gh-btn.gh-btn-red"
   And I wait for 2 seconds
-  Then I visualize "Mi nueva página" with "News" tag in the list with selector "div.gh-posts-list-item-group"
+  Then I visualize "$$name_title" with "Client" tag in the list with selector "div.gh-posts-list-item-group"
   And I wait for 2 seconds

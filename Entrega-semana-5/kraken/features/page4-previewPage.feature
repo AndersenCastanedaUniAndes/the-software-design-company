@@ -12,7 +12,9 @@ Scenario: Como usuario administrador quiero ver el preview de una página para o
   And I wait for 5 seconds
   When I go to the pages section with selector "a[data-test-nav='pages']"
   And I wait for 2 seconds
-  And I click in the edit page button with selector "span.gh-post-list-cta.edit"
+  And I click in the new page button with selector "a[data-test-new-page-button]"
+  And I wait for 2 seconds
+  And I enter title "$name_title" into field with selector "textarea[data-test-editor-title-input]"
   And I wait for 2 seconds
   And I click in the preview button with selector "button[data-test-button='publish-preview']"
   And I wait for 3 seconds
