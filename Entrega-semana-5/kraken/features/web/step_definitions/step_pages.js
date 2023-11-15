@@ -96,7 +96,6 @@ Then("I visualize {kraken-string} in the list with selector {string}", async fun
 
   for (let i = 0; i < pages.length; i++) {
     let name = await pages[i].getText();
-    console.log("EEEE", name);
 
     if (name.startsWith(pageName)) {
       foundPage = true;

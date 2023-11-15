@@ -1,15 +1,4 @@
-const { Given, When, Then } = require("@cucumber/cucumber");
-
-function TemporaryRepository() {
-  let data;
-
-  return {
-    setData: (dataToBeSaved) => (data = dataToBeSaved),
-    getData: () => data,
-  };
-}
-
-const persistance = TemporaryRepository();
+const { When, Then } = require("@cucumber/cucumber");
 
 When("I go to the members section with selector {string}", async function (string) {
   let element = await this.driver.$(string);
