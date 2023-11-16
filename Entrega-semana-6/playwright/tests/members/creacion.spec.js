@@ -45,13 +45,15 @@ test.describe("Como usuario administrador quiero poder registrar un nuevo miembr
               //CHECKS IN THE TABLE IF THE MEMBER IS LISTED
               const items = await members.getMembersTable();
               let wasCreated = false;
-              items.forEach(async (item) => {
+              for (let item of items) {
                 const memberEmail = await item.innerText();
-                if (memberEmail === member.email) wasCreated = true;
-              });
-
-              await page.screenshot({ path: "screenshot999.png" });
+                if (memberEmail.includes(member.email)) {
+                  wasCreated = true;
+                }
+              }
+              
               expect(wasCreated).toBe(true);
+              await page.screenshot({ path: "screenshot999.png" });
             });
           });
         });
