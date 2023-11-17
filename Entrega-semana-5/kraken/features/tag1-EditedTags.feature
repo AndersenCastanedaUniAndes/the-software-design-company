@@ -1,16 +1,16 @@
-Feature: Tag1 crear y editar tag
+Feature: Crear y editar tag
 
 @user1 @web
 Scenario: Como usuario administrador quiero modificar un post ya publicado para después editar su contenido
-  Given I navigate to page "http://localhost:2368/ghost/#/signin"
+  Given I navigate to page "<BASEURL>"
   And I wait for 5 seconds
-  And I enter email "<USERNAME2>"
+  When I enter email "<USERNAME>"
   And I wait for 1 seconds
-  And I enter password "<PASSWORD2>"
+  And I enter password "<PASSWORD>"
   And I wait for 1 seconds
   And I click sign in button with selector "button[data-test-button='sign-in']"
   And I wait for 7 seconds
-  When I go to the tags section with selector "a[data-test-nav='tags']"
+  And I go to the tags section with selector "a[data-test-nav='tags']"
   And I wait for 1 seconds
   And I click new tag button with selector "a.ember-view.gh-btn.gh-btn-primary"
   And I wait for 1 seconds
@@ -24,5 +24,5 @@ Scenario: Como usuario administrador quiero modificar un post ya publicado para 
   And I wait for 1 seconds
   And I enter title "tag-modified" into field with selector "input[id='tag-name']"
   And I wait for 1 seconds
-  Then I click in the save button
-  And I must see an success name advise "button.save span.success"
+  And I click in the save button
+  Then I must see an success name advise "Saved"

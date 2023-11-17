@@ -1,29 +1,33 @@
-Feature: Tag5 crear y eliminar internal tag
+Feature: Crear y eliminar internal tag
 
-@user5 @web
+@user1 @web
 Scenario: Como usuario administrador quiero crear un post de tipo internal para después eliminar su contenido
-  Given I navigate to page "http://localhost:2368/ghost/#/signin"
+  Given I navigate to page "<BASEURL>"
   And I wait for 5 seconds
-  And I enter email "<USERNAME2>"
+  When I enter email "<USERNAME>"
   And I wait for 1 seconds
-  And I enter password "<PASSWORD2>"
+  And I enter password "<PASSWORD>"
   And I wait for 1 seconds
   And I click sign in button with selector "button[data-test-button='sign-in']"
   And I wait for 7 seconds
-  When I go to the tags section with selector "a[data-test-nav='tags']"
+  And I go to the tags section with selector "a[data-test-nav='tags']"
+  And I wait for 1 seconds
+  And I go to internal tags section with selector "button[data-test-tags-nav='internal']"
   And I wait for 1 seconds
   And I click new tag button with selector "a.ember-view.gh-btn.gh-btn-primary"
   And I wait for 1 seconds
-  And I enter title "nuevo-tag" into field with selector "input[id='tag-name']"
+  And I enter title "#nuevo-internal-tag2" into field with selector "input[id='tag-name']"
   And I wait for 1 seconds
   And I click in the save button
   And I wait for 1 seconds
   And I go back to the tags section clicking the tags button with selector "a[data-test-nav='tags']"
   And I wait for 1 seconds
-  And I click the new tag in order to edit it "nuevo-tag"
+  And I click the new tag in order to delete this internal tag "nuevo-internal-tag2"
   And I wait for 1 seconds
-  And I enter title "tag-modified" into field with selector "input[id='tag-name']"
+  And I click in the delete button with selector "button[data-test-button='delete-tag']"
   And I wait for 1 seconds
-  Then I click in the save button
+  And I click in the confirm delete button with selector "button[data-test-button='confirm']"
   And I wait for 1 seconds
   And I go back to the tags section clicking the tags button with selector "a[data-test-nav='tags']"
+  And I wait for 1 seconds
+  Then I validate that the element "#nuevo-internal-tag2" is not present in the list
