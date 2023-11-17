@@ -19,6 +19,14 @@ exports.NavigationPageObject = class NavigationPageObject {
     await this.page.locator('a[href="#/members/new/"]').click();
   }
 
+   async clickOnPostsViewLink(){
+    await this.page.locator('a[data-test-nav="posts"]').click();
+  }
+
+  async clickOnPagesViewLink(){
+    await this.page.locator('a[data-test-nav="posts"]').click();
+  }
+
   async screenshot(){
     let datetime = new Date().toISOString().replace(/:/g,".");
     await this.page.screenshot({path:`./screenshots/${datetime}.png`});

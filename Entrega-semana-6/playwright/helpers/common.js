@@ -16,3 +16,5 @@ export const generateInvalidMemberEmail = (name) => {
     email: `${name}-${id}@test.`,
   };
 };
+
+export const generateTitle = () => faker.string.alpha(10);
