@@ -18,8 +18,17 @@ exports.MemberPageObject = class MemberPageObject {
     return await this.page.locator("table.gh-list tbody.ember-view tr a p.gh-members-list-email").all();
   }
 
+  async getEmailErrorMessage() {
+    return await this.page.locator("div.gh-cp-member-email-name .form-group.max-width.error p").innerText();
+  }
+
+  async getNoteErrorMessage() {
+    return await this.page.locator("div.gh-member-note.error p.response").innerText();
+  }
+
   async clickOnSaveButton() {
     await this.page.locator(".view-actions button").click();
+    await this.page.waitForLoadState('networkidle')
   }
 
   async fillOutName(member) {

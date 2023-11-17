@@ -9,3 +9,10 @@ export const generateRamdomMember = () => {
     email: `${name}-${id}@test.com`,
   };
 };
+
+export const generateInvalidMemberEmail = (name) => {
+  const id = uuidv4();
+  return {
+    email: `${name}-${id}@test.`,
+  };
+};

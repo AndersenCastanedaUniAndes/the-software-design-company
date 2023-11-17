@@ -4,6 +4,7 @@ cypress/videos
 **/1-getting-started
 **/2-advanced-examples
 **/node_modules/
+**/screenshots/**
 **/results/
 Entrega-semana-5/kraken/reports
 Entrega-semana-5/kraken/.kraken

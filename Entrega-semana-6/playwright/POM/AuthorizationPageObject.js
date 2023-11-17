@@ -10,15 +10,14 @@ exports.AuthorizationPageObject = class AuthorizationPageObject {
   }
 
   async fillOutUsername(email){
-     return await this.page.locator("input#identification").fill(email)
+     return await this.page.locator("input[name='identification']").fill(email)
   }
 
   async fillOutPassword(password){
-    return await this.page.locator("input#password").fill(password)
+    return await this.page.locator("input[name='password']").fill(password)
   }
 
   async submit() {
-     await this.page.locator("form.gh-signin button[data-test-button='sign-in']").click()
-     await this.page.waitForURL('**/dashboard');
+     await this.page.locator("button[type='submit']").click()
   }
 };
