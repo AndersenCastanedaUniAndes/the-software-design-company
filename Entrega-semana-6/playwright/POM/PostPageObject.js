@@ -1,4 +1,3 @@
-
 exports.PostPageObject = class PostPageObject {
   /**
    * @param {import('@playwright/test').Page} page
@@ -90,18 +89,60 @@ exports.PostPageObject = class PostPageObject {
     return wasCreated;
   }
 
+  async showPostByTitle(title) {
+    let wasOpened = false;
+    const list = await this.page.locator("li[data-test-post-id]").all();
+    for (let item of list) {
+      let postTitle = await item.locator(".gh-content-entry-title").innerText();
+      if (postTitle.includes(title)) {
+        await item.click();
+        await this.page.waitForLoadState("domcontentloaded");
+        wasOpened = true;
+        break;
+      }
+    }
+    return wasOpened;
+  }
+
   async openAnalyticsOfAPostByName(title) {
     let wasOpened = false;
     const list = await this.page.locator("li[data-test-post-id]").all();
-     for (let item of list) {
-        let postTitle = await item.locator(".gh-content-entry-title").innerText();
-        if (postTitle.includes(title)) {
-            await item.locator("a:nth-child(4)").first().click();
-            await this.page.waitForLoadState("domcontentloaded");
-            wasOpened = true;
-            break;
-        }
+    for (let item of list) {
+      let postTitle = await item.locator(".gh-content-entry-title").innerText();
+      if (postTitle.includes(title)) {
+        await item.locator("a:nth-child(4)").first().click();
+        await this.page.waitForLoadState("domcontentloaded");
+        wasOpened = true;
+        break;
+      }
     }
     return wasOpened;
+  }
+
+  async wasPostScheduled(title) {
+    let wasScheduled = false;
+    const list = await this.page.locator("li[data-test-post-id]").all();
+    for (let item of list) {
+      let postTitle = await item.locator(".gh-content-entry-title").innerText();
+      if (postTitle.includes(title)) {
+        const label = await item.locator("a:nth-child(1)").locator("p:nth-child(3)").first().innerText();
+        await this.page.waitForLoadState("domcontentloaded");
+        wasScheduled = label.includes('Scheduled');
+        break;
+      }
+    }
+    return wasScheduled;
+  }
+
+  async clickPreviewPost() {
+    await this.page.locator('button[data-test-button="publish-preview"]').click();
+    await this.page.waitForSelector(".gh-post-preview-container");
+    return await this.page.isVisible("div.gh-post-preview-container.gh-post-preview-browser-container");
+  }
+
+  async goBackToPost() {
+    await this.page.locator('a[data-test-link="posts"]').click();
+    await this.page.waitForLoadState("domcontentloaded");
+    await this.page.waitForSelector(".posts-list");
   }
 };
