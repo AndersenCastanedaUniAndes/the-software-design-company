@@ -28,8 +28,13 @@ done
 
 # Iterate over all .feature files in the "features" directory
 for file in features/*.feature; do
-  # Replace the first line of each file with the chosen version
-  sed -i "1s/.*/$version/" "$file"
+  # Check OS and execute appropriate sed command and
+  # Replaces the first line of each file with the chosen version
+  if [[ "$(uname)" == "Darwin" ]]; then
+    sed -i '' "1s/.*/$version/" "$file"
+  else
+    sed -i "1s/.*/$version/" "$file"
+  fi
 done
 
 echo "All .feature files have been updated."
