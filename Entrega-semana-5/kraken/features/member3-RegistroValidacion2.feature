@@ -1,3 +1,4 @@
+@5.69.0
 Feature: member3-registro-validacion-correo-vacio
 
 @user1 @web

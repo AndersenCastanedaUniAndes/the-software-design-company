@@ -1,3 +1,4 @@
+@5.69.0
 Feature: member2-registro-validacion-correo-invalido
 
 @user1 @web

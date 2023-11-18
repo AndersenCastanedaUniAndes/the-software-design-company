@@ -1,3 +1,4 @@
+@5.69.0
 Feature: member4-registro-validacion-nota-con-mas-de-500-caracteres
 
 @user1 @web

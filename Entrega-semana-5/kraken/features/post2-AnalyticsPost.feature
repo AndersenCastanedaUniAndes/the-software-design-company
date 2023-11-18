@@ -1,3 +1,4 @@
+@5.69.0
 Feature: Posts Visualizar analitica de post
 
 @user1 @web

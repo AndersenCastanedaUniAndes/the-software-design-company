@@ -1,3 +1,4 @@
+@5.69.0
 Feature: member1-registro-exito
 
 @user1 @web

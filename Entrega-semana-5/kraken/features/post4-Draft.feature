@@ -1,3 +1,4 @@
+@5.69.0
 Feature: Posts Crear Draft post
 
 @user1 @web

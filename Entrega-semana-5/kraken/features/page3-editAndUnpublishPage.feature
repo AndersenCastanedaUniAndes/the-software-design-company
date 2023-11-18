@@ -1,3 +1,4 @@
+@5.69.0
 Feature: Dejar de publicar una página existente
 
 @user1 @web
