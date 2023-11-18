@@ -12,7 +12,7 @@ exports.NavigationPageObject = class NavigationPageObject {
   }
 
   async clickOnMembersViewLink(){
-    await this.page.locator('.relative a[href="#/members/"]').click();
+    await this.page.locator('a[href="#/members/"]').click();
   }
 
   async clickOnNewMemberViewLink(){

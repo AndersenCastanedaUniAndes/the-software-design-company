@@ -4,7 +4,7 @@ const { NavigationPageObject } = require("../../POM/NavigationPageObject");
 const { AuthorizationPageObject } = require("../../POM/AuthorizationPageObject");
 const { TagsPageObject } = require("../../POM/TagsPageObject");
 
-test.describe("Como usuario administrador quiero modificar un post ya publicado para después editar su contenido", () => {
+test.describe("Como usuario administrador quiero poder crear un nuevo Tag para después editar su contenido", () => {
     let navigation;
     let authorization;
     let tags;
@@ -39,6 +39,7 @@ test.describe("Como usuario administrador quiero modificar un post ya publicado 
                   await tags.enterName(tagName);
                   await navigation.screenshot();
                   await tags.saveTagButton();
+                  await page.waitForTimeout(2000);
                   await navigation.screenshot();
                   await tags.goBackToTags();
                   await navigation.screenshot();
@@ -49,6 +50,7 @@ test.describe("Como usuario administrador quiero modificar un post ya publicado 
                   await tags.enterName(modifiedName);
                   await navigation.screenshot();
                   await tags.saveTagButton();
+                  await page.waitForTimeout(2000);
                   await navigation.screenshot();
 
                   //IF THE TAG IS SAVED
@@ -64,7 +66,7 @@ test.describe("Como usuario administrador quiero modificar un post ya publicado 
   });
   
 
-test.describe("Como usuario administrador quiero modificar un post ya publicado para después eliminarlo", () => {
+test.describe("Como usuario administrador quiero poder crear un nuevo Tag para después eliminarlo", () => {
     let navigation;
     let authorization;
     let tags;
@@ -99,6 +101,7 @@ test.describe("Como usuario administrador quiero modificar un post ya publicado 
                   await tags.enterName(tagName);
                   await navigation.screenshot();
                   await tags.saveTagButton();
+                  await page.waitForTimeout(2000);
                   await navigation.screenshot();
                   await tags.goBackToTags();
                   await navigation.screenshot();
@@ -120,7 +123,7 @@ test.describe("Como usuario administrador quiero modificar un post ya publicado 
   });
 
 
-test.describe("Como usuario administrador quiero ingresar un nombre invalido para luego recibir un mensaje de error en pantalla", () => {
+test.describe("Como usuario administrador quiero poder crear un nuevo Tag con el campo de nombre vacío para que se muestre un aviso de advertencia por el campo vacío", () => {
     let navigation;
     let authorization;
     let tags;
@@ -154,6 +157,7 @@ test.describe("Como usuario administrador quiero ingresar un nombre invalido par
                   await tags.enterName(tagName);
                   await navigation.screenshot();
                   await tags.saveTagButton();
+                  await page.waitForTimeout(1500);
                   await navigation.screenshot();
 
                   //IF THE TAG NAME IS EMPTY
@@ -168,7 +172,7 @@ test.describe("Como usuario administrador quiero ingresar un nombre invalido par
   });
 
 
-test.describe("Como usuario administrador quiero crear un post de tipo internal para después editar su contenido", () => {
+test.describe("Como usuario administrador quiero poder crear un nuevo Tag en la opción “internal tags” para después editarlo", () => {
     let navigation;
     let authorization;
     let tags;
@@ -206,6 +210,7 @@ test.describe("Como usuario administrador quiero crear un post de tipo internal 
                                 await tags.enterName(tagName);
                                 await navigation.screenshot();
                                 await tags.saveTagButton();
+                                await page.waitForTimeout(1500);
                                 await navigation.screenshot();
                                 await tags.goBackToTags();
                                 await navigation.screenshot();
@@ -216,6 +221,7 @@ test.describe("Como usuario administrador quiero crear un post de tipo internal 
                                 await tags.enterName(modifiedName);
                                 await navigation.screenshot();
                                 await tags.saveTagButton();
+                                await page.waitForTimeout(1500);
                                 await navigation.screenshot();
 
                                 //IF THE TAG IS SAVED
@@ -232,7 +238,7 @@ test.describe("Como usuario administrador quiero crear un post de tipo internal 
   });
 
   
-test.describe("Como usuario administrador quiero crear un post de tipo internal para después eliminar su contenido", () => {
+test.describe("Como usuario administrador quiero poder crear un nuevo Tag en la opción “internal tags” para después eliminarlo", () => {
     let navigation;
     let authorization;
     let tags;
@@ -270,10 +276,11 @@ test.describe("Como usuario administrador quiero crear un post de tipo internal 
                                 await tags.enterName(tagName);
                                 await navigation.screenshot();
                                 await tags.saveTagButton();
+                                await page.waitForTimeout(1500);
                                 await navigation.screenshot();
                                 await tags.goBackToTags();
                                 await navigation.screenshot();
-                                await tags.selectCreatedTag(tagName);
+                                await tags.selectCreatedInternalTag("internal-tag-nuevo2");
                                 await navigation.screenshot();               
                                 await tags.deleteTagButton();
                                 await navigation.screenshot();

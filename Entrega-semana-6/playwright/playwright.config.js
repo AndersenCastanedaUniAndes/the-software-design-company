@@ -25,7 +25,7 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'http://localhost:2369',
+    baseURL: 'http://localhost:2368',
     trace: 'on-first-retry',
     viewport: { width: 800, height: 600 },
   
