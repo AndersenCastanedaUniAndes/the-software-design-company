@@ -1,7 +1,7 @@
 Feature: Crear y eliminar internal tag
 
 @user1 @web
-Scenario: Como usuario administrador quiero crear un post de tipo internal para después eliminar su contenido
+Scenario: Como usuario administrador quiero poder crear un nuevo Tag en la opción “internal tags” para después eliminarlo
   Given I navigate to page "<BASEURL>"
   And I wait for 5 seconds
   When I enter email "<USERNAME>"

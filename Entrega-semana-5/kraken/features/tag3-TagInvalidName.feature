@@ -1,7 +1,7 @@
 Feature: Crear tag con nombre invalido
 
 @user1 @web
-Scenario: Como usuario administrador quiero ingresar un nombre invalido para luego recibir un mensaje de error en pantalla
+Scenario: Como usuario administrador quiero poder crear un nuevo Tag con el campo de nombre vacío para que se muestre un aviso de advertencia por el campo vacío
   Given I navigate to page "<BASEURL>"
   And I wait for 5 seconds
   When I enter email "<USERNAME>"

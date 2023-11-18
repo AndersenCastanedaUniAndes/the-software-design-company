@@ -1,7 +1,7 @@
 Feature: Crear y eliminar tag
 
 @user1 @web
-Scenario: Como usuario administrador quiero modificar un post ya publicado para después eliminarlo
+Scenario: Como usuario administrador quiero poder crear un nuevo Tag para después eliminarlo
   Given I navigate to page "<BASEURL>"
   And I wait for 5 seconds
   When I enter email "<USERNAME>"
