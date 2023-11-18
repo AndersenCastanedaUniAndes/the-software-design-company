@@ -46,9 +46,21 @@ Make sure to have a terminal opened in order to execute the next steps for ghost
 #### For Ghost 5.69.0:
 
 1. Pull the Ghost image: `docker pull ghost:5.69.0`
-2. Pull the MySQL image: `docker pull mysql:5.7`
+
+2. Pull MySQL image from docker, use the specific step for you chip architecture:
+
+    - amd64v8 (Mac M1) chipset image: `docker pull amd64v8/mysql`
+
+    - x86 chipset image: `docker pull mysql:5.7`
+
 3. Create a network: `docker network create ghost_network_5_69_0`
-4. Run the MySQL container: `docker run --name mysql_ghost_569 --network=ghost_network_5_69_0 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=ghost_569 -d mysql:5.7`
+
+4. Run the MySQL container:
+
+    - amd64v8 (Mac M1) container: `docker run --name mysql_ghost_569 --network=ghost_network_5_69_0 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=ghost_569 -d amd64v8/mysql`
+
+    - x86 container: `docker run --name mysql_ghost_569 --network=ghost_network_5_69_0 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=ghost_569 -d mysql:5.7`
+
 5. Run the Ghost container: `docker run --name ghost_container_569 --network=ghost_network_5_69_0 -p 3001:2368 -e database__client=mysql -e database__connection__host=mysql_ghost_569 -e database__connection__user=root -e database__connection__password=root -e database__connection__database=ghost_569 -d ghost:5.69.0`
 
 #### For Ghost 4.48.9:
