@@ -31,5 +31,5 @@ Scenario: Como usuario administrador quiero agregar un tag a una página para qu
   And I wait for 2 seconds
   And I click in the leave button with selector "button.gh-btn.gh-btn-red"
   And I wait for 2 seconds
-  Then I visualize "$$name_title" with "Client" tag in the list with selector "div.gh-posts-list-item-group"
+  Then I visualize "$$name_title" with the selected tag in the list with selector "div.gh-posts-list-item-group"
   And I wait for 2 seconds

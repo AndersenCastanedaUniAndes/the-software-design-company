@@ -3,6 +3,8 @@ const { expect } = require("chai");
 const chai = require("chai");
 const should = chai.should();
 
+let selectedTag;
+
 When("I go to the pages section with selector {string}", async function (selector) {
   let pagesButton = await this.driver.$(selector);
   return await pagesButton.click();
@@ -71,6 +73,9 @@ When("I click in the leave button with selector {string}", async function (selec
 
 When("I click in the first tag dropdown option with selector {string}", async function (selector) {
   let options = await this.driver.$$(selector);
+
+  selectedTag = await options[0].getText();
+
   return await options[0].click();
 });
 
@@ -106,14 +111,14 @@ Then("I visualize {kraken-string} in the list with selector {string}", async fun
   expect(foundPage).to.be.true;
 });
 
-Then("I visualize {kraken-string} with {string} tag in the list with selector {string}", async function (pageName, tag, selector) {
+Then("I visualize {kraken-string} with the selected tag in the list with selector {string}", async function (pageName, selector) {
   let foundPage = false;
   let pages = await this.driver.$$(selector);
 
   for (let i = 0; i < pages.length; i++) {
     let name = await pages[i].getText();
 
-    if (name.startsWith(pageName) && name.includes(tag)) {
+    if (name.startsWith(pageName) && name.includes(selectedTag)) {
       foundPage = true;
       break;
     }
