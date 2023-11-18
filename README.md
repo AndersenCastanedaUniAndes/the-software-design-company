@@ -70,7 +70,9 @@ Make sure to have a terminal opened in order to execute the next steps for ghost
 
 5. Run the Ghost container: `docker run --name ghost_container_4489 --network=ghost_network_4_48_9 -p 3002:2368 -e database__client=mysql -e database__connection__host=mysql_ghost_4489 -e database__connection__user=root -e database__connection__password=root -e database__connection__database=ghost_4489 -d ghost:4.48.9`
 
-The Ghost applications will be accessible at http://localhost:3001 and http://localhost:3002 respectively.
+The Ghost applications will be accessible at http://localhost:3001ghost/#/signin and http://localhost:3002ghost/#/signin respectively.
+
+***REMEMBER TO CREATE THE ADMINISTRATOR ACCOUNT FOR EACH APPLCATION***
 
 ## Authors
 
