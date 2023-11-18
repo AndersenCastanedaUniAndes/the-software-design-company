@@ -11,11 +11,11 @@ Scenario: Como usuario administrador quiero programar la publicación de un post
   And I wait for 1 seconds
   And I click sign in button with selector "button[type='submit']"
   And I wait for 7 seconds
-  When I go to the posts section with selector "a[data-test-nav='posts']"
+  When I go to the posts section with selector "a[href='#/posts/']"
   And I wait for 1 seconds
-  And I click in the new post button with selector "a[data-test-new-post-button]"
+  And I click in the new post button with selector "a[href='#/editor/post/']"
   And I wait for 1 seconds
-  And I enter title "$name_postTitle" into field with selector "textarea[data-test-editor-title-input]"
+  And I enter title "$name_postTitle" into field with selector "textarea.gh-editor-title"
   And I wait for 1 seconds
   And I click in the Publish button
   And I wait for 1 seconds
