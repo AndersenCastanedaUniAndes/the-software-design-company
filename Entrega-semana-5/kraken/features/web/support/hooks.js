@@ -22,11 +22,13 @@ After(async function () {
 
 AfterStep(async function () {
   stepCount++; // increment the step count
+  // Pad the stepCount with leading zeros
+  let paddedStepCount = String(stepCount).padStart(5, '0');
   try {
-    const screenshotDir = `./VRT/${ghostVersion}/screenshots/${featureName}`;
+    const screenshotDir = `./VRT/screenshots/${featureName}`;
     fs.ensureDirSync(screenshotDir); // Ensure the directory exists
     let screenshot = await this.driver.saveScreenshot(
-      `./VRT/${ghostVersion}/screenshots/${featureName}/step_${stepCount}.png`
+      `./VRT/screenshots/${featureName}/${ghostVersion}_step_${paddedStepCount}.png`
     ); // take screenshot
     this.attach(screenshot, 'image/png');
   } catch (error) {
