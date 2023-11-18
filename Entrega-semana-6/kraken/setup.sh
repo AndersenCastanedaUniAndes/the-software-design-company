@@ -1,7 +1,16 @@
 #!/bin/bash
 
+# Prompt the user for the version
+echo "Choose the version from ghost:"
+select version in "@4.48.9" "@5.69.0"; do
+  case $version in
+    "@4.48.9"|"@5.69.0" ) break;;
+    * ) echo "Invalid option";;
+  esac
+done
+
 # Prompt the user for the attributes
-read -p "Enter USERNAME: " username
+read -p "Enter EMAIL: " username
 read -p "Enter PASSWORD: " password
 read -p "Enter BASEURL: " baseurl
 
@@ -17,14 +26,6 @@ EOF
 
 echo "properties.json has been created or updated."
 
-# Prompt the user for the version
-echo "Choose a version:"
-select version in "@4.48.9" "@5.69.0"; do
-  case $version in
-    "@4.48.9"|"@5.69.0" ) break;;
-    * ) echo "Invalid option";;
-  esac
-done
 
 # Iterate over all .feature files in the "features" directory
 for file in features/*.feature; do
