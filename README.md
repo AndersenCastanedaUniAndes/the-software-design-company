@@ -32,6 +32,8 @@ Follow these steps to run Ghost version 5.69.0 and 4.48.9 with MySQL in Docker:
 
 ### Step 2: Run Ghost with MySQL in Docker
 
+Make sure to have a terminal open in order to execute the next steps
+
 #### For Ghost 5.69.0:
 
 1. Pull the Ghost image: `docker pull ghost:5.69.0`
