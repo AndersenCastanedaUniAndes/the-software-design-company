@@ -4,7 +4,7 @@ const config = require('./config.json');
 const path = require('path');
 const fs = require('fs');
 
-const directoryReference = '../VRT/screenshots/';
+const directoryReference = './VRT/screenshots/';
 
 const { options } = config;
 
@@ -22,8 +22,8 @@ async function executeTest() {
     );
     console.log(`Generating report for ${folder}, please wait...`);
     let html = '';
-    if (!fs.existsSync(`./results/comparison/${folder}`)) {
-      fs.mkdirSync(`./results/comparison/${folder}`, { recursive: true });
+    if (!fs.existsSync(`./resemblejs/results/comparison/${folder}`)) {
+      fs.mkdirSync(`./resemblejs/results/comparison/${folder}`, { recursive: true });
     }
 
     const folderPath = path.join(directoryReference, folder);
@@ -40,8 +40,8 @@ async function executeTest() {
       );
 
       // Copy images for reporting purposes
-      const imageBeforePathCopy = `./results/comparison/${folder}/${images[i]}`;
-      const imageAfterPathCopy = `./results/comparison/${folder}/${
+      const imageBeforePathCopy = `./resemblejs/results/comparison/${folder}/${images[i]}`;
+      const imageAfterPathCopy = `./resemblejs/results/comparison/${folder}/${
         images[i + images.length / 2]
       }`;
       fs.copyFileSync(imageBeforePath, imageBeforePathCopy);
@@ -64,7 +64,7 @@ async function executeTest() {
       };
 
       const imageCompareName = `compare-ghost-4.48.9-5.69.0-${i + 1}.png`;
-      const imageComparePath = `./results/comparison/${folder}/${imageCompareName}`;
+      const imageComparePath = `./resemblejs/results/comparison/${folder}/${imageCompareName}`;
 
       fs.writeFileSync(imageComparePath, data.getBuffer());
 
@@ -77,10 +77,10 @@ async function executeTest() {
       );
     }
     fs.writeFileSync(
-      `./results/comparison/${folder}/report.html`,
+      `./resemblejs/results/comparison/${folder}/report.html`,
       createReport(new Date().toISOString().replace(/:/g, '.'), folder, html)
     );
-    fs.copyFileSync('./index.css', `./results/comparison/${folder}/index.css`);
+    fs.copyFileSync('./resemblejs/index.css', `./resemblejs/results/comparison/${folder}/index.css`);
     console.log(`Report generated for ${folder}`);
   }
 

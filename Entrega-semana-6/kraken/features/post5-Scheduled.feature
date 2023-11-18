@@ -1,5 +1,5 @@
 @5.69.0
-Feature: Posts
+Feature: Posts porgramar post
 
 @user1 @web
 Scenario: Como usuario administrador quiero programar la publicación de un post para gestionar mejor el contenido
