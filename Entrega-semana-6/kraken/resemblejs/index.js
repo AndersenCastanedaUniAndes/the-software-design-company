@@ -9,12 +9,18 @@ const directoryReference = '../VRT/screenshots/';
 const { options } = config;
 
 async function executeTest() {
+
+
   const folders = fs
     .readdirSync(directoryReference, { withFileTypes: true })
     .filter((dirent) => dirent.isDirectory())
     .map((dirent) => dirent.name);
 
   for (const folder of folders) {
+    console.log(
+      '------------------------------------------------------------------------------------'
+    );
+    console.log(`Generating report for ${folder}, please wait...`);
     let html = '';
     if (!fs.existsSync(`./results/comparison/${folder}`)) {
       fs.mkdirSync(`./results/comparison/${folder}`, { recursive: true });
@@ -75,7 +81,7 @@ async function executeTest() {
       createReport(new Date().toISOString().replace(/:/g, '.'), folder, html)
     );
     fs.copyFileSync('./index.css', `./results/comparison/${folder}/index.css`);
-    console.log(`Report Creted for ${folder}`);
+    console.log(`Report generated for ${folder}`);
   }
 
   console.log(

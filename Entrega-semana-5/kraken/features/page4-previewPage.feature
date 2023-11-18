@@ -9,7 +9,7 @@ Scenario: Como usuario administrador quiero ver el preview de una página para o
   And I wait for 2 seconds
   And I enter password "<PASSWORD>"
   And I wait for 2 seconds
-  And I click sign in button with selector "button[data-test-button='sign-in']"
+  And I click sign in button with selector "button[type='submit']"
   And I wait for 5 seconds
   When I go to the pages section with selector "a[data-test-nav='pages']"
   And I wait for 2 seconds

@@ -9,7 +9,7 @@ Scenario: Como usuario administrador quiero dejar de publicar una página para n
   And I wait for 2 seconds
   And I enter password "<PASSWORD>"
   And I wait for 2 seconds
-  And I click sign in button with selector "button[data-test-button='sign-in']"
+  And I click sign in button with selector "button[type='submit']"
   And I wait for 2 seconds
   When I go to the pages section with selector "a[data-test-nav='pages']"
   And I wait for 2 seconds

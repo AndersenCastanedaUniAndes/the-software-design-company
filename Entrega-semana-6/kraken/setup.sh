@@ -10,9 +10,9 @@ select version in "@4.48.9" "@5.69.0"; do
 done
 
 # Prompt the user for the attributes
-read -p "Enter EMAIL: " username
-read -p "Enter PASSWORD: " password
-read -p "Enter BASEURL: " baseurl
+read -p "Enter EMAIL for admin: " username
+read -p "Enter PASSWORD for admin: " password
+read -p "Enter BASEURL of Ghost CMS similar to http://localhost:port/ghost/#/signin: " baseurl
 
 # Create the JSON file and write the attributes to it
 cat << EOF > properties.json
