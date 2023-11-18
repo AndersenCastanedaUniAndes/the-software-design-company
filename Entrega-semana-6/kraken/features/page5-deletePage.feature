@@ -15,7 +15,7 @@ Scenario: Como usuario administrador quiero eliminar una página para no tenerla
   And I wait for 2 seconds
   And I click in the new page button with selector "a[data-test-new-page-button]"
   And I wait for 2 seconds
-  And I enter title "$name_title" into field with selector "textarea[data-test-editor-title-input]"
+  And I enter title "$name_title" into field with selector "textarea.gh-editor-title"
   And I wait for 2 seconds
   And I go back to the list of pages clicking the pages button with selector "a[data-test-link='pages']"
   And I wait for 2 seconds

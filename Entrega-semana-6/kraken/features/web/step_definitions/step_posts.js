@@ -1,7 +1,13 @@
-const { Given, When, Then } = require('@cucumber/cucumber');
+const { Before, When, Then } = require('@cucumber/cucumber');
 const { expect } = require('chai');
 const chai = require('chai');
 const should = chai.should();
+
+let tag = ''
+
+Before(function (scenario) {
+  tag = scenario?.gherkinDocument.feature.tags[0].name
+});
 
 When(
   'I go to the posts section with selector {string}',
@@ -14,7 +20,8 @@ When(
 When(
   'I click in the new post button with selector {string}',
   async function (string) {
-    let element = await this.driver.$(string);
+    console.log(tag)
+    let element = await this.driver.$(string)[1];
     return await element.click();
   }
 );
