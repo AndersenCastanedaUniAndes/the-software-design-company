@@ -32,13 +32,15 @@ Follow these steps to run Ghost version 5.69.0 and 4.48.9 with MySQL in Docker:
 
 ### Step 2: Run Ghost with MySQL in Docker
 
+Make sure to have a terminal opened in order to execute the next steps for ghost and docker
+
 #### For Ghost 5.69.0:
 
 1. Pull the Ghost image: `docker pull ghost:5.69.0`
 
 2. Pull MySQL image from docker, use the specific step for you chip architecture:
 
-    - amd64v8 (Mac M1) chipset image: `docker pull amd64v8/mysql`
+    - arm64v8 (Mac M1) chipset image: `docker pull arm64v8/mysql`
 
     - x86 chipset image: `docker pull mysql:5.7`
 
@@ -46,7 +48,7 @@ Follow these steps to run Ghost version 5.69.0 and 4.48.9 with MySQL in Docker:
 
 4. Run the MySQL container:
 
-    - amd64v8 (Mac M1) container: `docker run --name mysql_ghost_569 --network=ghost_network_5_69_0 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=ghost_569 -d amd64v8/mysql`
+    - arm64v8 (Mac M1) container: `docker run --name mysql_ghost_569 --network=ghost_network_5_69_0 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=ghost_569 -d arm64v8/mysql`
 
     - x86 container: `docker run --name mysql_ghost_569 --network=ghost_network_5_69_0 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=ghost_569 -d mysql:5.7`
 
@@ -55,9 +57,17 @@ Follow these steps to run Ghost version 5.69.0 and 4.48.9 with MySQL in Docker:
 #### For Ghost 4.48.9:
 
 1. Pull the Ghost image: `docker pull ghost:4.48.9`
-2. Pull the MySQL image: `docker pull mysql:5.7`
+
+2. Pull MySQL image from docker, use the specific step for you chip architecture:
+
+    - arm64v8 (Mac M1) chipset image: `docker pull arm64v8/mysql`
+
+    - x86 chipset image: `docker pull mysql:5.7`
+
 3. Create a network: `docker network create ghost_network_4_48_9`
-4. Run the MySQL container: `docker run --name mysql_ghost_4489 --network=ghost_network_4_48_9 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=ghost_4489 -d mysql:5.7`
+
+4. Run the MySQL container: `docker run --name mysql_ghost_4489 --network=ghost_network_4_48_9 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=ghost_4489 -d arm64v8/mysql`
+
 5. Run the Ghost container: `docker run --name ghost_container_4489 --network=ghost_network_4_48_9 -p 3002:2368 -e database__client=mysql -e database__connection__host=mysql_ghost_4489 -e database__connection__user=root -e database__connection__password=root -e database__connection__database=ghost_4489 -d ghost:4.48.9`
 
 The Ghost applications will be accessible at http://localhost:3001 and http://localhost:3002 respectively.
