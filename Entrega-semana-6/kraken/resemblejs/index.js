@@ -1,10 +1,10 @@
 const playwright = require('playwright');
 const compareImages = require('resemblejs/compareImages');
 const config = require('./config.json');
+const path = require('path');
 const fs = require('fs');
 
-const directoryReference = '../VRT/ghost-4.48.9/screenshots/';
-const directoryTest = '../VRT/ghost-4.48.9/screenshots/';
+const directoryReference = '../VRT/screenshots/';
 
 const { options } = config;
 
@@ -15,68 +15,102 @@ async function executeTest() {
     .map((dirent) => dirent.name);
 
   for (const folder of folders) {
+    let html = '';
+    if (!fs.existsSync(`./results/comparison/${folder}`)) {
+      fs.mkdirSync(`./results/comparison/${folder}`, { recursive: true });
+    }
+
     const folderPath = path.join(directoryReference, folder);
-    // Now you can work with each folder
+
+    const images = fs
+      .readdirSync(folderPath)
+      .filter((file) => path.extname(file).toLowerCase() === '.png');
+
+    for (let i = 0; i < images.length / 2; i++) {
+      const imageBeforePath = path.join(folderPath, images[i]);
+      const imageAfterPath = path.join(
+        folderPath,
+        images[i + images.length / 2]
+      );
+
+      // Copy images for reporting purposes
+      const imageBeforePathCopy = `./results/comparison/${folder}/${images[i]}`;
+      const imageAfterPathCopy = `./results/comparison/${folder}/${
+        images[i + images.length / 2]
+      }`;
+      fs.copyFileSync(imageBeforePath, imageBeforePathCopy);
+      fs.copyFileSync(imageAfterPath, imageAfterPathCopy);
+
+      // Comparison
+      const data = await compareImages(
+        fs.readFileSync(imageBeforePath),
+        fs.readFileSync(imageAfterPath),
+        options
+      );
+
+      const resultInfo = {
+        isSameDimensions: data.isSameDimensions,
+        dimensionDifference: data.dimensionDifference,
+        rawMisMatchPercentage: data.rawMisMatchPercentage,
+        misMatchPercentage: data.misMatchPercentage,
+        diffBounds: data.diffBounds,
+        analysisTime: data.analysisTime,
+      };
+
+      const imageCompareName = `compare-ghost-4.48.9-5.69.0-${i + 1}.png`;
+      const imageComparePath = `./results/comparison/${folder}/${imageCompareName}`;
+
+      fs.writeFileSync(imageComparePath, data.getBuffer());
+
+      html += browser(
+        i + 1,
+        resultInfo,
+        images[i],
+        images[i + images.length / 2],
+        imageCompareName
+      );
+    }
+    fs.writeFileSync(
+      `./results/comparison/${folder}/report.html`,
+      createReport(new Date().toISOString().replace(/:/g, '.'), folder, html)
+    );
+    fs.copyFileSync('./index.css', `./results/comparison/${folder}/index.css`);
+    console.log(`Report Creted for ${folder}`);
   }
-
-  const data = await compareImages(
-    fs.readFileSync(`./results/${datetime}/before-${b}.png`),
-    fs.readFileSync(`./results/${datetime}/after-${b}.png`),
-    options
-  );
-  resultInfo[b] = {
-    isSameDimensions: data.isSameDimensions,
-    dimensionDifference: data.dimensionDifference,
-    rawMisMatchPercentage: data.rawMisMatchPercentage,
-    misMatchPercentage: data.misMatchPercentage,
-    diffBounds: data.diffBounds,
-    analysisTime: data.analysisTime,
-  };
-  fs.writeFileSync(
-    `./results/comparison/${datetime}/compare-${b}.png`,
-    data.getBuffer()
-  );
-
-  fs.writeFileSync(
-    `./results/${datetime}/report.html`,
-    createReport(datetime, resultInfo)
-  );
-  fs.copyFileSync('./index.css', `./results/${datetime}/index.css`);
 
   console.log(
     '------------------------------------------------------------------------------------'
   );
-  console.log('Execution finished. Check the report under the results folder');
-  return resultInfo;
+  return 'Execution finished. Check the report under the results folder';
 }
 (async () => console.log(await executeTest()))();
 
-function browser(b, info) {
+function browser(step, info, before, after, compare) {
   return `<div class=" browser" id="test0">
     <div class=" btitle">
-        <h2>Browser: ${b}</h2>
+        <h2>step #${step}</h2>
         <p>Data: ${JSON.stringify(info)}</p>
     </div>
     <div class="imgline">
       <div class="imgcontainer">
         <span class="imgname">Reference</span>
-        <img class="img2" src="before-${b}.png" id="refImage" label="Reference">
+        <img class="img2" src="${before}" id="refImage" label="Reference">
       </div>
       <div class="imgcontainer">
         <span class="imgname">Test</span>
-        <img class="img2" src="after-${b}.png" id="testImage" label="Test">
+        <img class="img2" src="${after}" id="testImage" label="Test">
       </div>
     </div>
     <div class="imgline">
       <div class="imgcontainer">
         <span class="imgname">Diff</span>
-        <img class="imgfull" src="./compare-${b}.png" id="diffImage" label="Diff">
+        <img class="imgfull" src="${compare}" id="diffImage" label="Diff">
       </div>
     </div>
   </div>`;
 }
 
-function createReport(datetime, resInfo) {
+function createReport(datetime, feature, html) {
   return `
     <html>
         <head>
@@ -84,12 +118,11 @@ function createReport(datetime, resInfo) {
             <link href="index.css" type="text/css" rel="stylesheet">
         </head>
         <body>
-            <h1>Report for 
-                 <a href="${config.url}"> ${config.url}</a>
+            <h1>Report for  ${feature}
             </h1>
             <p>Executed: ${datetime}</p>
             <div id="visualizer">
-                ${config.browsers.map((b) => browser(b, resInfo[b]))}
+                ${html}
             </div>
         </body>
     </html>`;
