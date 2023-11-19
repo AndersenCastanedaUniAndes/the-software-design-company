@@ -28,6 +28,11 @@ exports.NavigationPageObject = class NavigationPageObject {
     await this.page.locator('a[href="#/pages/"]').click({ force: true });
   }
 
+  async clickOnTagsViewLink(){
+    await this.page.locator('li a[href="#/tags/"]').click({ force: true });
+    await this.page.waitForLoadState("domcontentloaded");
+  }
+
   async screenshot(section) {
     const REFERENCE_VERSION = process.env.REFERENCE_VERSION;
     const TEST_VERSION = process.env.TEST_VERSION;
@@ -43,5 +48,10 @@ exports.NavigationPageObject = class NavigationPageObject {
     const path = `${PATH}${section ?? "default"}-${datetime}.png`;
      
     await this.page.screenshot({ path: path });
+  }
+
+   async clickOnInternalTagViewLink(){
+    await this.page.locator('section.view-actions > div button:nth-child(2)').click();
+    await this.page.waitForSelector(".tags-list");
   }
 };
