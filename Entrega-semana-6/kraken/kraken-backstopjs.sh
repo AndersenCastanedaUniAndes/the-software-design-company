@@ -1,21 +1,18 @@
 #!/bin/bash
 
-echo "*********** Running setup ***********"
-# # Run the setup.sh
-sh setup.sh
-
-echo "*********** Running kraken ***********"
-# # Execute the command
-npx kraken-node run
-
-echo "*********** Running setup ***********"
-# # Run the setup.sh again
-sh setup.sh
-
-echo "*********** Running kraken ***********"
-# # Execute the command again
-npx kraken-node run
-
+if [ -d "./VRT" ]; then
+    echo "VRT folder exists"
+    echo "want to run configuration again?, please type 1 for (yes) or 2 for (no):"
+    select option in "Yes" "No"; do
+    case $option in
+        "Yes" )
+            sh ./utils/initial-setup.sh
+            break;;
+        "No" ) break;;
+        * ) echo "Invalid option";;
+    esac
+    done
+fi
 
 echo "*********** BackstopJS ***********"
 sh ./backstopjs/utils/backstopjs.sh
