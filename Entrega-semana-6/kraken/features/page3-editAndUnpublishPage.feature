@@ -10,30 +10,30 @@ Scenario: Como usuario administrador quiero dejar de publicar una página para n
   And I enter password "<PASSWORD>"
   And I wait for 2 seconds
   And I click sign in button with selector "button[type='submit']"
+  And I wait for 5 seconds
+  When I go to the pages section
   And I wait for 2 seconds
-  When I go to the pages section with selector "a[data-test-nav='pages']"
-  And I wait for 2 seconds
-  And I click in the new page button with selector "a[data-test-new-page-button]"
+  And I click in the new page button
   And I wait for 2 seconds
   And I enter title "$name_title" into field with selector "textarea.gh-editor-title"
   And I wait for 2 seconds
-  And I click in the Publish button with selector "button[data-test-button='publish-flow']"
+  And I click in the page publish button
   And I wait for 2 seconds
-  And I click in the Continue, final review button with selector "button[data-test-button='continue']"
+  And I click in the page continue, final review button
   And I wait for 2 seconds
-  And I click in the Publish page confirm button with selector "button[data-test-button='confirm-publish']"
+  And I click in the publish page confirm button
   And I wait for 2 seconds
   And I go back to the editor section clicking the editor button with selector "button[data-test-button='close-publish-flow']"
   And I wait for 2 seconds
-  And I go back to the list of pages clicking the pages button with selector "a[data-test-link='pages']"
+  And I go back to the list of pages clicking the pages button
   And I wait for 2 seconds
   And I click the page in order to edit it "$$name_title"
   And I wait for 2 seconds
-  And I click in the unpublish button with selector "button[data-test-button='update-flow']"
+  And I click in the page unpublish button
   And I wait for 2 seconds
-  And I click in unpublish and revert to draft button with selector "button[data-test-button='revert-to-draft']"
+  And I click in unpublish and revert to draft button
   And I wait for 2 seconds
-  And I go back to the list of pages clicking the pages button with selector "a[data-test-link='pages']"
+  And I go back to the list of pages clicking the pages button
   And I wait for 2 seconds
-  Then I visualize "$$name_title" as "Draft" in the list with selector "div.gh-posts-list-item-group"
+  Then I visualize the page "$$name_title" as "Draft" in the page list
   And I wait for 2 seconds

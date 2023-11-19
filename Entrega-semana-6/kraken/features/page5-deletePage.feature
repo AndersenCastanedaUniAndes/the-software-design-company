@@ -11,21 +11,21 @@ Scenario: Como usuario administrador quiero eliminar una página para no tenerla
   And I wait for 2 seconds
   And I click sign in button with selector "button[type='submit']"
   And I wait for 5 seconds
-  When I go to the pages section with selector "a[data-test-nav='pages']"
+  When I go to the pages section
   And I wait for 2 seconds
-  And I click in the new page button with selector "a[data-test-new-page-button]"
+  And I click in the new page button
   And I wait for 2 seconds
   And I enter title "$name_title" into field with selector "textarea.gh-editor-title"
   And I wait for 2 seconds
-  And I go back to the list of pages clicking the pages button with selector "a[data-test-link='pages']"
+  And I go back to the list of pages clicking the pages button
   And I wait for 2 seconds
   And I click the page in order to edit it "$$name_title"
   And I wait for 2 seconds
   And I click in the settings button with selector "button[title='Settings']"
   And I wait for 2 seconds
-  And I click in the delete button with selector "#entry-controls > div > div.settings-menu-content > div > button"
+  And I click in the page delete button
   And I wait for 2 seconds
   And I click in the delete confirm button with selector "button.gh-btn.gh-btn-red"
   And I wait for 2 seconds
-  Then I visualize "$$name_title" is not in the list with selector "div.gh-posts-list-item-group"
+  Then I visualize the page "$$name_title" is not in the page list
   And I wait for 2 seconds

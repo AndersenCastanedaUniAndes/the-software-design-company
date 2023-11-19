@@ -11,25 +11,25 @@ Scenario: Como usuario administrador quiero agregar un tag a una página para qu
   And I wait for 2 seconds
   And I click sign in button with selector "button[type='submit']"
   And I wait for 5 seconds
-  When I go to the pages section with selector "a[data-test-nav='pages']"
+  When I go to the pages section
   And I wait for 2 seconds
-  And I click in the new page button with selector "a[data-test-new-page-button]"
+  And I click in the new page button
   And I wait for 2 seconds
   And I enter title "$name_title" into field with selector "textarea.gh-editor-title"
   And I wait for 2 seconds
-  And I go back to the list of pages clicking the pages button with selector "a[data-test-link='pages']"
+  And I go back to the list of pages clicking the pages button
   And I wait for 2 seconds
   And I click the page in order to edit it "$$name_title"
   And I wait for 2 seconds
   And I click in the settings button with selector "button[title='Settings']"
   And I wait for 2 seconds
-  And I click in the tag dropdown with selector "input.ember-power-select-trigger-multiple-input"
+  And I click in the page tag dropdown
   And I wait for 2 seconds
   And I click in the first tag dropdown option with selector "li[data-option-index='0']"
   And I wait for 2 seconds
-  And I go back to the list of pages clicking the pages button with selector "a[data-test-link='pages']"
+  And I go back to the list of pages clicking the pages button
   And I wait for 2 seconds
   And I click in the leave button with selector "button.gh-btn.gh-btn-red"
   And I wait for 2 seconds
-  Then I visualize "$$name_title" with the selected tag in the list with selector "div.gh-posts-list-item-group"
+  Then I visualize the page "$$name_title" with the tag in the page list
   And I wait for 2 seconds

@@ -11,13 +11,13 @@ Scenario: Como usuario administrador quiero ver el preview de una página para o
   And I wait for 2 seconds
   And I click sign in button with selector "button[type='submit']"
   And I wait for 5 seconds
-  When I go to the pages section with selector "a[data-test-nav='pages']"
+  When I go to the pages section
   And I wait for 2 seconds
-  And I click in the new page button with selector "a[data-test-new-page-button]"
+  And I click in the new page button
   And I wait for 2 seconds
   And I enter title "$name_title" into field with selector "textarea.gh-editor-title"
   And I wait for 2 seconds
-  And I click in the preview button with selector "button[data-test-button='publish-preview']"
+  And I click in the page preview button
   And I wait for 3 seconds
-  Then I visualize the preview page with selector "div.gh-post-preview-container.gh-post-preview-browser-container"
+  Then I visualize the page preview
   And I wait for 2 seconds

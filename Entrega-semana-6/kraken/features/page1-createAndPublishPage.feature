@@ -11,21 +11,21 @@ Scenario: Como usuario administrador quiero crear una página nueva para despué
   And I wait for 2 seconds
   And I click sign in button with selector "button[type='submit']"
   And I wait for 5 seconds
-  When I go to the pages section with selector "a[data-test-nav='pages']"
+  When I go to the pages section
   And I wait for 2 seconds
-  And I click in the new page button with selector "a[data-test-new-page-button]"
+  And I click in the new page button
   And I wait for 2 seconds
   And I enter title "$name_title" into field with selector "textarea.gh-editor-title"
   And I wait for 2 seconds
-  And I click in the Publish button with selector "button[data-test-button='publish-flow']"
+  And I click in the page publish button
   And I wait for 2 seconds
-  And I click in the Continue, final review button with selector "button[data-test-button='continue']"
+  And I click in the page continue, final review button
   And I wait for 2 seconds
-  And I click in the Publish page confirm button with selector "button[data-test-button='confirm-publish']"
+  And I click in the publish page confirm button
   And I wait for 2 seconds
   And I go back to the editor section clicking the editor button with selector "button[data-test-button='close-publish-flow']"
   And I wait for 2 seconds
-  And I go back to the list of pages clicking the pages button with selector "a[data-test-link='pages']"
+  And I go back to the list of pages clicking the pages button
   And I wait for 2 seconds
-  Then I visualize "$$name_title" in the list with selector "div.gh-posts-list-item-group"
+  Then I visualize the page "$$name_title" in the page list
   And I wait for 2 seconds
