@@ -76,6 +76,19 @@ Before(function (scenario) {
 });
 
 When("I go to the pages section", async function () {
+  if (tagVersion.includes('4.48.9')) {
+    try {
+      const button = await this.driver.$('button.gh-alert-close')?.click();
+      if (button) {
+        button.click();
+      } else {
+        console.log('Button not found');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   let element = await this.driver.$(pagesSectionSelector[tagVersion]);
   return await element.click();
 });
