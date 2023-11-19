@@ -1,5 +1,5 @@
 {
-  "USERNAME": "andersencastaneda@gmail.com",
-  "PASSWORD": "holaSoyAndersen",
-  "BASEURL": "http://localhost:3001/ghost/#/signin"
+  "USERNAME": "admin@mail.com",
+  "PASSWORD": "Qazwsxedc123",
+  "BASEURL": "http://localhost:3001/ghost#/signin"
 }
