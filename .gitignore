@@ -5,9 +5,12 @@ cypress/videos
 **/2-advanced-examples
 **/node_modules/
 **/screenshots/**
+**/reference_screenshots/**
+**/test_screenshots/**
 **/results/
 **/backstop_data/
 **/VRT
+**/.DS_Store
 Entrega-semana-5/kraken/reports
 Entrega-semana-5/kraken/.kraken
 Entrega-semana-5/kraken/VRT/

@@ -4,6 +4,12 @@ const { NavigationPageObject } = require("../../POM/NavigationPageObject");
 const { AuthorizationPageObject } = require("../../POM/AuthorizationPageObject");
 const { TagsPageObject } = require("../../POM/TagsPageObject");
 
+require("dotenv").config();
+
+const REFERENCE_VERSION = process.env.REFERENCE_VERSION;
+const TEST_VERSION = process.env.TEST_VERSION;
+const ACTIVE_VERSION = process.env.ACTIVE_VERSION;
+
 test.describe("Como usuario administrador quiero poder crear un nuevo Tag para después editar su contenido", () => {
     let navigation;
     let authorization;
@@ -14,11 +20,14 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag para d
         navigation = new NavigationPageObject(page);
         authorization = new AuthorizationPageObject(page);
         tags = new TagsPageObject(page);
+
+        const user = process.env.USERNAME;
+        const password = process.env.PASSWORD;
   
         await navigation.goToRoot();
-        await authorization.fillOutUsername("a.menesess@uniandes.edu.co");
+        await authorization.fillOutUsername(user);
         await navigation.screenshot();
-        await authorization.fillOutPassword("*93ZPspkZVHtS.d");
+        await authorization.fillOutPassword(password);
         await navigation.screenshot();
         await authorization.submit();
         await navigation.screenshot();
@@ -77,10 +86,13 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag para d
         authorization = new AuthorizationPageObject(page);
         tags = new TagsPageObject(page);
   
+        const user = process.env.USERNAME;
+        const password = process.env.PASSWORD;
+  
         await navigation.goToRoot();
-        await authorization.fillOutUsername("a.menesess@uniandes.edu.co");
+        await authorization.fillOutUsername(user);
         await navigation.screenshot();
-        await authorization.fillOutPassword("*93ZPspkZVHtS.d");
+        await authorization.fillOutPassword(password);
         await navigation.screenshot();
         await authorization.submit();
         await navigation.screenshot();
@@ -119,8 +131,7 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag para d
           });
         });
       });
-    });
-  });
+    });});
 
 
 test.describe("Como usuario administrador quiero poder crear un nuevo Tag con el campo de nombre vacío para que se muestre un aviso de advertencia por el campo vacío", () => {
@@ -134,10 +145,13 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag con el
         authorization = new AuthorizationPageObject(page);
         tags = new TagsPageObject(page);
   
+        const user = process.env.USERNAME;
+        const password = process.env.PASSWORD;
+  
         await navigation.goToRoot();
-        await authorization.fillOutUsername("a.menesess@uniandes.edu.co");
+        await authorization.fillOutUsername(user);
         await navigation.screenshot();
-        await authorization.fillOutPassword("*93ZPspkZVHtS.d");
+        await authorization.fillOutPassword(password);
         await navigation.screenshot();
         await authorization.submit();
         await navigation.screenshot();
@@ -183,10 +197,13 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag en la 
         authorization = new AuthorizationPageObject(page);
         tags = new TagsPageObject(page);
   
+        const user = process.env.USERNAME;
+        const password = process.env.PASSWORD;
+  
         await navigation.goToRoot();
-        await authorization.fillOutUsername("a.menesess@uniandes.edu.co");
+        await authorization.fillOutUsername(user);
         await navigation.screenshot();
-        await authorization.fillOutPassword("*93ZPspkZVHtS.d");
+        await authorization.fillOutPassword(password);
         await navigation.screenshot();
         await authorization.submit();
         await navigation.screenshot();
@@ -212,9 +229,11 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag en la 
                                 await tags.saveTagButton();
                                 await page.waitForTimeout(1500);
                                 await navigation.screenshot();
-                                await tags.goBackToTags();
+                                await tags.goBackToInternalTags();
                                 await navigation.screenshot();
-                                await tags.selectCreatedInternalTag("internal-tag-nuevo");
+                                await navigation.clickOnInternalTagViewLink();
+                                await navigation.screenshot();
+                                await tags.selectCreatedInternalTag("#internal-tag-nuevo");
                                 await navigation.screenshot();
                                 
                                 const modifiedName = "#internal-tag-modificado";
@@ -249,10 +268,13 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag en la 
         authorization = new AuthorizationPageObject(page);
         tags = new TagsPageObject(page);
   
+        const user = process.env.USERNAME;
+        const password = process.env.PASSWORD;
+  
         await navigation.goToRoot();
-        await authorization.fillOutUsername("a.menesess@uniandes.edu.co");
+        await authorization.fillOutUsername(user);
         await navigation.screenshot();
-        await authorization.fillOutPassword("*93ZPspkZVHtS.d");
+        await authorization.fillOutPassword(password);
         await navigation.screenshot();
         await authorization.submit();
         await navigation.screenshot();
@@ -278,9 +300,9 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag en la 
                                 await tags.saveTagButton();
                                 await page.waitForTimeout(1500);
                                 await navigation.screenshot();
-                                await tags.goBackToTags();
+                                 await tags.goBackToInternalTags();
                                 await navigation.screenshot();
-                                await tags.selectCreatedInternalTag("internal-tag-nuevo2");
+                                await tags.selectCreatedInternalTag("#internal-tag-nuevo2");
                                 await navigation.screenshot();               
                                 await tags.deleteTagButton();
                                 await navigation.screenshot();

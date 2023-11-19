@@ -11,33 +11,51 @@ exports.TagsPageObject = class PostPageObject {
       }
   
     async saveTagButton(){
-        await this.page.locator('button[data-test-button="save"]').click();
-      }
+        await this.page.locator('section.view-actions button.gh-btn').click();
+    }
     
     async enterName(name) {
-      await this.page.locator("input[id='tag-name']").fill(`${name}`);
+      await this.page.locator("input#tag-name").fill(`${name}`);
     }
   
     async goBackToTags() {
-        await this.page.locator('a[data-test-link="tags-back"]').click();
-      }
+        await this.page.locator('div.gh-canvas-header a[href="#/tags/"]').click();
+    }
+
+    async goBackToInternalTags() {
+        await this.page.locator('div.gh-canvas-header a[href="#/tags/?type=internal"]').click();
+    }
 
     async selectCreatedTag(tag){
         await this.page.locator(`a[href="#/tags/${tag}/"].ember-view.gh-list-data.gh-list-cellwidth-10.gh-list-chevron`).click();
     }  
 
     async selectCreatedInternalTag(tagName){
-        await this.page.locator(`a[href="#/tags/hash-${tagName}/"].ember-view.gh-list-data.gh-list-cellwidth-10.gh-list-chevron`).click();
+    const list = await this.page.locator("ol.tags-list li.gh-tags-list-item a.gh-tag-list-title").all();
+        let wasOpened = false;
+        for (let item of list) {
+          if (wasOpened) continue;
+
+          let postTitle = await item.locator("h3.gh-tag-list-name").innerText();
+          if (postTitle.includes(tagName)) {
+             await item.click();
+             await this.page.waitForLoadState("domcontentloaded");
+             wasOpened = true;
+          }
+          
+        }
+        return wasOpened;
     }  
 
     async successSavedButton(){
-        let savedBotton = await this.page.locator("button[data-test-button='save']").innerText();
+        let savedBotton = await this.page.locator("section.view-actions button.gh-btn").innerText();
         return savedBotton;
     }
 
     async deleteTagButton(){
-        await this.page.locator('button[data-test-button="delete-tag"]').click();
-        await this.page.locator('button[data-test-button="confirm"]').click();
+        await this.page.locator('section.gh-canvas > div > button.gh-btn-red').click();
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.page.locator('.modal-content div.modal-footer .gh-btn-red').first().click();
     }
 
     async findDeletedTagByName(name) {
@@ -53,7 +71,7 @@ exports.TagsPageObject = class PostPageObject {
       }
 
     async invalidTagNameError(){
-        let message = await this.page.locator('body > div.gh-app > div > main > section > form > div.gh-main-section > section > div > div:nth-child(1) > div.gh-tag-settings-multiprop > div.form-group.mr2.flex-auto.error > span > p:nth-child(1)').innerText();
+        let message = await this.page.locator('div.gh-tag-settings-multiprop div:nth-child(1) span.error p.response:nth-child(1)').innerText();
         return message;
     }
 }

@@ -6,6 +6,10 @@ const { MemberPageObject } = require("../../POM/MemberPageObject");
 const { generateRamdomMember, generateInvalidMemberEmail } = require("../../helpers/common");
 require("dotenv").config();
 
+const REFERENCE_VERSION = process.env.REFERENCE_VERSION;
+const TEST_VERSION = process.env.TEST_VERSION;
+const ACTIVE_VERSION = process.env.ACTIVE_VERSION;
+
 test.describe("Como usuario administrador quiero poder registrar un nuevo miembro para poder enviarles novedades", () => {
   let navigation;
   let authorization;
@@ -72,12 +76,13 @@ test.describe("Como usuario administrador quiero poder registrar un nuevo miembr
   });
 });
 
-test.describe("Como usuario administrador quiero poder ser prevenido de registrar un nuevo miembro con datos inválidos para poder tener datos confiables.", () => {
+test.describe("Como usuario administrador quiero poder ser prevenido de registrar un nuevo miembro con datos inválidos (no ingresa un correo) para poder tener datos confiables.", () => {
   let navigation;
   let authorization;
   let members;
 
-  test.beforeEach(async ({ page }) => {
+  test.describe("Given un usuario autenticado en la aplicación", () => {
+    test.beforeEach(async ({ page }) => {
     navigation = new NavigationPageObject(page);
     authorization = new AuthorizationPageObject(page);
     members = new MemberPageObject(page);
@@ -95,40 +100,8 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
     await navigation.screenshot("members");
   });
 
-  test.describe("Given un usuario autenticado en la aplicación", () => {
     test.describe("And navega hacia la seccion de miembros", () => {
       test.describe("And navega hacia la creación de un miembro", () => {
-        test.describe("When ingresa un correo inválido", () => {
-          test.describe("And intenta crear un miembro", () => {
-            test("Then entonces es alertado del error con un mensaje", async () => {
-              const invalidMessage = "Invalid Email.";
-
-              await navigation.clickOnMembersViewLink();
-              await navigation.screenshot("members");
-              await navigation.clickOnNewMemberViewLink();
-              await navigation.screenshot("members");
-
-              // GENERATES A RAMDOM PERSON
-              const member = generateRamdomMember();
-
-              // FILL OUT THE NEW MEMBER FORM
-              const invalidEmail = generateInvalidMemberEmail(member.fullname);
-              member.email = invalidEmail.email;
-
-              // FILL OUT THE NEW MEMBER FORM
-              await members.fillOutName(member);
-              await navigation.screenshot("members");
-              await members.fillOutEmail(member);
-              await navigation.screenshot("members");
-              await members.clickOnSaveButton();
-              await navigation.screenshot("members");
-
-              // ASSERTION
-              const error = await members.getEmailErrorMessage();
-              expect(error).toBe(invalidMessage);
-            });
-          });
-        });
         test.describe("When ingresa no ingresa un correo", () => {
           test.describe("And intenta crear un miembro", () => {
             test("Then entonces es alertado del error con un mensaje", async () => {
@@ -152,6 +125,37 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
             });
           });
         });
+      });
+    });
+  });
+});
+
+test.describe("Como usuario administrador quiero poder ser prevenido de registrar un nuevo miembro con datos inválidos (correo ya existente) para poder tener datos confiables.", () => {
+  let navigation;
+  let authorization;
+  let members;
+
+  test.describe("Given un usuario autenticado en la aplicación", () => {
+    test.beforeEach(async ({ page }) => {
+    navigation = new NavigationPageObject(page);
+    authorization = new AuthorizationPageObject(page);
+    members = new MemberPageObject(page);
+
+    const user = process.env.USERNAME;
+    const password = process.env.PASSWORD;
+
+    await navigation.goToRoot();
+
+    await authorization.fillOutUsername(user);
+    await navigation.screenshot("members");
+    await authorization.fillOutPassword(password);
+    await navigation.screenshot("members");
+    await authorization.submit();
+    await navigation.screenshot("members");
+  });
+
+    test.describe("And navega hacia la seccion de miembros", () => {
+      test.describe("And navega hacia la creación de un miembro", () => {
         test.describe("When ingresa un correo ya existente", () => {
           test.describe("And intenta crear un miembro", () => {
             test("Then entonces es alertado del error con un mensaje", async ({ page }) => {
@@ -162,8 +166,6 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
 
               // GENERATES A RAMDOM PERSON
               const member = generateRamdomMember();
-
-              const invalidMessage = "Member already exists. Attempting to add member with existing email address";
 
               // FILL OUT THE NEW MEMBER FORM
               // FILL OUT THE NEW MEMBER FORM
@@ -187,11 +189,51 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
               await navigation.screenshot("members");
 
               // ASSERTION
-              const error = await members.getEmailErrorMessage();
-              expect(error).toBe(invalidMessage);
+              let error = "";
+              if (ACTIVE_VERSION === REFERENCE_VERSION) {
+                const invalidMessage = "Member already exists. Attempting to add member with existing email address";
+                error = await members.getEmailErrorMessage();
+                expect(error).toBe(invalidMessage);
+              }
+              else if (ACTIVE_VERSION === TEST_VERSION) {
+                const invalidMessage = "Validation error, cannot save member. Member already exists. Attempting to add member with existing email address"
+                error = await members.getEmailErrorMessageTestVersion();
+                expect(error).toBe(invalidMessage);
+              }
             });
           });
         });
+      });
+    });
+  });
+});
+
+test.describe("Como usuario administrador quiero poder ser prevenido de registrar un nuevo miembro con datos inválidos (nota con mas de 500 carácteres) para poder tener datos confiables.", () => {
+  let navigation;
+  let authorization;
+  let members;
+
+  test.describe("Given un usuario autenticado en la aplicación", () => {
+    test.beforeEach(async ({ page }) => {
+    navigation = new NavigationPageObject(page);
+    authorization = new AuthorizationPageObject(page);
+    members = new MemberPageObject(page);
+
+    const user = process.env.USERNAME;
+    const password = process.env.PASSWORD;
+
+    await navigation.goToRoot();
+
+    await authorization.fillOutUsername(user);
+    await navigation.screenshot("members");
+    await authorization.fillOutPassword(password);
+    await navigation.screenshot("members");
+    await authorization.submit();
+    await navigation.screenshot("members");
+  });
+
+    test.describe("And navega hacia la seccion de miembros", () => {
+      test.describe("And navega hacia la creación de un miembro", () => {
         test.describe("When ingresa una nota con mas de 500 carácteres", () => {
           test.describe("And intenta crear un miembro", () => {
             test("Then entonces es alertado del error con un mensaje", async ({ page }) => {
@@ -222,6 +264,68 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
 
               // ASSERTION
               const error = await members.getNoteErrorMessage();
+              expect(error).toBe(invalidMessage);
+            });
+          });
+        });
+      });
+    });
+  });
+});
+
+test.describe("Como usuario administrador quiero poder ser prevenido de registrar un nuevo miembro con datos inválidos (correo inválido) para poder tener datos confiables.", () => {
+  let navigation;
+  let authorization;
+  let members;
+
+  test.describe("Given un usuario autenticado en la aplicación", () => {
+    test.beforeEach(async ({ page }) => {
+    navigation = new NavigationPageObject(page);
+    authorization = new AuthorizationPageObject(page);
+    members = new MemberPageObject(page);
+
+    const user = process.env.USERNAME;
+    const password = process.env.PASSWORD;
+
+    await navigation.goToRoot();
+
+    await authorization.fillOutUsername(user);
+    await navigation.screenshot("members");
+    await authorization.fillOutPassword(password);
+    await navigation.screenshot("members");
+    await authorization.submit();
+    await navigation.screenshot("members");
+  });
+
+    test.describe("And navega hacia la seccion de miembros", () => {
+      test.describe("And navega hacia la creación de un miembro", () => {
+        test.describe("When ingresa un correo inválido", () => {
+          test.describe("And intenta crear un miembro", () => {
+            test("Then entonces es alertado del error con un mensaje", async () => {
+              const invalidMessage = "Invalid Email.";
+
+              await navigation.clickOnMembersViewLink();
+              await navigation.screenshot("members");
+              await navigation.clickOnNewMemberViewLink();
+              await navigation.screenshot("members");
+
+              // GENERATES A RAMDOM PERSON
+              const member = generateRamdomMember();
+
+              // FILL OUT THE NEW MEMBER FORM
+              const invalidEmail = generateInvalidMemberEmail(member.fullname);
+              member.email = invalidEmail.email;
+
+              // FILL OUT THE NEW MEMBER FORM
+              await members.fillOutName(member);
+              await navigation.screenshot("members");
+              await members.fillOutEmail(member);
+              await navigation.screenshot("members");
+              await members.clickOnSaveButton();
+              await navigation.screenshot("members");
+
+              // ASSERTION
+              const error = await members.getEmailErrorMessage();
               expect(error).toBe(invalidMessage);
             });
           });

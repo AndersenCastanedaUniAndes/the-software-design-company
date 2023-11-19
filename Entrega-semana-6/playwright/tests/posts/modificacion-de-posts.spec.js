@@ -5,6 +5,10 @@ const { AuthorizationPageObject } = require("../../POM/AuthorizationPageObject")
 const { PostPageObject } = require("../../POM/PostPageObject");
 const { generateTitle } = require("../../helpers/common");
 
+const REFERENCE_VERSION = process.env.REFERENCE_VERSION;
+const TEST_VERSION = process.env.TEST_VERSION;
+const ACTIVE_VERSION = process.env.ACTIVE_VERSION;
+
 test.describe("Como usuario administrador quiero modificar un post ya publicado para después editar su contenido", () => {
   let navigation;
   let authorization;
@@ -45,11 +49,25 @@ test.describe("Como usuario administrador quiero modificar un post ya publicado 
                 await navigation.screenshot("posts");
                 await posts.enterTitle(postTitle);
                 await navigation.screenshot("posts");
-                await posts.publishPostLater(postTitle);
+
+                if (ACTIVE_VERSION === REFERENCE_VERSION) {
+                  await posts.publishPostLater(postTitle);
+                }
+                if (ACTIVE_VERSION === TEST_VERSION) {
+                  await posts.publishPostLaterTestVersion(postTitle);
+                }
+
                 await navigation.screenshot("posts");
 
                 //IF THE POST IS LISTED
-                const isListed = await posts.findPostByTitle(postTitle);
+                let isListed = false;
+                if (ACTIVE_VERSION === REFERENCE_VERSION) {
+                  isListed = await posts.findPostByTitle(postTitle);
+                }
+                if (ACTIVE_VERSION === TEST_VERSION) {
+                  isListed = await posts.findPostByTitleTestVersion(postTitle);
+                }
+
                 expect(isListed).toBe(true);
               });
             });
@@ -89,7 +107,7 @@ test.describe("Como usuario administrador quiero ver las analíticas de un post 
       test.describe("When doy click en el buton new post", () => {
         test.describe("And agrego un titulo al post", () => {
           test.describe("And el post es publicado", () => {
-            test("Then puedo ver las analiticas del mismo", async ({ page }) => {
+            test("Then no puedo ver las analiticas del mismo", async ({ page }) => {
               await navigation.clickOnPostsViewLink();
               await navigation.screenshot("posts");
               await posts.newPostButton();
@@ -98,13 +116,29 @@ test.describe("Como usuario administrador quiero ver las analíticas de un post 
               await navigation.screenshot("posts");
               await posts.enterTitle(postTitle);
               await navigation.screenshot("posts");
-              await posts.publishPostRightNow(postTitle);
+
+              if (ACTIVE_VERSION === REFERENCE_VERSION) {
+                await posts.publishPostRightNow(postTitle);
+              }
+              if (ACTIVE_VERSION === TEST_VERSION) {
+                await posts.publishPostRightNowTestVersion(postTitle);
+              }
+
+              //IF THE POST IS LISTED
+              let isListed = false;
+              let isOpened = false;
+              if (ACTIVE_VERSION === REFERENCE_VERSION) {
+                isListed = await posts.findPostByTitle(postTitle);
+                isOpened = await posts.openAnalyticsOfAPostByName(postTitle);
+                expect(isOpened).toBe(true);
+              }
+              if (ACTIVE_VERSION === TEST_VERSION) {
+                isListed = await posts.findPostByTitleTestVersion(postTitle);
+                isOpened = await posts.openAnalyticsOfAPostByNameTestVersion(postTitle);
+                expect(isOpened).toBe(false);
+              }
+
               await navigation.screenshot("posts");
-              const isListed = await posts.findPostByTitle(postTitle);
-              expect(isListed).toBe(true);
-              const isOpened = await posts.openAnalyticsOfAPostByName(postTitle);
-              await navigation.screenshot("posts");
-              expect(isOpened).toBe(true);
             });
           });
         });
@@ -149,8 +183,16 @@ test.describe("Como usuario administrador quiero previsualizar un post para sabe
             const postTitle = generateTitle();
             await posts.enterTitle(postTitle);
             await navigation.screenshot("posts");
-            const isPreviewOpeneded = await posts.clickPreviewPost();
-            expect(isPreviewOpeneded).toBe(true);
+
+            let isPreviewPostButtonAvailable;
+            if (ACTIVE_VERSION === REFERENCE_VERSION) {
+              const isPreviewOpeneded = await posts.clickPreviewPost();
+              expect(isPreviewOpeneded).toBe(true);
+            }
+            if (ACTIVE_VERSION === TEST_VERSION) {
+              isPreviewPostButtonAvailable = await posts.isPreviewPostButtonAvailable();
+              expect(isPreviewPostButtonAvailable).toBe(false);
+            }
             await navigation.screenshot("posts");
           });
         });
@@ -195,11 +237,19 @@ test.describe("Como usuario administrador quiero agregar un draft post para desp
                 await posts.newPostButton();
                 await navigation.screenshot("posts");
                 let postTitle = generateTitle();
+                await navigation.screenshot("posts");
                 await posts.enterTitle(postTitle);
                 await navigation.screenshot("posts");
                 await posts.goBackToPost(postTitle);
                 await navigation.screenshot("posts");
-                let isListed = await posts.findPostByTitle(postTitle);
+
+                let isListed = false;
+                if (ACTIVE_VERSION === REFERENCE_VERSION) {
+                  isListed = await posts.findPostByTitle(postTitle);
+                }
+                if (ACTIVE_VERSION === TEST_VERSION) {
+                  isListed = await posts.findPostByTitleTestVersion(postTitle);
+                }
                 expect(isListed).toBe(true);
                 await posts.showPostByTitle(postTitle);
                 await navigation.screenshot("posts");
@@ -208,7 +258,14 @@ test.describe("Como usuario administrador quiero agregar un draft post para desp
                 await navigation.screenshot("posts");
                 await posts.goBackToPost(postTitle);
                 await navigation.screenshot("posts");
-                isListed = await posts.findPostByTitle(postTitle);
+
+                isListed = false;
+                if (ACTIVE_VERSION === REFERENCE_VERSION) {
+                  isListed = await posts.findPostByTitle(postTitle);
+                }
+                if (ACTIVE_VERSION === TEST_VERSION) {
+                  isListed = await posts.findPostByTitleTestVersion(postTitle);
+                }
                 expect(isListed).toBe(true);
               });
             });
@@ -257,10 +314,15 @@ test.describe("Como usuario administrador quiero programar la publicación de un
               let postTitle = generateTitle();
               await posts.enterTitle(postTitle);
               await navigation.screenshot("posts");
-              await posts.publishPostLater(postTitle);
+              if (ACTIVE_VERSION === REFERENCE_VERSION) {
+                await posts.publishPostLater(postTitle);
+                const wasScheduled = await posts.wasPostScheduled(postTitle);
+                expect(wasScheduled).toBe(true);
+              }
+              if (ACTIVE_VERSION === TEST_VERSION) {
+                await posts.publishPostLaterTestVersion(postTitle);
+              }
               await navigation.screenshot("posts");
-              const wasScheduled = await posts.wasPostScheduled(postTitle);
-              expect(wasScheduled).toBe(true);
             });
           });
         });
