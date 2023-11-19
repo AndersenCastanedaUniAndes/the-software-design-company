@@ -71,10 +71,13 @@ Then(
 );
 
 When('I click in the Publish button', async function () {
-  let element = await this.driver.$('button[data-test-button="publish-flow"]');
+  let element;
   if (tag.includes('4.48.9')) {
     element = await this.driver.$('div.gh-publishmenu-trigger');
+  } else {
+    element = await this.driver.$('button[data-test-button="publish-flow"]');
   }
+
   return await element.click();
 });
 
@@ -118,6 +121,13 @@ Then('I validate that the post was sheduled successfully', async function () {
   expect((await element.getText()).toLowerCase()).to.equal(
     'Scheduled'.toLowerCase()
   );
+});
+
+When('I valide post filter is not applied', async function () {
+  if (tag.includes('4.48.9')) {
+    let allpostsButton = await this.driver.$$('a[href="#/posts/"]')[0];
+    await allpostsButton?.click();
+  }
 });
 
 When(
