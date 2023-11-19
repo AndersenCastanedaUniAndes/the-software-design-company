@@ -7,7 +7,7 @@ exports.PostPageObject = class PostPageObject {
   }
 
   async newPostButton() {
-    await this.page.locator("a[data-test-new-post-button]").click();
+    await this.page.locator("section.view-actions a[href='#/editor/post/']").click();
   }
 
   async postListButton() {
@@ -15,15 +15,15 @@ exports.PostPageObject = class PostPageObject {
   }
 
   async enterTitle(title) {
-    await this.page.locator("textarea[data-test-editor-title-input]").fill("");
-    await this.page.locator("textarea[data-test-editor-title-input]").fill(`${title}`);
+    await this.page.locator("textarea.gh-editor-title").fill("",);
+    await this.page.locator("textarea.gh-editor-title").fill(`${title}`);
     await this.page.keyboard.press("Enter");
     await this.page.waitForLoadState("networkidle");
   }
 
-  async publishPostLater(title) {
+  async publishPostLater() {
     // PULISH
-    await this.page.locator('button[data-test-button="publish-flow"]').click();
+    await this.page.locator('button.gh-publish-trigger').click();
     await this.page.waitForSelector(".gh-publish-settings-container");
 
     //MODAL
@@ -51,9 +51,31 @@ exports.PostPageObject = class PostPageObject {
     await this.page.waitForSelector(".posts-list");
   }
 
+  async publishPostLaterTestVersion() {
+    // PULISH
+    await this.page.locator('div.gh-publishmenu-trigger').click();
+    await this.page.waitForSelector(".gh-publishmenu-dropdown");
+    await this.page.waitForLoadState("domcontentloaded");
+
+    //MODAL
+    await this.page.locator(".gh-publishmenu-radio.active div.gh-publishmenu-radio-label").click();
+    await this.page.waitForLoadState("domcontentloaded");
+
+     await this.page.locator(".gh-publishmenu-footer button.gh-publishmenu-button").click();
+     await this.page.waitForLoadState("domcontentloaded");
+
+     await this.page.locator(".modal-footer .gh-btn-icon").click();
+     await this.page.waitForLoadState("domcontentloaded");
+
+    await this.page.locator('.gh-editor-header a[href="#/posts/"]').click();
+    await this.page.waitForLoadState("domcontentloaded");
+    await this.page.waitForSelector(".posts-list");
+  }
+  
+
   async publishPostRightNow(title) {
     // PULISH
-    await this.page.locator('button[data-test-button="publish-flow"]').click();
+    await this.page.locator('button.gh-publish-trigger').click();
     await this.page.waitForSelector(".gh-publish-settings-container");
 
     //MODAL
@@ -77,8 +99,37 @@ exports.PostPageObject = class PostPageObject {
     await this.page.waitForSelector(".posts-list");
   }
 
+  async publishPostRightNowTestVersion() {
+    // PULISH
+    await this.page.locator('div.gh-publishmenu-trigger').click();
+    await this.page.waitForSelector(".gh-publishmenu-dropdown");
+    await this.page.waitForLoadState("domcontentloaded");
+
+     await this.page.locator(".gh-publishmenu-footer button.gh-publishmenu-button").click();
+     await this.page.waitForLoadState("domcontentloaded");
+
+     await this.page.locator(".modal-footer .gh-btn-icon").click();
+     await this.page.waitForLoadState("domcontentloaded");
+
+    await this.page.locator('.gh-editor-header a[href="#/posts/"]').click();
+    await this.page.waitForLoadState("domcontentloaded");
+    await this.page.waitForSelector(".posts-list");
+  }
+
   async findPostByTitle(title) {
     const list = await this.page.locator("li[data-test-post-id] .gh-content-entry-title").all();
+    let wasCreated = false;
+    for (let item of list) {
+      let postTitle = await item.innerText();
+      if (postTitle.includes(title)) {
+        wasCreated = true;
+      }
+    }
+    return wasCreated;
+  }
+
+  async findPostByTitleTestVersion(title) {
+    const list = await this.page.locator("li.gh-posts-list-item .gh-content-entry-title").all();
     let wasCreated = false;
     for (let item of list) {
       let postTitle = await item.innerText();
@@ -119,6 +170,22 @@ exports.PostPageObject = class PostPageObject {
     return wasOpened;
   }
 
+  async openAnalyticsOfAPostByNameTestVersion(title) {
+    const list = await this.page.locator("li.gh-posts-list-item").all();
+    let wasOpened = false;
+    for (let item of list) {
+        let postTitle = await item.locator(".gh-content-entry-title").innerText();
+        if (postTitle.includes(title)) {
+           wasOpened = await item.locator("a.gh-post-list-button:nth-child(4)").first().isVisible();
+           if (wasOpened){
+              break;
+           }
+        }
+
+    }
+    return wasOpened;
+  }
+
   async wasPostScheduled(title) {
     let wasScheduled = false;
     const list = await this.page.locator("li[data-test-post-id]").all();
@@ -140,9 +207,14 @@ exports.PostPageObject = class PostPageObject {
     return await this.page.isVisible("div.gh-post-preview-container.gh-post-preview-browser-container");
   }
 
+  async isPreviewPostButtonAvailable() {
+    return await this.page.locator('button[data-test-button="publish-preview"]').isVisible();
+  }
+
   async goBackToPost() {
-    await this.page.locator('a[data-test-link="posts"]').click();
+    await this.page.locator('header a[href="#/posts/"]').click();
     await this.page.waitForLoadState("domcontentloaded");
     await this.page.waitForSelector(".posts-list");
   }
 };
+

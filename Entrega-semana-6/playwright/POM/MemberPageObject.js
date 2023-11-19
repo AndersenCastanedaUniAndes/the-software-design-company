@@ -18,8 +18,12 @@ exports.MemberPageObject = class MemberPageObject {
     return await this.page.locator("table.gh-list tbody.ember-view tr a p.gh-members-list-email").all();
   }
 
-  async getEmailErrorMessage() {
+  async getEmailErrorMessage() { 
     return await this.page.locator("div.gh-cp-member-email-name .form-group.max-width.error p").innerText();
+  }
+
+  async getEmailErrorMessageTestVersion() { 
+    return await this.page.locator(".gh-alert-red .gh-alert-content").first().innerText();
   }
 
   async getNoteErrorMessage() {
