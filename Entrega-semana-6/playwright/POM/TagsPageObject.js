@@ -55,7 +55,7 @@ exports.TagsPageObject = class PostPageObject {
     async deleteTagButton(){
         await this.page.locator('section.gh-canvas > div > button.gh-btn-red').click();
         await this.page.waitForLoadState("domcontentloaded");
-        await this.page.locator('section.modal-content div.modal-footer .gh-btn-red').first().click();
+        await this.page.locator('.modal-content div.modal-footer .gh-btn-red').first().click();
     }
 
     async findDeletedTagByName(name) {
