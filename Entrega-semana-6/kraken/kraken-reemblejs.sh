@@ -17,4 +17,4 @@ echo "*********** Running kraken ***********"
 npx kraken-node run
 
 echo "*********** Running resemblejs ***********"
-sh resemblejs.sh
+sh ./resemblejs/utils/resemblejs.sh

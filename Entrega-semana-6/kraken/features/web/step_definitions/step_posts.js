@@ -13,7 +13,16 @@ When(
   'I go to the posts section with selector {string}',
   async function (string) {
     if (tag.includes('4.48.9')) {
-      await this.driver.$('button.gh-alert-close')?.click();
+      try {
+        const button = await this.driver.$('button.gh-alert-close')?.click();
+        if (button) {
+          button.click();
+        } else {
+          console.log('Button not found');
+        }
+      } catch (error) {
+        console.error(error);
+      }
     }
     let element = await this.driver.$(string);
     return await element.click();
@@ -120,7 +129,7 @@ When(
     for (const element of elements) {
       let name = await element.$('a').getText();
       if (name.startsWith(string)) {
-        elementFound = element.$$('a')[0];
+        elementFound = element;
         break;
       }
     }
