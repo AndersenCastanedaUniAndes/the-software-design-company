@@ -15,7 +15,7 @@ exports.PostPageObject = class PostPageObject {
   }
 
   async enterTitle(title) {
-    await this.page.locator("textarea.gh-editor-title").fill("",);
+    await this.page.locator("textarea.gh-editor-title").fill("");
     await this.page.locator("textarea.gh-editor-title").fill(`${title}`);
     await this.page.keyboard.press("Enter");
     await this.page.waitForLoadState("networkidle");
@@ -142,11 +142,11 @@ exports.PostPageObject = class PostPageObject {
 
   async showPostByTitle(title) {
     let wasOpened = false;
-    const list = await this.page.locator("li[data-test-post-id]").all();
+    const list = await this.page.locator(".posts-list li.gh-posts-list-item").all();
     for (let item of list) {
-      let postTitle = await item.locator(".gh-content-entry-title").innerText();
+      let postTitle = await item.locator("h3.gh-content-entry-title").innerText();
       if (postTitle.includes(title)) {
-        await item.click();
+        await item.locator("a:nth-child(1)").first().click();
         await this.page.waitForLoadState("domcontentloaded");
         wasOpened = true;
         break;

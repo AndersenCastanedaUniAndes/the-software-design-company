@@ -201,8 +201,7 @@ test.describe("Como usuario administrador quiero previsualizar un post para sabe
   });
 });
 
-// Flanky Test
-test.describe.skip("Como usuario administrador quiero agregar un draft post para después editar su contenido", () => {
+test.describe("Como usuario administrador quiero agregar un draft post para después editar su contenido", () => {
   let navigation;
   let authorization;
   let posts;
