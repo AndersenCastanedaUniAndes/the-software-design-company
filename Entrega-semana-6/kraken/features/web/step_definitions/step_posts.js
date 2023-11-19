@@ -13,7 +13,7 @@ When(
   'I go to the posts section with selector {string}',
   async function (string) {
     if (tag.includes('4.48.9')) {
-      await this.driver.$('button.gh-alert-close').click();
+      await this.driver.$('button.gh-alert-close')?.click();
     }
     let element = await this.driver.$(string);
     return await element.click();
