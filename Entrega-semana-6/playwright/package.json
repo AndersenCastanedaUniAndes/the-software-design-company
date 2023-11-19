@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "playwright test",
-    "test:ui": "playwright test --ui",
-    "test:report": "playwright show-report",
-    "test:tests":"IS_REFERENCE_OR_TEST=TESTS ACTIVE_VERSION=4.48.9 playwright test",
-    "test:reference":"IS_REFERENCE_OR_TEST=REFERENCE ACTIVE_VERSION=5.69.0 playwright test",
+    "test:tests": "IS_REFERENCE_OR_TEST=TESTS ACTIVE_VERSION=4.48.9 playwright test",
+    "test:reference": "IS_REFERENCE_OR_TEST=REFERENCE ACTIVE_VERSION=5.69.0 playwright test",
     "clean:images": "REFERENCE_IMAGES=./VTK/reference_screenshots/ TESTS_IMAGES=./VTK/test_screenshots/ node setup.js",
     "test:all": "REFERENCE_IMAGES=./VTK/reference_screenshots/ TESTS_IMAGES=./VTK/test_screenshots/ node setup.js && IS_REFERENCE_OR_TEST=REFERENCE ACTIVE_VERSION=5.69.0 playwright test && IS_REFERENCE_OR_TEST=TESTS ACTIVE_VERSION=4.48.9 playwright test",
-    "resemble": "node ./resemble/index.js"
+    "resemble": "node ./resemble/index.js",
+    "test:tests:win": "cross-env IS_REFERENCE_OR_TEST=TESTS ACTIVE_VERSION=4.48.9 playwright test",
+    "test:reference:win": "cross-env IS_REFERENCE_OR_TEST=REFERENCE ACTIVE_VERSION=5.69.0 playwright test",
+    "test:all:images:win": "cross-env REFERENCE_IMAGES=./VTK/reference_screenshots/ TESTS_IMAGES=./VTK/test_screenshots/ node setup.js && IS_REFERENCE_OR_TEST=REFERENCE ACTIVE_VERSION=5.69.0 playwright test && IS_REFERENCE_OR_TEST=TESTS ACTIVE_VERSION=4.48.9 playwright test",
+    "resemble:images:win": "cross-env node ./resemble/index.js",
+    "clean:images:win": "cross-env REFERENCE_IMAGES=./VTK/reference_screenshots/ TESTS_IMAGES=./VTK/test_screenshots/ node setup.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,8 +22,9 @@
     "@faker-js/faker": "^8.3.1",
     "@playwright/test": "^1.39.0",
     "@types/node": "^20.9.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
-    "uuid": "^9.0.1",
-    "resemblejs": "^5.0.0"
+    "resemblejs": "^5.0.0",
+    "uuid": "^9.0.1"
   }
 }
