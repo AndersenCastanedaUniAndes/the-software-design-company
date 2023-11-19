@@ -20,6 +20,15 @@ Follow these steps to run Ghost version 5.69.0 and 4.48.9 with MySQL in Docker:
 3. Run the installer and follow the instructions.
 4. Open Docker Desktop from your Start menu.
 
+In case you get WSL error message "Unexpected WSL error" opening Docker, follow the next steps:
+1. Execute `wsl.exe --update` to upgrade WSL to version 2.
+2. Restart your Windows machine.
+3. Use this command `wsl -l -v` to check if you have Linux distributions installed with the version 2 of WSL.
+4. If you have linux distributions installed with version 2 of WSL you're ready to start setup with docker.
+5. If not, use this command `wsl -l -o` to check the list of the available linux distributions.
+6. Install one of the listed distribution with this command `wsl --install -d <Distribution Name>`.
+7. Now you would be ok to start with this setup.
+
 #### For Linux:
 
 1. Update your existing list of packages: `sudo apt-get update`
