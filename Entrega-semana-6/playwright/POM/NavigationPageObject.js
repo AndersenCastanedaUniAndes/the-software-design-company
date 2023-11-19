@@ -40,7 +40,8 @@ exports.NavigationPageObject = class NavigationPageObject {
       PATH = process.env.TESTS_IMAGES;
     }
     let datetime = new Date().toISOString().replace(/:/g, ".");
-    const path = `.${PATH}${section ?? "default"}-${datetime}.png`;
+    const path = `${PATH}${section ?? "default"}-${datetime}.png`;
+     
     await this.page.screenshot({ path: path });
   }
 };

@@ -59,7 +59,7 @@ async function executeTest() {
       }
 
       const referencesImagesWithPath = referencesImages.map((item) => `.${referenceImagesDir}${item}`);
-      const comparingImagesWithPath = referencesImages.map((item) => `.${testImagesDir}${item}`);
+      const comparingImagesWithPath = imagesToCompare.map((item) => `.${testImagesDir}${item}`);
       const report = buildHTMLReport.buildReport(referencesImagesWithPath,comparingImagesWithPath,resultInfo)
       buildHTMLReport.saveReport(`./results/report.html`, report)
 
