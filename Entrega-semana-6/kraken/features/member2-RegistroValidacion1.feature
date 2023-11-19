@@ -1,4 +1,4 @@
-@5.69.0
+@4.48.9
 Feature: member2-registro-validacion-correo-invalido
 
 @user1 @web
@@ -11,6 +11,8 @@ Scenario: Como usuario administrador quiero poder ser prevenido de crear miembro
     And I wait for 2 seconds
     And I click sign in button with selector "button[type='submit']"
     And I wait for 4 seconds
+    And I try to remove the new version banner
+    And I wait for 2 seconds
     When I go to the members section with selector "a[href='#/members/']"
     And I wait for 2 seconds
     And I click in the new member button with selector "a[href='#/members/new/']"

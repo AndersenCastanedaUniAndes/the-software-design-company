@@ -9,18 +9,6 @@ Before(function (scenario) {
 When(
   'I go to the members section with selector {string}',
   async function (string) {
-    if (tag.includes('4.48.9')) {
-      try {
-        const button = await this.driver.$('button.gh-alert-close')?.click();
-        if (button) {
-          button.click();
-        } else {
-          console.log('Button not found');
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
     let element = await this.driver.$(string);
     return await element.click();
   }

@@ -1,4 +1,4 @@
-@5.69.0
+@4.48.9
 Feature: Agregar un tag a una página existente
 
 @user1 @web
@@ -11,6 +11,8 @@ Scenario: Como usuario administrador quiero agregar un tag a una página para qu
   And I wait for 2 seconds
   And I click sign in button with selector "button[type='submit']"
   And I wait for 5 seconds
+  And I try to remove the new version banner
+  And I wait for 2 seconds
   When I go to the pages section
   And I wait for 2 seconds
   And I click in the new page button

@@ -66,3 +66,20 @@ When(
     return await previewButton.click();
   }
 );
+
+When("I try to remove the new version banner", async function () {
+  if (tag.includes('4.48.9')) {
+    try {
+      const button = await this.driver.$('button.gh-alert-close')?.click();
+      if (button) {
+        await button.click();
+      } else {
+        console.log('Button not found');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  return;
+});

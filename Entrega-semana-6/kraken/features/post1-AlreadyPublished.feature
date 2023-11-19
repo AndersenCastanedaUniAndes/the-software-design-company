@@ -1,4 +1,4 @@
-@5.69.0
+@4.48.9
 Feature: Posts modificar post publicado
 
 @user1 @web
@@ -11,6 +11,8 @@ Scenario: Como usuario administrador quiero modificar un post ya publicado para 
   And I wait for 1 seconds
   And I click sign in button with selector "button[type='submit']"
   And I wait for 7 seconds
+  And I try to remove the new version banner
+  And I wait for 2 seconds
   When I go to the posts section with selector "a[href='#/posts/']"
   And I wait for 1 seconds
   And I click in the new post button with selector "a[href='#/editor/post/']"
