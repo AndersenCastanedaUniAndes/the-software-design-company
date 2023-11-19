@@ -75,7 +75,11 @@ Make sure to have a terminal opened in order to execute the next steps for ghost
 
 3. Create a network: `docker network create ghost_network_4_48_9`
 
-4. Run the MySQL container: `docker run --name mysql_ghost_4489 --network=ghost_network_4_48_9 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=ghost_4489 -d arm64v8/mysql`
+4. Run the MySQL container:
+
+    - arm64v8 (Mac M1) container: `docker run --name mysql_ghost_4489 --network=ghost_network_4_48_9 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=ghost_4489 -d arm64v8/mysql`
+
+    - x86 container: `docker run --name mysql_ghost_4489 --network=ghost_network_4_48_9 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=ghost_4489 -d mysql:5.7`
 
 5. Run the Ghost container: `docker run --name ghost_container_4489 --network=ghost_network_4_48_9 -p 3002:2368 -e database__client=mysql -e database__connection__host=mysql_ghost_4489 -e database__connection__user=root -e database__connection__password=root -e database__connection__database=ghost_4489 -d ghost:4.48.9`
 
