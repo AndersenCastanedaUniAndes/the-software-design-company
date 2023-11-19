@@ -28,6 +28,14 @@ exports.NavigationPageObject = class NavigationPageObject {
     await this.page.locator('a[data-test-nav="posts"]').click();
   }
 
+  async clickOnTagsViewLink(){
+    await this.page.locator('a[href="#/tags/"]').click();
+  }
+
+  async clickOnInternalTagViewLink(){
+    await this.page.locator('button[data-test-tags-nav="internal"]').click();
+  }
+
   async screenshot(section){
     let datetime = new Date().toISOString().replace(/:/g,".");
     const path = `./VTK/screenshots/${section ?? "default"}-${datetime}.png`
