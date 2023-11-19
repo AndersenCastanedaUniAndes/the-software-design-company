@@ -1,4 +1,4 @@
-cd ..
+cd backstopjs
 
 
 echo "*********** Running installation and setup for BackstopJS ***********"
