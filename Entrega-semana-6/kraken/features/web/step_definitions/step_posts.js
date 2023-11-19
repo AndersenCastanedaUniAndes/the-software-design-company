@@ -129,7 +129,7 @@ When(
     for (const element of elements) {
       let name = await element.$('a').getText();
       if (name.startsWith(string)) {
-        elementFound = element.$$('a')[0];
+        elementFound = element;
         break;
       }
     }
