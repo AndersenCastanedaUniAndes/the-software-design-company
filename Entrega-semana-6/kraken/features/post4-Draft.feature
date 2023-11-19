@@ -19,6 +19,8 @@ Scenario: Como usuario administrador quiero agregar un draft post para después 
   And I wait for 1 seconds
   And I go back to the list of posts clicking the posts button with selector "a[data-test-link='posts']"
   And I wait for 1 seconds
+  And I valide post filter is not applied
+  And I wait for 1 seconds
   And I click the post in order to edit it "$$name_postTitle"
   And I wait for 1 seconds
   And I enter title "$name_postTitleModified" into field with selector "textarea.gh-editor-title"
