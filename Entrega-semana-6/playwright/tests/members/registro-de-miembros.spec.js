@@ -6,6 +6,10 @@ const { MemberPageObject } = require("../../POM/MemberPageObject");
 const { generateRamdomMember, generateInvalidMemberEmail } = require("../../helpers/common");
 require("dotenv").config();
 
+const REFERENCE_VERSION = process.env.REFERENCE_VERSION;
+const TEST_VERSION = process.env.TEST_VERSION;
+const ACTIVE_VERSION = process.env.ACTIVE_VERSION;
+
 test.describe("Como usuario administrador quiero poder registrar un nuevo miembro para poder enviarles novedades", () => {
   let navigation;
   let authorization;
@@ -163,8 +167,6 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
               // GENERATES A RAMDOM PERSON
               const member = generateRamdomMember();
 
-              const invalidMessage = "Member already exists. Attempting to add member with existing email address";
-
               // FILL OUT THE NEW MEMBER FORM
               // FILL OUT THE NEW MEMBER FORM
               await members.fillOutName(member);
@@ -187,8 +189,17 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
               await navigation.screenshot("members");
 
               // ASSERTION
-              const error = await members.getEmailErrorMessage();
-              expect(error).toBe(invalidMessage);
+              let error = "";
+              if (ACTIVE_VERSION === REFERENCE_VERSION) {
+                const invalidMessage = "Member already exists. Attempting to add member with existing email address";
+                error = await members.getEmailErrorMessage();
+                expect(error).toBe(invalidMessage);
+              }
+              if (ACTIVE_VERSION === TEST_VERSION) {
+                const invalidMessage = "Validation error, cannot save member. Member already exists. Attempting to add member with existing email address"
+                error = await members.getEmailErrorMessageTestVersion();
+                expect(error).toBe(invalidMessage);
+              }
             });
           });
         });
