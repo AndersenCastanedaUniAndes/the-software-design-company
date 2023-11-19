@@ -1,0 +1,31 @@
+{
+    "id": "ghost-4.48.9",
+    "viewports": [
+      {
+        "label": "",
+        "width": 1781,
+        "height": 1146
+      }
+    ],
+    "onBeforeScript": "puppet/onBefore.js",
+    "onReadyScript": "puppet/onReady.js",
+    "scenarios": [
+    ],
+    "paths": {
+      "bitmaps_reference": "backstop_data/bitmaps_reference/FOLDERNAME",
+      "bitmaps_test": "backstop_data/bitmaps_test",
+      "engine_scripts": "backstop_data/engine_scripts",
+      "html_report": "backstop_data/html_report/FOLDERNAME",
+      "ci_report": "backstop_data/ci_report",
+      "fileNameTemplate": "{scenarioLabel}"
+    },
+    "report": ["browser"],
+    "engine": "puppeteer",
+    "engineOptions": {
+      "args": ["--no-sandbox"]
+    },
+    "asyncCaptureLimit": 5,
+    "asyncCompareLimit": 50,
+    "debug": false,
+    "debugWindow": false
+  }

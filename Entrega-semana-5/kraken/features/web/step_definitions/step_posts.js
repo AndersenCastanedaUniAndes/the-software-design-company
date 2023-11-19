@@ -6,7 +6,7 @@ const should = chai.should();
 When(
   'I go to the posts section with selector {string}',
   async function (string) {
-    let element = await this.driver.$(string);
+    let element = await this.driver.$(string)[0];
     return await element.click();
   }
 );
@@ -14,7 +14,7 @@ When(
 When(
   'I click in the new post button with selector {string}',
   async function (string) {
-    let element = await this.driver.$(string);
+    let element = await this.driver.$(string)[1];
     return await element.click();
   }
 );

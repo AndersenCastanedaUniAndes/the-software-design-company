@@ -4,6 +4,13 @@ cypress/videos
 **/1-getting-started
 **/2-advanced-examples
 **/node_modules/
+**/screenshots/**
 **/results/
+**/backstop_data/
+**/VRT
 Entrega-semana-5/kraken/reports
 Entrega-semana-5/kraken/.kraken
+Entrega-semana-5/kraken/VRT/
+Entrega-semana-6/kraken/.kraken
+Entrega-semana-6/kraken/reports
+Entrega-semana-6/kraken/VRT/
