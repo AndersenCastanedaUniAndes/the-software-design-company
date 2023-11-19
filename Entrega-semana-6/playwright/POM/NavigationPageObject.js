@@ -1,4 +1,5 @@
 
+require("dotenv").config();
 exports.NavigationPageObject = class NavigationPageObject {
   /**
    * @param {import('@playwright/test').Page} page
@@ -27,16 +28,9 @@ exports.NavigationPageObject = class NavigationPageObject {
     await this.page.locator('a[data-test-nav="posts"]').click();
   }
 
-  async clickOnTagsViewLink(){
-    await this.page.locator('a[href="#/tags/"]').click();
-  }
-
-  async clickOnInternalTagViewLink(){
-    await this.page.locator('button[data-test-tags-nav="internal"]').click();
-  }
-  
-  async screenshot(){
+  async screenshot(section){
     let datetime = new Date().toISOString().replace(/:/g,".");
-    await this.page.screenshot({path:`./screenshots/${datetime}.png`});
+    const path = `./VTK/screenshots/${section ?? "default"}-${datetime}.png`
+    await this.page.screenshot({path:path});
   }
 };

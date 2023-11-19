@@ -4,6 +4,7 @@ const { NavigationPageObject } = require("../../POM/NavigationPageObject");
 const { AuthorizationPageObject } = require("../../POM/AuthorizationPageObject");
 const { MemberPageObject } = require("../../POM/MemberPageObject");
 const { generateRamdomMember, generateInvalidMemberEmail } = require("../../helpers/common");
+require("dotenv").config();
 
 test.describe("Como usuario administrador quiero poder registrar un nuevo miembro para poder enviarles novedades", () => {
   let navigation;
@@ -16,14 +17,17 @@ test.describe("Como usuario administrador quiero poder registrar un nuevo miembr
       authorization = new AuthorizationPageObject(page);
       members = new MemberPageObject(page);
 
+      const user = process.env.USERNAME;
+      const password = process.env.PASSWORD;
+
       await navigation.goToRoot();
 
-      await authorization.fillOutUsername("juan.de.jesus.mirelles@gmail.com");
-      await navigation.screenshot();
-      await authorization.fillOutPassword("0123456789");
-      await navigation.screenshot();
+      await authorization.fillOutUsername(user);
+      await navigation.screenshot("members");
+      await authorization.fillOutPassword(password);
+      await navigation.screenshot("members");
       await authorization.submit();
-      await navigation.screenshot();
+      await navigation.screenshot("members");
     });
 
     test.describe("And navega hacia la seccion de miembros", () => {
@@ -32,23 +36,23 @@ test.describe("Como usuario administrador quiero poder registrar un nuevo miembr
           test.describe("And el miembro es creado sastifactoriamene", () => {
             test("Then debe verse en la lista de miembros", async ({ page }) => {
               await navigation.clickOnMembersViewLink();
-              await navigation.screenshot();
+              await navigation.screenshot("members");
 
               await navigation.clickOnNewMemberViewLink();
-              await navigation.screenshot();
+              await navigation.screenshot("members");
 
               // GENERATES A RAMDOM PERSON
               const member = generateRamdomMember();
 
               // FILL OUT THE NEW MEMBER FORM
               await members.fillOutName(member);
-              await navigation.screenshot();
+              await navigation.screenshot("members");
               await members.fillOutEmail(member);
-              await navigation.screenshot();
+              await navigation.screenshot("members");
               await members.clickOnSaveButton();
-              await navigation.screenshot();
+              await navigation.screenshot("members");
               await navigation.clickOnMembersViewLink();
-              await navigation.screenshot();
+              await navigation.screenshot("members");
 
               //CHECKS IN THE TABLE IF THE MEMBER IS LISTED
               const items = await members.getMembersTable();
@@ -73,21 +77,24 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
   let authorization;
   let members;
 
-    test.beforeEach(async ({ page }) => {
-      navigation = new NavigationPageObject(page);
-      authorization = new AuthorizationPageObject(page);
-      members = new MemberPageObject(page);
+  test.beforeEach(async ({ page }) => {
+    navigation = new NavigationPageObject(page);
+    authorization = new AuthorizationPageObject(page);
+    members = new MemberPageObject(page);
 
-      await navigation.goToRoot();
+    const user = process.env.USERNAME;
+    const password = process.env.PASSWORD;
 
-      await authorization.fillOutUsername("juan.de.jesus.mirelles@gmail.com");
-      await navigation.screenshot();
-      await authorization.fillOutPassword("0123456789");
-      await navigation.screenshot();
-      await authorization.submit();
-      await navigation.screenshot();
-    });
-  
+    await navigation.goToRoot();
+
+    await authorization.fillOutUsername(user);
+    await navigation.screenshot("members");
+    await authorization.fillOutPassword(password);
+    await navigation.screenshot("members");
+    await authorization.submit();
+    await navigation.screenshot("members");
+  });
+
   test.describe("Given un usuario autenticado en la aplicación", () => {
     test.describe("And navega hacia la seccion de miembros", () => {
       test.describe("And navega hacia la creación de un miembro", () => {
@@ -97,9 +104,9 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
               const invalidMessage = "Invalid Email.";
 
               await navigation.clickOnMembersViewLink();
-await navigation.screenshot();
+              await navigation.screenshot("members");
               await navigation.clickOnNewMemberViewLink();
-await navigation.screenshot();
+              await navigation.screenshot("members");
 
               // GENERATES A RAMDOM PERSON
               const member = generateRamdomMember();
@@ -108,17 +115,17 @@ await navigation.screenshot();
               const invalidEmail = generateInvalidMemberEmail(member.fullname);
               member.email = invalidEmail.email;
 
-               // FILL OUT THE NEW MEMBER FORM
+              // FILL OUT THE NEW MEMBER FORM
               await members.fillOutName(member);
-              await navigation.screenshot();
+              await navigation.screenshot("members");
               await members.fillOutEmail(member);
-              await navigation.screenshot();
+              await navigation.screenshot("members");
               await members.clickOnSaveButton();
-              await navigation.screenshot();
+              await navigation.screenshot("members");
 
               // ASSERTION
               const error = await members.getEmailErrorMessage();
-              expect(error).toBe(invalidMessage)
+              expect(error).toBe(invalidMessage);
             });
           });
         });
@@ -126,57 +133,72 @@ await navigation.screenshot();
           test.describe("And intenta crear un miembro", () => {
             test("Then entonces es alertado del error con un mensaje", async () => {
               await navigation.clickOnMembersViewLink();
+              await navigation.screenshot("members");
               await navigation.clickOnNewMemberViewLink();
+              await navigation.screenshot("members");
 
               // GENERATES A RAMDOM PERSON
               const member = generateRamdomMember();
 
               // FILL OUT THE NEW MEMBER FORM
               const invalidMessage = "Please enter an email.";
-   
+
               await members.clickOnSaveButton();
+              await navigation.screenshot("members");
 
               // ASSERTION
               const error = await members.getEmailErrorMessage();
-              expect(error).toBe(invalidMessage)
+              expect(error).toBe(invalidMessage);
             });
           });
         });
         test.describe("When ingresa un correo ya existente", () => {
           test.describe("And intenta crear un miembro", () => {
-            test("Then entonces es alertado del error con un mensaje", async ({page}) => {
+            test("Then entonces es alertado del error con un mensaje", async ({ page }) => {
               await navigation.clickOnMembersViewLink();
+              await navigation.screenshot("members");
               await navigation.clickOnNewMemberViewLink();
+              await navigation.screenshot("members");
+
               // GENERATES A RAMDOM PERSON
               const member = generateRamdomMember();
 
               const invalidMessage = "Member already exists. Attempting to add member with existing email address";
 
               // FILL OUT THE NEW MEMBER FORM
-               // FILL OUT THE NEW MEMBER FORM
+              // FILL OUT THE NEW MEMBER FORM
               await members.fillOutName(member);
+              await navigation.screenshot("members");
               await members.fillOutEmail(member);
+              await navigation.screenshot("members");
               await members.clickOnSaveButton();
+              await navigation.screenshot("members");
 
               // GOES TO THE NEW MEMBER PAGE
               await navigation.clickOnMembersViewLink();
+              await navigation.screenshot("members");
               await navigation.clickOnNewMemberViewLink();
+              await navigation.screenshot("members");
 
               // FILL OUT THE NEW MEMBER FORM - AGAIN
-               await members.fillOutEmail(member);
+              await members.fillOutEmail(member);
+              await navigation.screenshot("members");
               await members.clickOnSaveButton();
+              await navigation.screenshot("members");
 
               // ASSERTION
-               const error = await members.getEmailErrorMessage();
-               expect(error).toBe(invalidMessage)
+              const error = await members.getEmailErrorMessage();
+              expect(error).toBe(invalidMessage);
             });
           });
         });
         test.describe("When ingresa una nota con mas de 500 carácteres", () => {
           test.describe("And intenta crear un miembro", () => {
-            test("Then entonces es alertado del error con un mensaje", async ({page}) => {
+            test("Then entonces es alertado del error con un mensaje", async ({ page }) => {
               await navigation.clickOnMembersViewLink();
+              await navigation.screenshot("members");
               await navigation.clickOnNewMemberViewLink();
+              await navigation.screenshot("members");
 
               // GENERATES A RAMDOM PERSON
               const member = generateRamdomMember();
@@ -186,18 +208,21 @@ await navigation.screenshot();
 
               // FILL OUT THE NEW MEMBER FORM
               await members.fillOutEmail(member);
+              await navigation.screenshot("members");
 
               // FILLS OUT THE NOTE FIELD
-              await members.fillOutNote(longNote)
-              await members.onBlurNote(longNote)
+              await members.fillOutNote(longNote);
+              await navigation.screenshot("members");
+              await members.onBlurNote(longNote);
+              await navigation.screenshot("members");
               await members.clickOnSaveButton();
+              await navigation.screenshot("members");
 
-               await page.screenshot({ path: "screenshot11111.png" });
               // CLICKS ON THE SAVE BUTTON
 
-               // ASSERTION
-               const error = await members.getNoteErrorMessage();
-               expect(error).toBe(invalidMessage)
+              // ASSERTION
+              const error = await members.getNoteErrorMessage();
+              expect(error).toBe(invalidMessage);
             });
           });
         });

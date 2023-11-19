@@ -1,6 +1,7 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
 
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -25,7 +26,7 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'http://localhost:2368',
+    baseURL: process.env.IS_REFERENCE_OR_TEST === "REFERENCE" ? process.env.REFERENCE_URL : process.env.TESTS_URL,
     trace: 'on-first-retry',
     viewport: { width: 800, height: 600 },
   
