@@ -4,7 +4,8 @@ const { NavigationPageObject } = require("../../POM/NavigationPageObject");
 const { AuthorizationPageObject } = require("../../POM/AuthorizationPageObject");
 const { MemberPageObject } = require("../../POM/MemberPageObject");
 const { generateRamdomMember, generateInvalidMemberEmail } = require("../../helpers/common");
-require("dotenv").config();
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') })
 
 const REFERENCE_VERSION = process.env.REFERENCE_VERSION;
 const TEST_VERSION = process.env.TEST_VERSION;
@@ -21,7 +22,7 @@ test.describe("Como usuario administrador quiero poder registrar un nuevo miembr
       authorization = new AuthorizationPageObject(page);
       members = new MemberPageObject(page);
 
-      const user = process.env.USERNAME;
+      const user = process.env.USERNAMEGHOST;
       const password = process.env.PASSWORD;
 
       await navigation.goToRoot();
@@ -87,7 +88,7 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
     authorization = new AuthorizationPageObject(page);
     members = new MemberPageObject(page);
 
-    const user = process.env.USERNAME;
+    const user = process.env.USERNAMEGHOST;
     const password = process.env.PASSWORD;
 
     await navigation.goToRoot();
@@ -141,7 +142,7 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
     authorization = new AuthorizationPageObject(page);
     members = new MemberPageObject(page);
 
-    const user = process.env.USERNAME;
+    const user = process.env.USERNAMEGHOST;
     const password = process.env.PASSWORD;
 
     await navigation.goToRoot();
@@ -219,7 +220,7 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
     authorization = new AuthorizationPageObject(page);
     members = new MemberPageObject(page);
 
-    const user = process.env.USERNAME;
+    const user = process.env.USERNAMEGHOST;
     const password = process.env.PASSWORD;
 
     await navigation.goToRoot();
@@ -284,7 +285,7 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
     authorization = new AuthorizationPageObject(page);
     members = new MemberPageObject(page);
 
-    const user = process.env.USERNAME;
+    const user = process.env.USERNAMEGHOST;
     const password = process.env.PASSWORD;
 
     await navigation.goToRoot();

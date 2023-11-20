@@ -4,6 +4,8 @@ const { NavigationPageObject } = require("../../POM/NavigationPageObject");
 const { AuthorizationPageObject } = require("../../POM/AuthorizationPageObject");
 const { PostPageObject } = require("../../POM/PostPageObject");
 const { generateTitle } = require("../../helpers/common");
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') })
 
 const REFERENCE_VERSION = process.env.REFERENCE_VERSION;
 const TEST_VERSION = process.env.TEST_VERSION;
@@ -22,7 +24,7 @@ test.describe("Como usuario administrador quiero modificar un post ya publicado 
 
       await navigation.goToRoot();
 
-      const user = process.env.USERNAME;
+      const user = process.env.USERNAMEGHOST;
       const password = process.env.PASSWORD;
 
       await navigation.goToRoot();
@@ -90,7 +92,7 @@ test.describe("Como usuario administrador quiero ver las analíticas de un post 
       posts = new PostPageObject(page);
 
       await navigation.goToRoot();
-      const user = process.env.USERNAME;
+      const user = process.env.USERNAMEGHOST;
       const password = process.env.PASSWORD;
 
       await navigation.goToRoot();
@@ -159,7 +161,7 @@ test.describe("Como usuario administrador quiero previsualizar un post para sabe
       posts = new PostPageObject(page);
 
       await navigation.goToRoot();
-      const user = process.env.USERNAME;
+      const user = process.env.USERNAMEGHOST;
       const password = process.env.PASSWORD;
 
       await navigation.goToRoot();
@@ -213,7 +215,7 @@ test.describe("Como usuario administrador quiero agregar un draft post para desp
       posts = new PostPageObject(page);
 
       await navigation.goToRoot();
-      const user = process.env.USERNAME;
+      const user = process.env.USERNAMEGHOST;
       const password = process.env.PASSWORD;
 
       await navigation.goToRoot();
@@ -289,7 +291,7 @@ test.describe("Como usuario administrador quiero programar la publicación de un
 
       await navigation.goToRoot();
 
-      const user = process.env.USERNAME;
+      const user = process.env.USERNAMEGHOST;
       const password = process.env.PASSWORD;
 
       await navigation.goToRoot();

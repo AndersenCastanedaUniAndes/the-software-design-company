@@ -3,8 +3,8 @@ const { test, expect } = require("@playwright/test");
 const { NavigationPageObject } = require("../../POM/NavigationPageObject");
 const { AuthorizationPageObject } = require("../../POM/AuthorizationPageObject");
 const { TagsPageObject } = require("../../POM/TagsPageObject");
-
-require("dotenv").config();
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') })
 
 const REFERENCE_VERSION = process.env.REFERENCE_VERSION;
 const TEST_VERSION = process.env.TEST_VERSION;
@@ -21,7 +21,7 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag para d
         authorization = new AuthorizationPageObject(page);
         tags = new TagsPageObject(page);
 
-        const user = process.env.USERNAME;
+        const user = process.env.USERNAMEGHOST;
         const password = process.env.PASSWORD;
   
         await navigation.goToRoot();
@@ -86,7 +86,7 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag para d
         authorization = new AuthorizationPageObject(page);
         tags = new TagsPageObject(page);
   
-        const user = process.env.USERNAME;
+        const user = process.env.USERNAMEGHOST;
         const password = process.env.PASSWORD;
   
         await navigation.goToRoot();
@@ -145,7 +145,7 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag con el
         authorization = new AuthorizationPageObject(page);
         tags = new TagsPageObject(page);
   
-        const user = process.env.USERNAME;
+        const user = process.env.USERNAMEGHOST;
         const password = process.env.PASSWORD;
   
         await navigation.goToRoot();
@@ -197,7 +197,7 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag en la 
         authorization = new AuthorizationPageObject(page);
         tags = new TagsPageObject(page);
   
-        const user = process.env.USERNAME;
+        const user = process.env.USERNAMEGHOST;
         const password = process.env.PASSWORD;
   
         await navigation.goToRoot();
@@ -268,7 +268,7 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag en la 
         authorization = new AuthorizationPageObject(page);
         tags = new TagsPageObject(page);
   
-        const user = process.env.USERNAME;
+        const user = process.env.USERNAMEGHOST;
         const password = process.env.PASSWORD;
   
         await navigation.goToRoot();

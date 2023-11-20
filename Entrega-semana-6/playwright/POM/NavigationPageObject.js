@@ -12,24 +12,24 @@ exports.NavigationPageObject = class NavigationPageObject {
   }
 
   async clickOnMembersViewLink() {
-    await this.page.locator('.relative a[href="#/members/"]').click();
+    await this.page.locator('.relative a[href="#/members/"]').first().click();
   }
 
   async clickOnNewMemberViewLink() {
-    await this.page.locator('a[href="#/members/new/"]').click();
+    await this.page.locator('a[href="#/members/new/"]').first().click();
   }
 
   async clickOnPostsViewLink() {
-    await this.page.locator('li a[href="#/posts/"]').click({ force: true });
+    await this.page.locator('li a[href="#/posts/"]').first().click({ force: true });
     await this.page.waitForLoadState("domcontentloaded");
   }
 
   async clickOnPagesViewLink() {
-    await this.page.locator('a[href="#/pages/"]').click({ force: true });
+    await this.page.locator('a[href="#/pages/"]').first().click({ force: true });
   }
 
   async clickOnTagsViewLink(){
-    await this.page.locator('li a[href="#/tags/"]').click({ force: true });
+    await this.page.locator('li a[href="#/tags/"]').first().click({ force: true });
     await this.page.waitForLoadState("domcontentloaded");
   }
 
