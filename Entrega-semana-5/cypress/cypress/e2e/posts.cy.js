@@ -5,7 +5,7 @@ describe('Feature Posts', () => {
   let profile = {};
   let loginObj;
   before(async () => {
-    profile = await cy.fixture("profile");
+    profile = await cy.fixture('profile');
     loginObj = new LoginPage();
   });
   beforeEach(async function () {

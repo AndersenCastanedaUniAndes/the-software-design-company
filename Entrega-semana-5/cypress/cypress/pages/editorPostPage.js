@@ -1,6 +1,6 @@
 import PostsPage from './postsPage';
-
-class PublishPostPage {
+import MainPage from './mainPage';
+class PublishPostPage extends MainPage {
   elements = {
     continueFinalReviewButton: () =>
       cy.get('button[data-test-button="continue"]'),
@@ -14,30 +14,35 @@ class PublishPostPage {
 
   clickContinueFinalReview() {
     this.elements.continueFinalReviewButton().click();
+    this.takeScreenshot()
     return this;
   }
 
   clickPublish() {
     this.elements.publishButton().click();
+    this.takeScreenshot()
     return this;
   }
 
   clickRightNow() {
     this.elements.rightNowButton().click();
+    this.takeScreenshot()
     return this;
   }
 
   clickScheduleForLater() {
     this.elements.scheduleForLaterButton().click();
+    this.takeScreenshot()
     return this;
   }
 
   clickGoBackToEditor() {
     this.elements.goBackToEditorButton().click();
+    this.takeScreenshot()
   }
 }
 
-class previewPostPage {
+class previewPostPage extends MainPage {
   elements = {
     preview: () =>
       cy.get('div.gh-post-preview-container.gh-post-preview-browser-container'),
@@ -48,8 +53,9 @@ class previewPostPage {
   }
 }
 
-class EditorPostPage {
+class EditorPostPage extends MainPage  {
   constructor() {
+    super(); 
     this.publishModal = new PublishPostPage();
   }
 
@@ -65,6 +71,7 @@ class EditorPostPage {
     this.elements.postTitleTextarea().clear();
     this.elements.postTitleTextarea().type(title);
     this.elements.postTitleTextarea().type('{enter}');
+    this.takeScreenshot()
     return this;
   }
 
@@ -72,6 +79,7 @@ class EditorPostPage {
     this.elements.goBackToPostsButton().click();
 
     const postsPage = new PostsPage();
+    this.takeScreenshot()
     return postsPage;
   }
 
@@ -81,6 +89,7 @@ class EditorPostPage {
       .clickContinueFinalReview()
       .clickPublish()
       .clickGoBackToEditor();
+      this.takeScreenshot()
     return this;
   }
 
@@ -92,17 +101,20 @@ class EditorPostPage {
       .clickContinueFinalReview()
       .clickPublish()
       .clickGoBackToEditor();
+      this.takeScreenshot()
     return this;
   }
 
   ClickUpdatePost() {
     this.elements.updateButton().click();
+    this.takeScreenshot()
     return this;
   }
 
   clickPreviewPost() {
     this.elements.previewButton().click();
     const previewObj = new previewPostPage();
+    this.takeScreenshot()
     return previewObj;
   }
 }

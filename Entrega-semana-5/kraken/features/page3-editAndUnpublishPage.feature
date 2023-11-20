@@ -1,3 +1,4 @@
+@5.69.0
 Feature: Dejar de publicar una página existente
 
 @user1 @web
@@ -8,13 +9,13 @@ Scenario: Como usuario administrador quiero dejar de publicar una página para n
   And I wait for 2 seconds
   And I enter password "<PASSWORD>"
   And I wait for 2 seconds
-  And I click sign in button with selector "button[data-test-button='sign-in']"
+  And I click sign in button with selector "button[type='submit']"
   And I wait for 2 seconds
   When I go to the pages section with selector "a[data-test-nav='pages']"
   And I wait for 2 seconds
   And I click in the new page button with selector "a[data-test-new-page-button]"
   And I wait for 2 seconds
-  And I enter title "$name_title" into field with selector "textarea[data-test-editor-title-input]"
+  And I enter title "$name_title" into field with selector "textarea.gh-editor-title"
   And I wait for 2 seconds
   And I click in the Publish button with selector "button[data-test-button='publish-flow']"
   And I wait for 2 seconds

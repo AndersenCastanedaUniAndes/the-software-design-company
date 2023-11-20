@@ -1,3 +1,4 @@
+@5.69.0
 Feature: member3-registro-validacion-correo-vacio
 
 @user1 @web
@@ -8,7 +9,7 @@ Scenario: Como usuario administrador quiero poder ser prevenido de crear miembro
     And I wait for 2 seconds
     And I enter password "<PASSWORD>"
     And I wait for 2 seconds
-    And I click sign in button with selector "button[data-test-button='sign-in']"
+    And I click sign in button with selector "button[type='submit']"
     And I wait for 4 seconds
     When I go to the members section with selector "a[href='#/members/']"
     And I wait for 2 seconds
