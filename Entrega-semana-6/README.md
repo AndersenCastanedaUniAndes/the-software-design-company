@@ -81,7 +81,14 @@ Make sure to have a terminal opened in order to execute the next steps for ghost
 
 The Ghost applications will be accessible at http://localhost:3001ghost/#/signin and http://localhost:3002ghost/#/signin respectively.
 
-***REMEMBER TO CREATE THE ADMINISTRATOR ACCOUNT FOR EACH APPLCATION***
+***REMEMBER TO CREATE THE ADMINISTRATOR ACCOUNT FOR EACH APPILCATION***
+
+## Next steps
+Please follow the steps:
+* [Regression Visual Testing with Kraken](./kraken/README.md) 
+* [Regression Visual Testing with Playwright](./kraken/README.md) 
+
+
 
 ## Authors
 

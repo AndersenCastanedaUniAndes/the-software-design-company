@@ -106,7 +106,9 @@ Just run the bash file `kraken-resemblejs.sh` remember to give the sh enough pri
 ```
 ### steps
 
-1. This file will ask you to select a version of ghost (by default there are 2 versions `4.48.9` and `5.69.0`). **NOTE:** remember to follow the steps to run ghost in docker explained here [README for running ghost in docker](../../README.md).
+0. if you already run any of the shells before you will be ask to run te configuration.
+
+1. This file will ask you to select a version of ghost (by default there are 2 versions `4.48.9` and `5.69.0`). **NOTE:** remember to follow the steps to run ghost in docker explained here [README for running ghost in docker](../README.md).
 
 2. After selecting a version, you will be ask to enter the email, password and url for the ghost version introduced above.
 
@@ -115,6 +117,28 @@ Just run the bash file `kraken-resemblejs.sh` remember to give the sh enough pri
 4. steps 1, 2 and 3 will be done again. In this case, you have to choose the other version of ghost. 
 
 5.  ResembleJS will be executed and the result of the `sh` will give the path of the reports to be checked by you on any browser of your preference.
+
+
+## Visual Regression Testing with BackstopJS
+
+Just run the bash file `kraken-backstopjs.sh` remember to give the sh enough priviligies
+
+```bash
+./kraken-resemblejs.sh
+```
+### steps
+
+0. if you already run any of the shells before you will be ask to run te configuration.
+
+1. This file will ask you to select a version of ghost (by default there are 2 versions `4.48.9` and `5.69.0`). **NOTE:** remember to follow the steps to run ghost in docker explained here [README for running ghost in docker](../README.md).
+
+2. After selecting a version, you will be ask to enter the email, password and url for the ghost version introduced above.
+
+3. Then, the `sh` will execute Kraken and will generate screenshots of the tests those can be found in VRT folder.
+
+4. steps 1, 2 and 3 will be done again. In this case, you have to choose the other version of ghost. 
+
+5.  BackstopJS will be executed and the result of the `sh` will open the reports automatically.
 
 ## Authors
 
