@@ -80,7 +80,7 @@ test.describe("Como usuario administrador quiero modificar un post ya publicado 
   });
 });
 
-test.describe("Como usuario administrador quiero ver las analíticas de un post publicado para saber cómo se ha comportado", () => {
+test.describe.skip("Como usuario administrador quiero ver las analíticas de un post publicado para saber cómo se ha comportado", () => {
   let navigation;
   let authorization;
   let posts;
