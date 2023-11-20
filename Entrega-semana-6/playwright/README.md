@@ -48,3 +48,5 @@ En la carpeta VTK en el directorio raiz, se almacenan las imagenes generadas en 
 LA CANTIDAD DE IMAGENES GENERADAS PARA LA APP DE REFERENCIA DEBE SER LA MISMA QUE PARA LA APP DE PRUEBA. RESEMBLE NO DEJA HACER PRUEBAS SOBRE CONJUNTO DE IMAGENES DE DIFERENTES CANTIDADES. EN CASO DE QUERE HACER DICHA VALIDACION, PUEDE IR A resemble/index.js Y ELIMINAR LAS LINEAS DE CÓDIGO QUE VALIDA ESA CONDICIÓN.
 
    * En la carpeta results debe encontrar un archivo html llamado report.html. Este es el reporte generado por resemble de forma automática. Debe hacer uso de un navegador web para poder visualizarlo.  
+
+   EL CÓDIGO PARA LA GENERACIÓN AUTOMÁTICA DEL REPORTE CON RESEMBLE SE PUEDE ENCONTRAR EN RESEMBLE/INDEX.JS Y EN EL ARCHIVO HELPERS -> REPORTS.JS
