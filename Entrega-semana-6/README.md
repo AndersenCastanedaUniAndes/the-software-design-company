@@ -1,3 +1,13 @@
+# DISCLAIMER
+Algunas pruebas pueden fallar por condiciones inesperada e incompatibilidades de Ghost y del sistema operativo donde se ejecuten..
+
+
+# Setup for Playwright and Resemble.js (e2e tests and VRT)
+https://github.com/AndersenCastanedaUniAndes/the-software-design-company/blob/main/Entrega-semana-6/playwright/README.md
+
+# Setup for Kraken and Resemble.js (e2e tests and VRT)
+https://github.com/AndersenCastanedaUniAndes/the-software-design-company/blob/main/Entrega-semana-6/kraken/README.md
+
 # Running Ghost version 5.69.0 and 4.48.9 with MySQL in Docker
 
 Follow these steps to run Ghost version 5.69.0 and 4.48.9 with MySQL in Docker:
@@ -81,7 +91,7 @@ Make sure to have a terminal opened in order to execute the next steps for ghost
 
 The Ghost applications will be accessible at http://localhost:3001ghost/#/signin and http://localhost:3002ghost/#/signin respectively.
 
-***REMEMBER TO CREATE THE ADMINISTRATOR ACCOUNT FOR EACH APPILCATION***
+***REMEMBER TO CREATE THE SAME ADMINISTRATOR ACCOUNT FOR EACH APPLICATION***
 
 ## Next steps
 Please follow the steps:
