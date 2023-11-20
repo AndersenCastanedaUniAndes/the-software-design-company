@@ -45,6 +45,6 @@ En la carpeta VTK en el directorio raiz, se almacenan las imagenes generadas en 
    * Después de generar las imágenes, para ejecutar las pruebas VRT debes ejecutar los siguientes comandos:
      npm run resemble:images:win(USUARIOS WINDOWS) y npm run resemble(USUARIOS MAC).
 
-LA CANTIDAD DE IMAGENES GENERADAS PARA LA APPA DE REFERENCIA DEBE SER LA MISMA QUE PARA LA APP DE PRUEBA. resemble/index.js. NO DEJA HACER PRUEBAS SOBRE CONJUNTO DE IMAGENES DE DIFERENTES TAMAÑO. EN CASO DE QUERE HACER DICHA VALIDACION, PUEDE IR A resemble/index.js Y ELIMINAR LAS LINEAS DE CÓDIGO QUE VALIDA ESA CONDICIÓN.
+LA CANTIDAD DE IMAGENES GENERADAS PARA LA APP DE REFERENCIA DEBE SER LA MISMA QUE PARA LA APP DE PRUEBA. RESEMBLE NO DEJA HACER PRUEBAS SOBRE CONJUNTO DE IMAGENES DE DIFERENTES CANTIDADES. EN CASO DE QUERE HACER DICHA VALIDACION, PUEDE IR A resemble/index.js Y ELIMINAR LAS LINEAS DE CÓDIGO QUE VALIDA ESA CONDICIÓN.
 
    * En la carpeta results debe encontrar un archivo html llamado report.html. Este es el reporte generado por resemble de forma automática. Debe hacer uso de un navegador web para poder visualizarlo.  
