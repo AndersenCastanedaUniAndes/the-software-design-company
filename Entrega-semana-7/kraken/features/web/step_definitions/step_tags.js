@@ -4,6 +4,15 @@ const chai = require('chai');
 const should = chai.should();
 
 When(
+  'I enter large title into field with selector {string}',
+  async function (string) {
+    const textLarge = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam"
+    let description = await this.driver.$(string);
+    await description.setValue(textLarge);
+  }
+);
+
+When(
   'I go to the tags section with selector {string}',
   async function (string) {
     let element = await this.driver.$(string);
@@ -145,6 +154,14 @@ Then(
   async function (invalidNameError){
     const warningElement = await this.driver.$('span.error p.response').getText();
 
+    expect(warningElement).to.equal(invalidNameError);
+  }
+)
+
+Then(
+  'I must see an invalid description error {string}',
+  async function (invalidNameError){
+    const warningElement = await this.driver.$('div.form-group.no-margin.error p.response').getText();
     expect(warningElement).to.equal(invalidNameError);
   }
 )
