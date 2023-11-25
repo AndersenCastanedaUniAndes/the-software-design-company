@@ -100,7 +100,9 @@ npx kraken-node run
 
 ## Data Strategy and Tools
 
-Just run the bash file `data-stategy.sh` remember to give the sh enough priviligies
+***IMPORTANT:*** If you don't have a `properties.json` file created. run the command `./utils/create-properties.sh` before all.
+
+Just run the bash file `data-stategy.sh` remember to give the sh enough priviligies. 
 
 ```bash
 ./data-stategy.sh
