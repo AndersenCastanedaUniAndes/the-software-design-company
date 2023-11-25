@@ -1,11 +1,23 @@
-const { Given, Before, When, Then, AfterStep } = require("@cucumber/cucumber");
-const { expect } = require("chai");
+const { Given, Before, When, Then, } = require("@cucumber/cucumber");
+const axios = require("axios");
 const assert = require("assert");
 
 let tag = "";
 
 Before(function (scenario) {
   tag = scenario?.gherkinDocument.feature.tags[0].name;
+});
+
+Given("I make a GET request to {string}", async function (path) {
+  this.response = await axios.get(`https://my.api.mockaroo.com/${path}`);
+});
+
+Then("the response status should be {int}", function (expectedStatus) {
+  assert.equal(this.response.status, expectedStatus);
+});
+
+Then("the response should include {string}", function (expectedData) {
+  assert(this.response.data.includes(expectedData));
 });
 
 Given("I enter email {kraken-string}", async function (email) {

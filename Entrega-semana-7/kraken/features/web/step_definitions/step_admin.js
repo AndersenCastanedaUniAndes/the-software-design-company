@@ -1,21 +1,8 @@
-const { Given, When, Then } = require("@cucumber/cucumber");
-const axios = require("axios");
+const { When, Then } = require("@cucumber/cucumber");
 const os = require("os");
-const assert = require("assert");
 const chai = require("chai");
 const should = chai.should();
 
-Given("I make a GET request to {string}", async function (path) {
-  this.response = await axios.get(`https://my.api.mockaroo.com/${path}`);
-});
-
-Then("the response status should be {int}", function (expectedStatus) {
-  assert.equal(this.response.status, expectedStatus);
-});
-
-Then("the response should include {string}", function (expectedData) {
-  assert(this.response.data.includes(expectedData));
-});
 
 When("I click on element with selector {string}", async function (string) {
   let element = await this.driver.$(string);
