@@ -11,11 +11,11 @@ cypress/videos
 **/backstop_data/
 **/VRT
 **/.DS_Store
-Entrega-semana-5/kraken/reports
+**/kraken/reports
 Entrega-semana-5/kraken/.kraken
-Entrega-semana-5/kraken/VRT/
-Entrega-semana-6/kraken/.kraken
-Entrega-semana-6/kraken/reports
+**/kraken/VRT/
+**/kraken/.kraken
+**/kraken/reports
 Entrega-semana-6/kraken/VRT/
 Entrega-semana-7/kraken/.kraken
 Entrega-semana-7/kraken/reports

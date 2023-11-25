@@ -78,7 +78,7 @@ Please note that the installation process may require administrative privileges.
 
 ### Kraken Installation
 
-For here make sure that your are located in the folder `...\Entrega-semana-5\kraken`.
+For here make sure that your are located in the folder `...\Entrega-semana-7\kraken`.
 
 In order to install Kraken open a terminal an execute the following command:
 
@@ -97,6 +97,24 @@ To run kraken with the tests just execute the following command:
 ```bash
 npx kraken-node run
 ```
+
+## Data Strategy and Tools
+
+***IMPORTANT:*** If you don't have a `properties.json` file created. run the command `./utils/create-properties.sh` before all.
+
+Just run the bash file `data-stategy.sh` remember to give the sh enough priviligies. 
+
+```bash
+./data-stategy.sh
+```
+
+### steps
+
+1. You will be asked to select between three options:
+   - Escenario aleatorio
+   - Pool de datos a-priori
+   - Pool de datos (pseudo) aleatorio dinámico
+2. That's all just let the sh do the rest.
 
 ## Authors
 
