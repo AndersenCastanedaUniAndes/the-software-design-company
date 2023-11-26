@@ -13,6 +13,24 @@ When(
 );
 
 When(
+  'I enter empty description into field with selector {string}',
+  async function (string) {
+    const textEmpty = ""
+    let description = await this.driver.$(string);
+    await description.setValue(textEmpty);
+  }
+);
+
+When(
+  "I enter data {kraken-string} into field with selector {string}",
+  async function (string, string2) {
+    let title = await this.driver.$(string2);
+    await title.setValue(string);
+    return await this.driver.keys("Enter");
+  }
+);
+
+When(
   'I go to the tags section with selector {string}',
   async function (string) {
     let element = await this.driver.$(string);
@@ -22,6 +40,14 @@ When(
 
 When(
   'I go to internal tags section with selector {string}',
+  async function (string) {
+    let element = await this.driver.$(string);
+    return await element.click();
+  }
+);
+
+When(
+  'I expand section with selector {string}',
   async function (string) {
     let element = await this.driver.$(string);
     return await element.click();
@@ -57,14 +83,6 @@ When('I click in the save button', async function () {
   let element = await this.driver.$('button[data-test-button="save"]');
   return await element.click();
 });
-
-When(
-  'I go back to the editor section clicking the editor button with selector {string}',
-  async function (string) {
-    let element = await this.driver.$(string);
-    return await element.click();
-  }
-);
 
 When('I click the new tag in order to edit it {kraken-string}', async function (name) {
   let nameModified = name.charAt(0).toLowerCase() + name.slice(1);
@@ -108,11 +126,43 @@ When(
 );
 
 When(
+  'I click new tag text space with selector {string}',
+  async function (string) {
+    let element = await this.driver.$(string);
+    return await element.click();
+  }
+);
+
+When(
   'I enter internal title {kraken-string} into field with selector {string}',
   async function (string, string2) {
     let title = await this.driver.$(string2);
     await title.setValue(`#${string}`);
     return await this.driver.keys('Enter');
+  }
+);
+
+When(
+  "I enter tag name {kraken-string} into field with selector {string}",
+  async function (string, string2) {
+    let title = await this.driver.$(string2);
+    if (string.includes("empty")) {
+      string = string.replace("empty", "");
+    }
+    await title.setValue(string);
+    return await this.driver.keys("Enter"), this.driver.keys("Enter");
+  }
+);
+
+When(
+  "I enter tag color {kraken-string} into field with selector {string}",
+  async function (string, string2) {
+    let title = await this.driver.$(string2);
+    if (string.includes("space")) {
+      string = string.replace("space", "   ");
+    }
+    await title.setValue(string);
+    return await this.driver.keys("Enter"), this.driver.keys("Enter");
   }
 );
 
@@ -150,6 +200,24 @@ Then(
 );
 
 Then(
+  'I validate that the element {kraken-string} is present in the list',
+  async function (addedElement) {
+    const list = await this.driver.$$('li.gh-list-row.gh-tags-list-item'); // Selector lista de tags
+    let addedModified = `#${addedElement}`
+    let isElementPresent = false;
+    for (let i = 0; i < list.length; i++) {
+      const text = await list[i].getText();
+      if (text.includes(addedModified)) {
+        isElementPresent = true;
+        break;
+      }
+    }
+
+    expect(isElementPresent).to.be.true;
+  }
+);
+
+Then(
   'I must see an invalid name error {string}',
   async function (invalidNameError){
     const warningElement = await this.driver.$('span.error p.response').getText();
@@ -165,3 +233,27 @@ Then(
     expect(warningElement).to.equal(invalidNameError);
   }
 )
+
+Then(
+  "I must see the success created {string} in the tag list or the confirmation to leave page if tag was not created",
+  async function (tagName) {
+    const url = await this.driver.getUrl();
+
+    if (url.includes("tags/new")) {
+      let leaveButon = await this.driver.$("button[data-test-leave-button]");
+      should.exist(leaveButon);
+    } else {
+      let foundTag = false;
+      let tags = await this.driver.$$("li.gh-list-row.gh-tags-list-item");
+
+      for (const element of tags) {
+        let name = await element.$("a").getText();
+        if (name.startsWith(tagName)) {
+          foundTag = true;
+          break;
+        }
+      }
+      expect(foundTag).to.be.true;
+    }
+  }
+);

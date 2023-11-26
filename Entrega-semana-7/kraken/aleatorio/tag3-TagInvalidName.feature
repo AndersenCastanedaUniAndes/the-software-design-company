@@ -1,5 +1,5 @@
 @5.69.0
-Feature: tag3-TagInvalidName
+Feature: Crear tag con nombre invalido
 
 @user1 @web
 Scenario: Como usuario administrador quiero poder crear un nuevo Tag con el campo de nombre vacío para que se muestre un aviso de advertencia por el campo vacío
@@ -10,7 +10,7 @@ Scenario: Como usuario administrador quiero poder crear un nuevo Tag con el camp
   And I enter password "<PASSWORD>"
   And I wait for 1 seconds
   And I click sign in button with selector "button[data-test-button='sign-in']"
-  And I wait for 7 seconds
+  And I wait for 5 seconds
   And I try to remove the new version banner
   And I wait for 2 seconds
   And I go to the tags section with selector "a[data-test-nav='tags']"
