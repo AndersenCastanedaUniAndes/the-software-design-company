@@ -37,6 +37,12 @@ exports.NavigationPageObject = class NavigationPageObject {
     const REFERENCE_VERSION = process.env.REFERENCE_VERSION;
     const TEST_VERSION = process.env.TEST_VERSION;
     const ACTIVE_VERSION = process.env.ACTIVE_VERSION;
+    const SCREENSHOTS_ACTIVATED = process.env.SCREENSHOTS_ACTIVATED;
+    if (SCREENSHOTS_ACTIVATED === "OFF"){
+      return;
+    }
+
+
     let PATH = ""
     if (ACTIVE_VERSION === REFERENCE_VERSION) {
       PATH = process.env.REFERENCE_IMAGES;

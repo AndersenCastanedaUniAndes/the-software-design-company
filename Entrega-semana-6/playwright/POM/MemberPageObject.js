@@ -7,22 +7,24 @@ exports.MemberPageObject = class MemberPageObject {
   }
 
   async clickOnMembersViewLink() {
-    await this.page.locator('.relative a[href="#/members/"]').click();
+    await this.page.locator('a[data-test-nav="members"]').first().click();
+    await this.page.waitForLoadState("domcontentloaded"); 
   }
 
   async clickOnNewMemberViewLink() {
     await this.page.locator('a[href="#/members/new/"]').click();
+    await this.page.waitForLoadState("domcontentloaded");
   }
 
   async getMembersTable() {
     return await this.page.locator("table.gh-list tbody.ember-view tr a p.gh-members-list-email").all();
   }
 
-  async getEmailErrorMessage() { 
+  async getEmailErrorMessage() {
     return await this.page.locator("div.gh-cp-member-email-name .form-group.max-width.error p").innerText();
   }
 
-  async getEmailErrorMessageTestVersion() { 
+  async getEmailErrorMessageTestVersion() {
     return await this.page.locator(".gh-alert-red .gh-alert-content").first().innerText();
   }
 
@@ -32,7 +34,14 @@ exports.MemberPageObject = class MemberPageObject {
 
   async clickOnSaveButton() {
     await this.page.locator(".view-actions button").click();
-    await this.page.waitForLoadState('networkidle')
+    await this.page.waitForLoadState("networkidle");
+     await this.page.waitForLoadState("domcontentloaded");
+  }
+
+  async clickOnSaveButtonByDataTest(){
+    await this.page.locator("button[data-test-button='save']").click();
+    await this.page.waitForLoadState("networkidle");  
+    await this.page.waitForLoadState("domcontentloaded");
   }
 
   async fillOutName(member) {
@@ -50,4 +59,21 @@ exports.MemberPageObject = class MemberPageObject {
   async fillOutEmail(member) {
     await this.page.locator("input#member-email").fill(member.email);
   }
+
+  async isMemberOnTheList(member) {
+    const items = await this.getMembersTable();
+    let results = {
+       found: false,
+       item: undefined
+    };
+    for (let item of items) {
+      const memberEmail = await item.innerText();
+      if (memberEmail.includes(member.email)) {
+        results.found = true;
+        results.item = item;
+      }
+    }
+    return results;
+  }
+
 };

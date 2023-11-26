@@ -26,7 +26,7 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.IS_REFERENCE_OR_TEST === "REFERENCE" ? process.env.REFERENCE_URL : process.env.TESTS_URL,
+    baseURL: process.env.IS_REFERENCE_OR_TEST === "REFERENCE" ? process.env.REFERENCE_URL : (process.env.TESTS_URL),
     trace: 'on-first-retry',
     viewport: { width: 800, height: 600 },
   

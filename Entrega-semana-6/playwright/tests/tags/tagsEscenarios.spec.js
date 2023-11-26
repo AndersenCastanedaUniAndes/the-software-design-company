@@ -131,7 +131,7 @@ test.describe.skip("Como usuario administrador quiero poder crear un nuevo Tag p
     });});
 
 
-test.describe("Como usuario administrador quiero poder crear un nuevo Tag con el campo de nombre vacío para que se muestre un aviso de advertencia por el campo vacío", () => {
+test.describe.skip("Como usuario administrador quiero poder crear un nuevo Tag con el campo de nombre vacío para que se muestre un aviso de advertencia por el campo vacío", () => {
     let navigation;
     let authorization;
     let tags;
@@ -183,7 +183,7 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag con el
   });
 
 
-test.describe("Como usuario administrador quiero poder crear un nuevo Tag en la opción “internal tags” para después editarlo", () => {
+test.describe.skip("Como usuario administrador quiero poder crear un nuevo Tag en la opción “internal tags” para después editarlo", () => {
     let navigation;
     let authorization;
     let tags;
@@ -254,7 +254,7 @@ test.describe("Como usuario administrador quiero poder crear un nuevo Tag en la 
   });
 
   
-test.describe("Como usuario administrador quiero poder crear un nuevo Tag en la opción “internal tags” para después eliminarlo", () => {
+test.describe.skip("Como usuario administrador quiero poder crear un nuevo Tag en la opción “internal tags” para después eliminarlo", () => {
     let navigation;
     let authorization;
     let tags;

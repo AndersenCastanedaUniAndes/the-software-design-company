@@ -3,7 +3,7 @@ const { test, expect } = require("@playwright/test");
 const { NavigationPageObject } = require("../../POM/NavigationPageObject");
 const { AuthorizationPageObject } = require("../../POM/AuthorizationPageObject");
 const { MemberPageObject } = require("../../POM/MemberPageObject");
-const { generateRamdomMember, generateInvalidMemberEmail } = require("../../helpers/common");
+const { generateRamdomMemberInMemory, generateInvalidMemberEmailInMemory } = require("../../helpers/common");
 const path = require('path')
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') })
 
@@ -38,7 +38,7 @@ test.describe("Como usuario administrador quiero poder registrar un nuevo miembr
     test.describe("And navega hacia la seccion de miembros", () => {
       test.describe("And navega hacia la creación de un miembro", () => {
         test.describe("When ingresar un nombre y un correo válido", () => {
-          test.describe("And el miembro es creado sastifactoriamene", () => {
+          test.describe("And el miembro es creado sastifactoriamente", () => {
             test("Then debe verse en la lista de miembros", async ({ page }) => {
               await navigation.clickOnMembersViewLink();
               await navigation.screenshot("members");
@@ -47,7 +47,7 @@ test.describe("Como usuario administrador quiero poder registrar un nuevo miembr
               await navigation.screenshot("members");
 
               // GENERATES A RAMDOM PERSON
-              const member = generateRamdomMember();
+              const member = generateRamdomMemberInMemory();
 
               // FILL OUT THE NEW MEMBER FORM
               await members.fillOutName(member);
@@ -112,7 +112,7 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
               await navigation.screenshot("members");
 
               // GENERATES A RAMDOM PERSON
-              const member = generateRamdomMember();
+              const member = generateRamdomMemberInMemory();
 
               // FILL OUT THE NEW MEMBER FORM
               const invalidMessage = "Please enter an email.";
@@ -166,7 +166,7 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
               await navigation.screenshot("members");
 
               // GENERATES A RAMDOM PERSON
-              const member = generateRamdomMember();
+              const member = generateRamdomMemberInMemory();
 
               // FILL OUT THE NEW MEMBER FORM
               // FILL OUT THE NEW MEMBER FORM
@@ -244,7 +244,7 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
               await navigation.screenshot("members");
 
               // GENERATES A RAMDOM PERSON
-              const member = generateRamdomMember();
+              const member = generateRamdomMemberInMemory();
 
               const longNote = `Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.`;
               const invalidMessage = "Note is too long.";
@@ -311,10 +311,10 @@ test.describe("Como usuario administrador quiero poder ser prevenido de registra
               await navigation.screenshot("members");
 
               // GENERATES A RAMDOM PERSON
-              const member = generateRamdomMember();
+              const member = generateRamdomMemberInMemory();
 
               // FILL OUT THE NEW MEMBER FORM
-              const invalidEmail = generateInvalidMemberEmail(member.fullname);
+              const invalidEmail = generateInvalidMemberEmailInMemory(member.fullname);
               member.email = invalidEmail.email;
 
               // FILL OUT THE NEW MEMBER FORM
