@@ -27,12 +27,12 @@ Feature: crear-tag-con-colores-hex-datos-a-priori
     And I wait for 1 seconds
     Then I must see the success created "<TAG_NAME>" in the tag list or the confirmation to leave page if tag was not created
 
-    Examples: 
-      | BASEURL                              | USERNAME                   | PASSWORD        | TAG_NAME           | COLOR     | COMMENT                                               |
-      | http://localhost:2368/ghost/#/signin | a.menesess@uniandes.edu.co | *93ZPspkZVHtS.d | Valid tag name 1   | 123ABC    | # Valid name and valid HEX Color                      |
-      | http://localhost:2368/ghost/#/signin | a.menesess@uniandes.edu.co | *93ZPspkZVHtS.d | Valid tag name 2   | 12E5      | # Valid name and less than 6 characters for HEX Color |
-      | http://localhost:2368/ghost/#/signin | a.menesess@uniandes.edu.co | *93ZPspkZVHtS.d | Valid tag name 3   | ABCDEF    | # Valid name and 6 valid leters for HEX characters    |
-      | http://localhost:2368/ghost/#/signin | a.menesess@uniandes.edu.co | *93ZPspkZVHtS.d | Valid tag name 4   | !/#$()    | # Valid name and special characters                   |
-      | http://localhost:2368/ghost/#/signin | a.menesess@uniandes.edu.co | *93ZPspkZVHtS.d | Valid tag name 5   | ABCJHK    | # Valid name and 6 invalid leters                     |
-      | http://localhost:2368/ghost/#/signin | a.menesess@uniandes.edu.co | *93ZPspkZVHtS.d | Valid tag name 6   | 123456789 | # Valid name and more than 6 HEX characters           |
-      | http://localhost:2368/ghost/#/signin | a.menesess@uniandes.edu.co | *93ZPspkZVHtS.d | Valid tag name 7   | space     | # Valid name and a space in HEX color input text      |
+    Examples:
+      | TAG_NAME         | COLOR     | COMMENT                                               |
+      | Valid tag name 1 | 123ABC    | # Valid name and valid HEX Color                      |
+      | Valid tag name 2 | 12E5      | # Valid name and less than 6 characters for HEX Color |
+      | Valid tag name 3 | ABCDEF    | # Valid name and 6 valid leters for HEX characters    |
+      | Valid tag name 4 | !/#$()    | # Valid name and special characters                   |
+      | Valid tag name 5 | ABCJHK    | # Valid name and 6 invalid leters                     |
+      | Valid tag name 6 | 123456789 | # Valid name and more than 6 HEX characters           |
+      | Valid tag name 7 | space     | # Valid name and a space in HEX color input text      |

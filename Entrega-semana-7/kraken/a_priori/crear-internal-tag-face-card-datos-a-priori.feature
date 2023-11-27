@@ -33,9 +33,8 @@ Feature: crear-internal-tag-face-card-datos-a-priori
     And I wait for 1 seconds
     Then I validate that the element "<TAG_NAME>" is present in the list
 
-    Examples: 
-      | BASEURL                              | USERNAME                   | PASSWORD        | TAG_NAME           | FACE_TITLE | FACE_DESCRIPTION |  COMMENT                                    |
-      | http://localhost:2368/ghost/#/signin | a.menesess@uniandes.edu.co | *93ZPspkZVHtS.d | Emma Thompson      | The Last Samurai | An epic tale of honor and redemption set in feudal Japan. | # All facebook data is correct |
-      | http://localhost:2368/ghost/#/signin | a.menesess@uniandes.edu.co | *93ZPspkZVHtS.d | Liam Cooper        | Explorations in the Uncharted Realms of Quantum Mechanics: A Comprehensive Study on Heavy Particle Duality | An innovative solution designed to stream workflow efficiency. | # Too long title |
-      | http://localhost:2368/ghost/#/signin | a.menesess@uniandes.edu.co | *93ZPspkZVHtS.d | Jose Schmit        | Pirates of the Caribbean | An intricately woven tale of love, loss, and redemption set against the backdrop of a sprawling metropolis. | # Too long Description |
-
+    Examples:
+      | TAG_NAME      | FACE_TITLE                                                                                                 | FACE_DESCRIPTION                                                                                            | COMMENT                        |
+      | Emma Thompson | The Last Samurai                                                                                           | An epic tale of honor and redemption set in feudal Japan.                                                   | # All facebook data is correct |
+      | Liam Cooper   | Explorations in the Uncharted Realms of Quantum Mechanics: A Comprehensive Study on Heavy Particle Duality | An innovative solution designed to stream workflow efficiency.                                              | # Too long title               |
+      | Jose Schmit   | Pirates of the Caribbean                                                                                   | An intricately woven tale of love, loss, and redemption set against the backdrop of a sprawling metropolis. | # Too long Description         |

@@ -15,10 +15,10 @@ Feature: login-datos-a-priori
     Then I validate if I am in the dashboard page or I should see an error message if sign in fails
 
     Examples: Datos a priori
-      | BASEURL                              | USERNAME        | PASSWORD     | COMMENTS                                              |
-      | http://localhost:3001/ghost/#/signin | wrongemail      | wrongpass    | invalid email format and wrong password               |
-      | http://localhost:3001/ghost/#/signin | #%^&(*&%^&$*    | Qazwsxedc123 | characters not allowed in email  and correct password |
-      | http://localhost:3001/ghost/#/signin | admin@mail.com  | #%^&(*&%^&$* | correct email and characters not allowed in password  |
-      | http://localhost:3001/ghost/#/signin |     21593046938 |  21593046938 | numbers not allowed in email and password             |
-      | http://localhost:3001/ghost/#/signin | admin@mail.com  | Qazwsxedc123 | correct email and password                            |
-      | http://localhost:3001/ghost/#/signin | gkarlsson0@t.co | aV6(DB5Z     | incorrect email and password                          |
+      | USERNAME        | PASSWORD     | COMMENTS                                              |
+      | wrongemail      | wrongpass    | invalid email format and wrong password               |
+      | #%^&(*&%^&$*    | Qazwsxedc123 | characters not allowed in email  and correct password |
+      | admin@mail.com  | #%^&(*&%^&$* | correct email and characters not allowed in password  |
+      | 21593046938     | 21593046938  | numbers not allowed in email and password             |
+      | admin@mail.com  | Qazwsxedc123 | correct email and password                            |
+      | gkarlsson0@t.co | aV6(DB5Z     | incorrect email and password                          |

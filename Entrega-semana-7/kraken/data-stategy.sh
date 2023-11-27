@@ -1,5 +1,15 @@
 #!/bin/bash
 
+echo "**********Creating properties required for data strategy*********"
+
+cat << EOF > properties.json
+{
+  "USERNAME": "admin@mail.com",
+  "PASSWORD": "Qazwsxedc123",
+  "BASEURL": "http://localhost:3001/ghost#/signin"
+}
+EOF
+
 echo "Please select the type of data strategy:"
 echo "1. Escenario aleatorio"
 echo "2. Pool de datos a-priori"
