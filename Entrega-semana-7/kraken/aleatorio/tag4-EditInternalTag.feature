@@ -1,5 +1,5 @@
 @5.69.0
-Feature: tag4-EditInternalTag
+Feature: Crear y editar internal tag
 
 @user1 @web
 Scenario: Como usuario administrador quiero poder crear un nuevo Tag en la opci√≥n "internal tags" para despu√©s editarlo
@@ -10,7 +10,7 @@ Scenario: Como usuario administrador quiero poder crear un nuevo Tag en la opci√
   And I enter password "<PASSWORD>"
   And I wait for 1 seconds
   And I click sign in button with selector "button[data-test-button='sign-in']"
-  And I wait for 7 seconds
+  And I wait for 5 seconds
   And I try to remove the new version banner
   And I wait for 2 seconds
   And I go to the tags section with selector "a[data-test-nav='tags']"
@@ -19,15 +19,15 @@ Scenario: Como usuario administrador quiero poder crear un nuevo Tag en la opci√
   And I wait for 1 seconds
   And I click new tag button with selector "a.ember-view.gh-btn.gh-btn-primary"
   And I wait for 1 seconds
-  And I enter title "hash-" "$name_tagTitle" into field with selector "input[id='tag-name']"
+  And I enter internal title "$name_internalTag" into field with selector "input[id='tag-name']"
   And I wait for 1 seconds
   And I click in the save button
   And I wait for 1 seconds
   And I go back to the tags section clicking the tags button with selector "a[data-test-nav='tags']"
   And I wait for 1 seconds
-  And I click the new tag in order to edit this internal tag "$$name_tagTitle"
+  And I click the new tag in order to edit this internal tag "$$name_internalTag"
   And I wait for 1 seconds
-  And I enter title "hash-" "$name_tagTitleModified" into field with selector "input[id='tag-name']"
+  And I enter internal title "$name_internalTagModified" into field with selector "input[id='tag-name']"
   And I wait for 1 seconds
   And I click in the save button
   Then I must see an success name advise "Saved"
