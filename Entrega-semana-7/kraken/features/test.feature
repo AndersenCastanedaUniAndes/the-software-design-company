@@ -2,7 +2,7 @@
 Feature: post2-AnalyticsPost
 
   @user1 @web
-  Scenario: Como usuario administrador quiero ver las analíticas de un post publicado para saber cómo se ha comportado
+  Scenario Outline: Como usuario administrador quiero ver filtar un post por su tipo para poder hacer busquedas mas rapidas
     Given I navigate to page "<BASEURL>"
     And I wait for 5 seconds
     And I enter email "<USERNAME>"
@@ -15,9 +15,13 @@ Feature: post2-AnalyticsPost
     And I wait for 2 seconds
     When I go to the posts section with selector "a[href='#/posts/']"
     And I wait for 1 seconds
+    And I click in the new post button with selector "a[href='#/editor/post/']"
+    And I wait for 1 seconds
     And I enter title "$name_draftPostTitle" into field with selector "textarea.gh-editor-title"
     And I wait for 1 seconds
     And I go back to the list of posts clicking the posts button with selector "a[data-test-link='posts']"
+    And I wait for 1 seconds
+    And I click in the new post button with selector "a[href='#/editor/post/']"
     And I wait for 1 seconds
     And I enter title "$name_PublishedPostTitle" into field with selector "textarea.gh-editor-title"
     And I wait for 1 seconds
@@ -46,4 +50,13 @@ Feature: post2-AnalyticsPost
     And I click in the Publish post confirm button with selector "button[data-test-button='confirm-publish']"
     And I wait for 1 seconds
     And I go back to the editor section clicking the editor button with selector "button.gh-publish-back-button"
-    Then I  shouldn't see "$$name_PublishedPostTitle" and "$$name_PublishedPostTitle" when filtering by "Drafts" post
+    And I wait for 1 seconds
+    And I go back to the list of posts clicking the posts button with selector "a[data-test-link='posts']"
+    And I wait for 1 seconds
+    Then I  shouldn't see "$$name_PublishedPostTitle" and "$$name_scheduledPostTitle" when filtering by "<POST_TYPE>" post
+
+    Examples: Datos a priori
+      | POST_TYPE | COMMENTS                  |
+      | Drafts    | Filter by Draft Posts     |
+      | Scheduled | Filter by Scheduled Posts |
+      | Published | Filter by Published Posts |

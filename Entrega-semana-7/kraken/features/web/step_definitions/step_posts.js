@@ -229,10 +229,10 @@ Then(
     for (const post of posts) {
       let name = await post.$('a').getText();
       if (name.startsWith(firstPost) || name.startsWith(secondPost)) {
-        foundPage = true;
+        foundPost = true;
         break;
       }
     }
-    expect(foundPage).to.be.false;
+    expect(foundPost).to.be.false;
   }
 );
