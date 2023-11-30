@@ -1,16 +1,16 @@
-const { Before, When, Then } = require("@cucumber/cucumber");
-const { expect } = require("chai");
-const chai = require("chai");
+const { Before, When, Then } = require('@cucumber/cucumber');
+const { expect } = require('chai');
+const chai = require('chai');
 const should = chai.should();
 
-let tag = "";
+let tag = '';
 
 Before(function (scenario) {
   tag = scenario?.gherkinDocument.feature.tags[0].name;
 });
 
 When(
-  "I go to the posts section with selector {string}",
+  'I go to the posts section with selector {string}',
   async function (string) {
     let element = await this.driver.$(string);
     return await element.click();
@@ -18,12 +18,12 @@ When(
 );
 
 When(
-  "I click in the new post button with selector {string}",
+  'I click in the new post button with selector {string}',
   async function (string) {
     let element = await this.driver.$(string);
-    if (tag.includes("4.48.9")) {
+    if (tag.includes('4.48.9')) {
       element = await this.driver.$(
-        "a.ember-view.gh-btn.gh-btn-primary.view-actions-top-row"
+        'a.ember-view.gh-btn.gh-btn-primary.view-actions-top-row'
       );
     }
     return await element.click();
@@ -31,24 +31,24 @@ When(
 );
 
 When(
-  "I go back to the list of posts clicking the posts button with selector {string}",
+  'I go back to the list of posts clicking the posts button with selector {string}',
   async function (string) {
     let element = await this.driver.$(string);
-    if (tag.includes("4.48.9")) {
-      element = await this.driver.$("a.ember-view.gh-editor-back-button");
+    if (tag.includes('4.48.9')) {
+      element = await this.driver.$('a.ember-view.gh-editor-back-button');
     }
     return await element.click();
   }
 );
 
 Then(
-  "I validate that the title of the post was modified successfully with {kraken-string}",
+  'I validate that the title of the post was modified successfully with {kraken-string}',
   async function (string) {
     let foundPage = false;
-    let elements = await this.driver.$$("li.gh-list-row.gh-posts-list-item");
+    let elements = await this.driver.$$('li.gh-list-row.gh-posts-list-item');
 
     for (const element of elements) {
-      let name = await element.$("a").getText();
+      let name = await element.$('a').getText();
       if (name.startsWith(string)) {
         foundPage = true;
         break;
@@ -58,10 +58,10 @@ Then(
   }
 );
 
-When("I click in the Publish button", async function () {
+When('I click in the Publish button', async function () {
   let element;
-  if (tag.includes("4.48.9")) {
-    element = await this.driver.$("div.gh-publishmenu-trigger");
+  if (tag.includes('4.48.9')) {
+    element = await this.driver.$('div.gh-publishmenu-trigger');
   } else {
     element = await this.driver.$('button[data-test-button="publish-flow"]');
   }
@@ -69,63 +69,63 @@ When("I click in the Publish button", async function () {
   return await element.click();
 });
 
-When("I click in the Right now button", async function () {
-  if (tag.includes("4.48.9")) {
+When('I click in the Right now button', async function () {
+  if (tag.includes('4.48.9')) {
     return;
   }
-  let element = await this.driver.$$("button.gh-publish-setting-title")[2];
+  let element = await this.driver.$$('button.gh-publish-setting-title')[2];
   return await element.click();
 });
 
 When(
-  "I click in the shedule later button with selector {string}",
+  'I click in the shedule later button with selector {string}',
   async function (string) {
     let element = await this.driver.$$(string)[1];
-    if (tag.includes("4.48.9")) {
-      element = await this.driver.$$("div.gh-publishmenu-radio-button")[1];
+    if (tag.includes('4.48.9')) {
+      element = await this.driver.$$('div.gh-publishmenu-radio-button')[1];
     }
     return await element.click();
   }
 );
 
 When(
-  "I click in the Publish post confirm button with selector {string}",
+  'I click in the Publish post confirm button with selector {string}',
   async function (string) {
     let element = await this.driver.$(string);
-    if (tag.includes("4.48.9")) {
+    if (tag.includes('4.48.9')) {
       element = await this.driver.$(
-        "button.gh-btn.gh-btn-black.gh-btn-icon.ember-view"
+        'button.gh-btn.gh-btn-black.gh-btn-icon.ember-view'
       );
     }
     return await element.click();
   }
 );
 
-Then("I validate that the post was sheduled successfully", async function () {
-  let element = await this.driver.$("a.gh-post-list-title span.scheduled");
-  if (tag.includes("4.48.9")) {
-    element = await this.driver.$("span.gh-content-status-scheduled");
+Then('I validate that the post was sheduled successfully', async function () {
+  let element = await this.driver.$('a.gh-post-list-title span.scheduled');
+  if (tag.includes('4.48.9')) {
+    element = await this.driver.$('span.gh-content-status-scheduled');
   }
   expect((await element.getText()).toLowerCase()).to.equal(
-    "Scheduled".toLowerCase()
+    'Scheduled'.toLowerCase()
   );
 });
 
-When("I valide post filter is not applied", async function () {
-  if (tag.includes("4.48.9")) {
+When('I valide post filter is not applied', async function () {
+  if (tag.includes('4.48.9')) {
     let allpostsButton = await this.driver.$$('a[href="#/posts/"]')[0];
     await allpostsButton?.click();
   }
 });
 
 When(
-  "I click the post in order to edit it {kraken-string}",
+  'I click the post in order to edit it {kraken-string}',
   async function (string) {
     let elementFound;
-    let elements = await this.driver.$$("li.gh-list-row.gh-posts-list-item");
+    let elements = await this.driver.$$('li.gh-list-row.gh-posts-list-item');
 
     for (const element of elements) {
-      let name = await element.$("a").getText();
+      let name = await element.$('a').getText();
       if (name.startsWith(string)) {
         elementFound = element;
         break;
@@ -136,43 +136,43 @@ When(
 );
 
 Then(
-  "I update the post by clicking the Update button with selector {string}",
+  'I update the post by clicking the Update button with selector {string}',
   async function (string) {
     let element = await this.driver.$(string);
-    if (tag.includes("4.48.9")) {
-      await this.driver.$("div.gh-publishmenu-trigger").click();
-      element = await this.driver.$("button.gh-publishmenu-button");
+    if (tag.includes('4.48.9')) {
+      await this.driver.$('div.gh-publishmenu-trigger').click();
+      element = await this.driver.$('button.gh-publishmenu-button');
     }
     return await element.click();
   }
 );
 
 Then(
-  "I see the preview of the post on a div with selector {string}",
+  'I see the preview of the post on a div with selector {string}',
   async function (string) {
     let element = await this.driver.$(string);
-    if (tag.includes("4.48.9")) {
-      element = await this.driver.$("div.fullscreen-modal-email-preview");
+    if (tag.includes('4.48.9')) {
+      element = await this.driver.$('div.fullscreen-modal-email-preview');
     }
     should.exist(element);
   }
 );
 
 Then(
-  "I click the analytics button associated to the post {kraken-string}",
+  'I click the analytics button associated to the post {kraken-string}',
   async function (string) {
-    if (tag.includes("4.48.9")) {
+    if (tag.includes('4.48.9')) {
       return;
     }
     let elements = await this.driver.$$(
-      "li.gh-list-row.gh-posts-list-item.gh-post-list-plain-status"
+      'li.gh-list-row.gh-posts-list-item.gh-post-list-plain-status'
     );
     let elementFound;
     for (const element of elements) {
-      let name = await element.$("a").getText();
+      let name = await element.$('a').getText();
 
       if (name.startsWith(string)) {
-        elementFound = element.$$("a")[2];
+        elementFound = element.$$('a')[2];
         break;
       }
     }
@@ -182,9 +182,9 @@ Then(
 );
 
 Then(
-  "I check the analytics panel opens with selector {string}",
+  'I check the analytics panel opens with selector {string}',
   async function (string) {
-    if (tag.includes("4.48.9")) {
+    if (tag.includes('4.48.9')) {
       return;
     }
     let element = await this.driver.$(string);
@@ -193,19 +193,19 @@ Then(
 );
 
 Then(
-  "I should see the post {string} in the list of posts or the confirmation modal if the post was not created",
+  'I should see the post {string} in the list of posts or the confirmation modal if the post was not created',
   async function (string) {
     const url = await this.driver.getUrl();
 
-    if (url.includes("editor/post")) {
-      let modal = await this.driver.$("div.modal-container");
+    if (url.includes('editor/post')) {
+      let modal = await this.driver.$('div.modal-container');
       should.exist(modal);
     } else {
       let foundPage = false;
-      let elements = await this.driver.$$("li.gh-list-row.gh-posts-list-item");
+      let elements = await this.driver.$$('li.gh-list-row.gh-posts-list-item');
 
       for (const element of elements) {
-        let name = await element.$("a").getText();
+        let name = await element.$('a').getText();
         if (name.startsWith(string)) {
           foundPage = true;
           break;
@@ -213,5 +213,26 @@ Then(
       }
       expect(foundPage).to.be.true;
     }
+  }
+);
+
+Then(
+  "I  shouldn't see {kraken-string} and {kraken-string} when filtering by {string} post",
+  async function (firstPost, secondPost, postType) {
+    const element = await this.driver.$(
+      `a[data-test-nav-custom="posts-${postType}"]`
+    );
+    await element.click();
+    let foundPost = false;
+    let posts = await this.driver.$$('li.gh-list-row.gh-posts-list-item');
+
+    for (const post of posts) {
+      let name = await post.$('a').getText();
+      if (name.startsWith(firstPost) || name.startsWith(secondPost)) {
+        foundPage = true;
+        break;
+      }
+    }
+    expect(foundPage).to.be.false;
   }
 );
