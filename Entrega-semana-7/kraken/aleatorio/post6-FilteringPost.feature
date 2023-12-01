@@ -1,5 +1,5 @@
 @5.69.0
-Feature: post2-AnalyticsPost
+Feature: post6-FilteringPost
 
   @user1 @web
   Scenario Outline: Como usuario administrador quiero ver filtar un post por su tipo para poder hacer busquedas mas rapidas
@@ -53,10 +53,10 @@ Feature: post2-AnalyticsPost
     And I wait for 1 seconds
     And I go back to the list of posts clicking the posts button with selector "a[data-test-link='posts']"
     And I wait for 1 seconds
-    Then I  shouldn't see "$$name_PublishedPostTitle" and "$$name_scheduledPostTitle" when filtering by "<POST_TYPE>" post
+    Then I  shouldn't see "<POST_1>" and "<POST_2>" when filtering by "<POST_TYPE>" post
 
-    Examples: Datos a priori
-      | POST_TYPE | COMMENTS                  |
-      | Drafts    | Filter by Draft Posts     |
-      | Scheduled | Filter by Scheduled Posts |
-      | Published | Filter by Published Posts |
+    Examples: Tipos de filtros 
+      | POST_TYPE | POST_1                    | POST_2                    | COMMENTS                  |
+      | Drafts    | $$name_PublishedPostTitle | $$name_scheduledPostTitle | Filter by Draft Posts     |
+      | Scheduled | $$name_PublishedPostTitle | $name_draftPostTitle      | Filter by Scheduled Posts |
+      | Published | $$name_draftPostTitle     | $$name_scheduledPostTitle | Filter by Published Posts |

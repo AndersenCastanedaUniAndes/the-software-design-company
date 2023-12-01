@@ -135,6 +135,12 @@ When(
   }
 );
 
+When('I go posts filtered by {string}', async function (queryparam) {
+  const baseUrl = await this.driver.getUrl();
+  const urlWithQuery = `${baseUrl}?type=${queryparam}`;
+  await this.driver.url(urlWithQuery);
+});
+
 Then(
   'I update the post by clicking the Update button with selector {string}',
   async function (string) {
@@ -236,3 +242,10 @@ Then(
     expect(foundPost).to.be.false;
   }
 );
+
+When('I save the filter view', async function () {
+  const saveView = await this.driver.$(
+    'button[data-test-button="save-custom-view"]'
+  );
+  return await saveView.click();
+});
