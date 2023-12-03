@@ -79,19 +79,22 @@ exports.MemberPageObject = class MemberPageObject {
   async openMembersFilterList() {
     await this.page.locator(".view-actions-top-row div[data-test-button='members-filter-actions']").click();
     await this.page.waitForLoadState("domcontentloaded");
-    await this.page.waitForSelector(".gh-filters");
+    // await this.page.waitForSelector(".gh-filters");
   }
 
   async applyMembersFilterList() {
-    await this.page.locator("button[data-test-button='members-apply-filter']").click();
-    await this.page.waitForSelector("table.gh-list");
+    await this.page.locator("button[data-test-button='members-apply-filter']").click({force:true});
   }
 
   async filterByName(member){
     await this.page.locator("input[data-test-input='members-filter-value']").first().fill(member.fullname);
   }
 
-  async pageContainsText(text){
-     return await page.getByText(text).count() === 1;
+  async waitForCanvas(){
+     return await this.page.waitForSelector(".gh-canvas")
+  }
+
+  async waitForMembersList(){
+     return await this.page.waitForSelector("table.gh-list");
   }
 };
