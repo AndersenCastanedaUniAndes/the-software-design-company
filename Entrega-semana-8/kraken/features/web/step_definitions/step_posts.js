@@ -135,6 +135,12 @@ When(
   }
 );
 
+When('I go posts filtered by {string}', async function (queryparam) {
+  const baseUrl = await this.driver.getUrl();
+  const urlWithQuery = `${baseUrl}?type=${queryparam}`;
+  await this.driver.url(urlWithQuery);
+});
+
 Then(
   "I update the post by clicking the Update button with selector {string}",
   async function (string) {
@@ -215,3 +221,31 @@ Then(
     }
   }
 );
+
+Then(
+  "I  shouldn't see {kraken-string} and {kraken-string} when filtering by {string} post",
+  async function (firstPost, secondPost, postType) {
+    const element = await this.driver.$(
+      `a[data-test-nav-custom="posts-${postType}"]`
+    );
+    await element.click();
+    let foundPost = false;
+    let posts = await this.driver.$$('li.gh-list-row.gh-posts-list-item');
+
+    for (const post of posts) {
+      let name = await post.$('a').getText();
+      if (name.startsWith(firstPost) || name.startsWith(secondPost)) {
+        foundPost = true;
+        break;
+      }
+    }
+    expect(foundPost).to.be.false;
+  }
+);
+
+When('I save the filter view', async function () {
+  const saveView = await this.driver.$(
+    'button[data-test-button="save-custom-view"]'
+  );
+  return await saveView.click();
+});
