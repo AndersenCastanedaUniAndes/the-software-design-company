@@ -1,3 +1,22 @@
+# Running only unit tests
+
+1. Ir a la carpeta Playwright.
+2. Abrir el archivo .env en un manejador de texto de su preferencia. Debe poder ver los siguientes parámetros:
+
+* IS_REFERENCE_OR_TEST=REFERENCE #no tocar
+* USERNAMEGHOST=escribasuemail@test.com #ejemplo test@gmail.com
+* PASSWORD=0123456789
+* REFERENCE_IMAGES=./VTK/reference_screenshots/ #no tocar 
+* REFERENCE_URL=http://localhost:2369 # Debe colocar la url de la versión de ghost (5.69.0).
+* REFERENCE_VERSION='5.69.0' #no tocar
+* TESTS_IMAGES=./VTK/test_screenshots/ #no tocar
+* TESTS_URL=http://localhost:3003 # Debe colocar la url de la versión de ghost (4.48.9).
+* TEST_VERSION='4.48.9' #no tocar
+* ACTIVE_VERSION='5.69.0' #no tocar
+
+**SOLO DEBE AGREGAR SU USERNAME (AKA USERNAMEGHOST), PASSWORD, REFERENCE_URL**
+3. Para correr solo las pruebas e2e, puede ejecutar los siguiente comandos: yarn test, npm run test
+ 
 # Running Playwright y Resemble.
 
 ## Configurar Playwright para Ghost version 5.69.0 y 4.48.9.
