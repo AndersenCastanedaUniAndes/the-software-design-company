@@ -1,0 +1,35 @@
+{
+  "name": "playwright-e2e-tests",
+  "version": "1.0.0",
+  "description": "pruebas automatizadas de software 2023",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:tests": "IS_REFERENCE_OR_TEST=TESTS ACTIVE_VERSION=4.48.9 SCREENSHOTS_ACTIVATED=ON playwright test",
+    "test:reference": "IS_REFERENCE_OR_TEST=REFERENCE ACTIVE_VERSION=5.69.0 SCREENSHOTS_ACTIVATED=ON playwright test",
+    "clean:images": "REFERENCE_IMAGES=./VTK/reference_screenshots/ TESTS_IMAGES=./VTK/test_screenshots/ node setup.js",
+    "test:all": "REFERENCE_IMAGES=./VTK/reference_screenshots/ TESTS_IMAGES=./VTK/test_screenshots/ SCREENSHOTS_ACTIVATED=ON node setup.js && IS_REFERENCE_OR_TEST=REFERENCE ACTIVE_VERSION=5.69.0 SCREENSHOTS_ACTIVATED=ON playwright test && IS_REFERENCE_OR_TEST=TESTS ACTIVE_VERSION=4.48.9 SCREENSHOTS_ACTIVATED=ON playwright test",
+    "resemble": "node ./resemble/index.js",
+    "test:tests:win": "cross-env IS_REFERENCE_OR_TEST=TESTS ACTIVE_VERSION=4.48.9 SCREENSHOTS_ACTIVATED=ON playwright test",
+    "test:reference:win": "cross-env IS_REFERENCE_OR_TEST=REFERENCE ACTIVE_VERSION=5.69.0 SCREENSHOTS_ACTIVATED=ON playwright test",
+    "test:all:win": "cross-env REFERENCE_IMAGES=./VTK/reference_screenshots/ TESTS_IMAGES=./VTK/test_screenshots/ SCREENSHOTS_ACTIVATED=ON node setup.js && cross-env IS_REFERENCE_OR_TEST=REFERENCE ACTIVE_VERSION=5.69.0 SCREENSHOTS_ACTIVATED=ON playwright test && cross-env IS_REFERENCE_OR_TEST=TESTS ACTIVE_VERSION=4.48.9 SCREENSHOTS_ACTIVATED=ON playwright test",
+    "resemble:images:win": "cross-env node ./resemble/index.js",
+    "clean:images:win": "cross-env REFERENCE_IMAGES=./VTK/reference_screenshots/ TESTS_IMAGES=./VTK/test_screenshots/ node setup.js",
+    "test:tests:win:noscreenshots": "cross-env IS_REFERENCE_OR_TEST=TESTS ACTIVE_VERSION=4.48.9 SCREENSHOTS_ACTIVATED=OFF playwright test",
+    "test:reference:win:noscreenshots": "cross-env IS_REFERENCE_OR_TEST=REFERENCE ACTIVE_VERSION=5.69.0 SCREENSHOTS_ACTIVATED=OFF playwright test",
+    "test:all:win:noscreenshots": "cross-env REFERENCE_IMAGES=./VTK/reference_screenshots/ TESTS_IMAGES=./VTK/test_screenshots/ SCREENSHOTS_ACTIVATED=OFF node setup.js && cross-env IS_REFERENCE_OR_TEST=REFERENCE ACTIVE_VERSION=5.69.0 SCREENSHOTS_ACTIVATED=OFF playwright test && cross-env IS_REFERENCE_OR_TEST=TESTS ACTIVE_VERSION=4.48.9 SCREENSHOTS_ACTIVATED=OFF playwright test",
+    "resemble:images:win": "cross-env node ./resemble/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "@playwright/test": "^1.39.0",
+    "@types/node": "^20.9.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "playwright": "^1.40.0",
+    "resemblejs": "^5.0.0",
+    "uuid": "^9.0.1"
+  }
+}
