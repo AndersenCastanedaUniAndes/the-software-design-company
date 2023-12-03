@@ -1,0 +1,6 @@
+{
+  "USERNAME": "admin@mail.com",
+  "PASSWORD": "Qazwsxedc123",
+  "BASEURL": "http://localhost:3001/ghost/#/signin",
+  "SITE_BASEURL": "http://localhost:3001/"
+}
