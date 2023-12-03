@@ -137,7 +137,7 @@ When(
 
 When('I go posts filtered by {string}', async function (queryparam) {
   const baseUrl = await this.driver.getUrl();
-  const urlWithQuery = `${baseUrl}?type=${queryparam}`;
+  const urlWithQuery = `${baseUrl}?${queryparam}`;
   await this.driver.url(urlWithQuery);
 });
 
@@ -242,6 +242,13 @@ Then(
     expect(foundPost).to.be.false;
   }
 );
+
+When('I create a new view filter', async function () {
+  const createView = await this.driver.$(
+    'button[data-test-button="add-view"]'
+  );
+  return await createView.click();
+});
 
 When('I save the filter view', async function () {
   const saveView = await this.driver.$(
